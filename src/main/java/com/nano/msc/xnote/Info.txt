@@ -1,0 +1,22 @@
+1. 添加新仪器时：需要新增对应的repository和parser。同时devicedata-component的两个类里面加对应的解析器和repository
+
+2. nohup java -jar evaluation-0.0.1-SNAPSHOT.jar >project.log 2>&1 &
+3. nohup java -jar evaluation-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >prod.log 2>&1 &
+不需要日志: nohup java -jar evaluation-0.0.1-SNAPSHOT.jar --spring.profiles.active=prodev >/dev/null &
+
+nohup java -jar evaluation-0.0.1-SNAPSHOT.jar >prod.log 2>&1 &
+
+生产环境: nohup java -jar evaluation-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod --server.port=10086 >prod.log 2>&1 &
+
+预生产环境: nohup java -jar evaluation-0.0.1-SNAPSHOT.jar --spring.profiles.active=prodev --server.port=10085 >prodev.log 2>&1 &
+
+查看占用端口：netstat -tunlp | grep 10086
+
+4. 服务器重启后记得开 Docker: service docker restart
+然后打开相应的容器: docker start ID
+
+
+
+
+
+

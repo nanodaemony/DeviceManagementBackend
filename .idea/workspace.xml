@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="Finish EEG-VISTA data collection;" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SQL Script" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="H:\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1nKlkWK1bPSVlpy5S1Kqv66EFXJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\java\com\nano\msc\deviceconnection\info" />
+      <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\java\com\nano\msc\deviceconnection" />
+      <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\java\com\nano\msc\deviceconnection\tcp" />
+      <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\db" />
+      <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nano.msc.devicedata.parser" />
+      <recent name="com.nano.msc.devicedata.repository" />
+      <recent name="com.nano.msc.serial.schedule" />
+      <recent name="com.nano.msc.devicedata.entity.serial" />
+      <recent name="com.nano.msc.schedule" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DeviceManagementApplication">
+    <configuration name="DataParserMeiDunLiVista" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.devicedata.parser.DataParserMeiDunLiVista" />
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.devicedata.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeviceManagementApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.9" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.DeviceManagementApplication" />
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SerialServerHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.serial.SerialServerHandler" />
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.serial.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TcpServerKeMan" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.deviceconnection.tcp.TcpServerKeMan" />
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.deviceconnection.tcp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TcpServerWeiHaoKang" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.deviceconnection.tcp.TcpServerWeiHaoKang" />
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.deviceconnection.tcp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.DeviceManagementApplication" />
+      <item itemvalue="Application.TcpServerKeMan" />
+      <item itemvalue="Application.TcpServerWeiHaoKang" />
+      <item itemvalue="Application.DataParserMeiDunLiVista" />
+      <item itemvalue="Application.SerialServerHandler" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DeviceManagementApplication" />
+        <item itemvalue="Application.DataParserMeiDunLiVista" />
+        <item itemvalue="Application.SerialServerHandler" />
+        <item itemvalue="Application.TcpServerWeiHaoKang" />
+        <item itemvalue="Application.TcpServerKeMan" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="" />
+      <created>1611146808972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611146808972</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First init.">
+      <created>1611146931508</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611146931508</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First init.">
+      <created>1611147060446</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611147060446</updated>
+    </task>
+    <task id="LOCAL-00003" summary="First init.">
+      <created>1611147141272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611147141272</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2021.1.23 Modify a lot.">
+      <created>1611383736805</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611383736805</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2021.1.23 Finish some services.">
+      <created>1611390662510</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611390662510</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2021.1.23 ....">
+      <created>1611415351011</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611415351011</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2021.1.24 Finish modify the project.">
+      <created>1611473817680</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611473817680</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2021.1.24 Finish modify the operationMark part..">
+      <created>1611560513032</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611560513032</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2021.1.26 Finish modify the project this term.">
+      <created>1611643105067</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611643105067</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2021.2.1 Deploy the collector at hospital.">
+      <created>1612169752025</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1612169752025</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Really first init...">
+      <created>1620037073885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1620037073885</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Finish EEG-VISTA data collection;">
+      <created>1621085523754</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621085523754</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First init." />
+    <MESSAGE value="2021.1.23 Modify a lot." />
+    <MESSAGE value="2021.1.23 Finish some services." />
+    <MESSAGE value="2021.1.23 ...." />
+    <MESSAGE value="2021.1.24 Finish modify the project." />
+    <MESSAGE value="2021.1.24 Finish modify the operationMark part.." />
+    <MESSAGE value="2021.1.26 Finish modify the project this term." />
+    <MESSAGE value="2021.2.1 Deploy the collector at hospital." />
+    <MESSAGE value="Really first init..." />
+    <MESSAGE value="Finish EEG-VISTA data collection;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish EEG-VISTA data collection;" />
+  </component>
+</project>
