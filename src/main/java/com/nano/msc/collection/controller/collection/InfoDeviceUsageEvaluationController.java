@@ -26,10 +26,10 @@ import lombok.extern.slf4j.Slf4j;
  * @date: 2021/1/23 21:45
  */
 @Slf4j
-@Api(tags = "InfoAfterCollectionEvaluationController", description = "AfterCollectionEvaluation")
+@Api(tags = "DeviceUsageEvaluationController", description = "DeviceUsageEvaluationController")
 @RestController
-@RequestMapping("/after-collection-evaluation")
-public class InfoAfterCollectionEvaluationController {
+@RequestMapping("/info-device-usage-evaluation")
+public class InfoDeviceUsageEvaluationController {
 
 
     @Autowired
@@ -42,10 +42,12 @@ public class InfoAfterCollectionEvaluationController {
      * @return 返回唯一UniqueNumber
      */
     @PostMapping("/add")
-    @ApiOperation(value = "新增一条术后仪器评价信息")
+    @ApiOperation(value = "新增一条仪器使用评价信息")
     public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceUsageEvaluation afterCollectionEvaluation) {
         return afterCollectionEvaluationService.saveDeviceUsageEvaluationTable(afterCollectionEvaluation);
     }
+
+
 
 
 

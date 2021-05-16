@@ -14,38 +14,6 @@ import com.nano.msc.common.vo.CommonResult;
  */
 public interface InfoDeviceDataCollectionService extends BaseService<InfoDeviceDataCollection, Integer> {
 
-    /**
-     * 上传医疗仪器信息(由Pad控制)
-     * @return 是否成功
-     */
-//    CommonResult postMedicalDeviceInfoPad(String macAddress, Integer deviceCode, String serialNumber, Double serviceLife);
-    CommonResult saveMedicalDeviceInfoFromPad(ParamPad paramPad);
-
-    /**
-     * 开始采集仪器数据(由Pad控制)
-     *
-     * @param paramPad 采集器构造实体
-     * @return 是否开始
-     */
-    CommonResult startDeviceDataCollectionPad(ParamPad paramPad);
-
-    /**
-     * 结束采集仪器数据(由Pad控制)
-     *
-     * @param paramPad 采集器构造实体
-     * @return 是否开始
-     */
-    CommonResult finishDeviceDataCollectionPad(ParamPad paramPad);
-
-
-    /**
-     * 放弃采集仪器数据(由Pad控制)
-     *
-     * @param paramPad 采集器构造实体
-     * @return 是否开始
-     */
-    CommonResult abandonDeviceDataCollectionPad(ParamPad paramPad);
-
 
 
     /**

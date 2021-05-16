@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @EnableScheduling
 @Slf4j
-public class EvaluationScheduleTask {
+public class ManageScheduleTask {
 
     /**
      * 手术信息

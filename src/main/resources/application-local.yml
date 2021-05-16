@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: mrc301206!!!!!
-    url: jdbc:mysql://rm-8vb6025810x4n11s8wo.mysql.zhangbei.rds.aliyuncs.com/device_management?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://rm-8vb6025810x4n11s8wo.mysql.zhangbei.rds.aliyuncs.com/device_management?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
   jpa:
     hibernate:
       ddl-auto: update

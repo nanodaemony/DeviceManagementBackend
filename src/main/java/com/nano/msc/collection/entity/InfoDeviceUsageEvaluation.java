@@ -33,7 +33,7 @@ import lombok.Data;
 @DynamicUpdate
 @Entity
 @Data
-@Table(name = "info_after_collection_device_evaluation")
+@Table(name = "info_device_usage_evaluation")
 @AllArgsConstructor
 public class InfoDeviceUsageEvaluation implements Serializable {
 
@@ -56,7 +56,7 @@ public class InfoDeviceUsageEvaluation implements Serializable {
     /**
      * 产生标记的识别号(用于回传给采集器标识哪些已经成功存储)
      */
-    @NotBlank(message = "unique_number must cannot empty")
+    @NotBlank(message = "Unique_number must cannot empty")
     @Column(name = "unique_number")
     private String uniqueNumber;
 

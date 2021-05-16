@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Api(tags = "InfoDeviceController", description = "InfoMedicalDevice")
 @RestController
-@RequestMapping("/mark-event")
+@RequestMapping("/info-medical-device")
 public class InfoMedicalDeviceController {
 
     @Autowired
