@@ -1,6 +1,6 @@
 package com.nano.msc;
 
-import com.nano.msc.serial.NettyServer;
+import com.nano.msc.serial.SerialDeviceDataCollectionServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,8 +27,8 @@ public class DeviceManagementApplication {
 		SpringApplication.run(DeviceManagementApplication.class, args);
 		log.info("\n\nStart HTTP server successful...");
 		// 启动Netty服务端
-		NettyServer nettyServer = new NettyServer();
-		nettyServer.start(new InetSocketAddress("0.0.0.0", 10087));
+		SerialDeviceDataCollectionServer serialDeviceDataCollectionServer = new SerialDeviceDataCollectionServer();
+		serialDeviceDataCollectionServer.start(new InetSocketAddress("0.0.0.0", 10087));
 
 	}
 

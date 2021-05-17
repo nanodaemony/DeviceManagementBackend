@@ -33,8 +33,8 @@ create TABLE `info_device_data_collection` (
     `collection_start_time`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '采集整体开始时间',
     `collection_finish_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '采集整体结束时间',
 
-    `serial_collector_last_heart_message_time` LONG COMMENT '串口数据采集器上次接收心跳消息的时间戳',
-    `serial_collector_last_device_data_message_time` LONG COMMENT '串口数据采集器上次接收仪器数据消息的时间戳',
+    `last_receive_heart_message_time` LONG COMMENT '上次接收心跳消息的时间戳',
+    `last_receive_device_data_time` LONG COMMENT '上次接收仪器数据消息的时间戳',
 
     `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
     `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',

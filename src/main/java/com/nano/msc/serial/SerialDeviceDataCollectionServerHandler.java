@@ -45,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
  **/
 @Slf4j
 @Component
-public class SerialServerHandler extends ChannelInboundHandlerAdapter {
+public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 数据间隔
@@ -149,7 +149,7 @@ public class SerialServerHandler extends ChannelInboundHandlerAdapter {
         // 更新该采集器心跳报文接收时间,采集信息不为空才更新
         if (entity.getDeviceDataCollection() != null) {
             // 更新采集的心跳时间戳为当前时间
-            entity.getDeviceDataCollection().setSerialCollectorLastHeartMessageTime(System.currentTimeMillis());
+            entity.getDeviceDataCollection().setLastReceiveHeartMessageTime(System.currentTimeMillis());
         }
         // 返回收到心跳包
         ctx.write("#1#" + Long.parseLong(("" + System.currentTimeMillis() / 1000).substring(5)) + "#");
@@ -231,7 +231,7 @@ public class SerialServerHandler extends ChannelInboundHandlerAdapter {
         RealTimeDeviceDataServer.sendDeviceRealTimeDataToClient(collection.getCollectionNumber(), collection.getDeviceCode(), JSON.toJSONString(result));
 
         // 更新上次接收仪器数据报文时间
-        collection.setSerialCollectorLastDeviceDataMessageTime(System.currentTimeMillis());
+        collection.setLastReceiveDeviceDataTime(System.currentTimeMillis());
 
         // 返回这个表明正常收到仪器数据
         ctx.write("#3#");

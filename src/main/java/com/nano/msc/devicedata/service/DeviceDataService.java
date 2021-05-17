@@ -18,16 +18,8 @@ public interface DeviceDataService {
      * @param data 仪器数据
      * @return 是否成功
      */
-    CommonResult<String> parseDataAndSaveFromPad(ParamDeviceDataPad data);
+    CommonResult<String> parseEthernetDeviceDataAndSaveFromPad(ParamDeviceDataPad data);
 
-
-    /**
-     * 解析仪器数据并保存(处理来自串口设备的数据)
-     *
-     * @param data 仪器数据
-     * @return 是否成功
-     */
-    CommonResult<String> parseDataAndSaveFromSerial(String data);
 
     /**
      * 获取仪器历史数据

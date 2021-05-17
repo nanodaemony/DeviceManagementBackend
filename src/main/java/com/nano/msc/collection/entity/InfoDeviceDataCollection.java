@@ -99,14 +99,14 @@ public class InfoDeviceDataCollection implements Serializable {
     /**
      * 串口数据采集器上次接收心跳消息的时间戳
      */
-    @Column(name = "serial_collector_last_heart_message_time")
-    private Long serialCollectorLastHeartMessageTime = System.currentTimeMillis();
+    @Column(name = "last_receive_heart_message_time")
+    private Long lastReceiveHeartMessageTime = System.currentTimeMillis();
 
     /**
      * 串口数据采集器上次接收仪器数据消息的时间戳
      */
-    @Column(name = "serial_collector_last_device_data_message_time")
-    private Long serialCollectorLastDeviceDataMessageTime = System.currentTimeMillis();
+    @Column(name = "last_receive_device_data_time")
+    private Long lastReceiveDeviceDataTime = System.currentTimeMillis();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // 采集统计与分析相关信息

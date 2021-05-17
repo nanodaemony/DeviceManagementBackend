@@ -15,14 +15,13 @@ import io.netty.util.CharsetUtil;
  * netty服务初始化器
  **/
 @Component
-public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> {
+public class SerialDeviceDataCollectionServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         // 添加编解码
-        // socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(2048, Unpooled.wrappedBuffer("@&".getBytes(StandardCharsets.UTF_8))));
         socketChannel.pipeline().addLast(new LineBasedFrameDecoder(2048));
         socketChannel.pipeline().addLast("decoder", new StringDecoder(CharsetUtil.UTF_8));
         socketChannel.pipeline().addLast("encoder", new StringEncoder(CharsetUtil.UTF_8));
-        socketChannel.pipeline().addLast(new SerialServerHandler());
+        socketChannel.pipeline().addLast(new SerialDeviceDataCollectionServerHandler());
     }
 }

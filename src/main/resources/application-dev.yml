@@ -8,7 +8,7 @@ spring:
     url: jdbc:mysql://172.20.29.103/medical_device_manage?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
 
   redis:
-    host: 39.98.122.209 # Redis服务器地址
+    host: 172.20.29.103 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password: # Redis服务器连接密码（默认为空）

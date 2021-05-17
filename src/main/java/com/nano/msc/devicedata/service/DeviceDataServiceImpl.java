@@ -1,6 +1,8 @@
 package com.nano.msc.devicedata.service;
 
 import com.alibaba.fastjson.JSON;
+import com.nano.msc.collection.entity.InfoDeviceDataCollection;
+import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.utils.CollectionNumberCacheUtil;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
@@ -59,6 +61,10 @@ public class DeviceDataServiceImpl implements DeviceDataService {
     @Autowired
     private InfoMedicalDeviceRepository medicalDeviceRepository;
 
+    @Autowired
+    private InfoDeviceDataCollectionRepository dataCollectionRepository;
+
+    public static Map<Integer, Integer> receiveCounterMap = new HashMap<>();
 
     /**
      * 解析仪器数据并保存到数据库
@@ -68,7 +74,7 @@ public class DeviceDataServiceImpl implements DeviceDataService {
      * @return 保存到数据库
      */
     @Override
-    public CommonResult<String> parseDataAndSaveFromPad(ParamDeviceDataPad data) {
+    public CommonResult<String> parseEthernetDeviceDataAndSaveFromPad(ParamDeviceDataPad data) {
 
         if (data == null || data.getDeviceCode() == null || data.getDeviceData() == null) {
             return CommonResult.failed(ExceptionEnum.DATA_FORMAT_ERROR.getMessage());
@@ -85,6 +91,19 @@ public class DeviceDataServiceImpl implements DeviceDataService {
         if (result == null) {
             return CommonResult.failed("数据解析与存储失败:" + data.toString());
         }
+        int collectionNumber = data.getCollectionNumber();
+        // 获取接收的数据条数
+        int cnt = receiveCounterMap.getOrDefault(data.getCollectionNumber(), 0);
+        // 说明到了60条数据,此时更新一次接收时间
+        if (cnt > 0 && cnt % 60 == 0) {
+            InfoDeviceDataCollection collection = dataCollectionRepository.findByCollectionNumber(collectionNumber);
+            if (collection != null) {
+                // 更新接收仪器数据的时间
+                collection.setLastReceiveDeviceDataTime(System.currentTimeMillis());
+                dataCollectionRepository.save(collection);
+            }
+        }
+        receiveCounterMap.put(collectionNumber, cnt + 1);
 
         // 仪器数据实时推送到前端
         RealTimeDeviceDataServer
@@ -93,17 +112,6 @@ public class DeviceDataServiceImpl implements DeviceDataService {
         return CommonResult.success();
     }
 
-    /**
-     * 解析仪器数据并保存(处理来自串口设备的数据)
-     * 这里根据一定的协议进行数据解析之后再解析存储.
-     *
-     * @param data 仪器数据
-     * @return 是否成功
-     */
-    @Override
-    public CommonResult<String> parseDataAndSaveFromSerial(String data) {
-        return null;
-    }
 
     /**
      * 获取仪器历史数据
@@ -117,7 +125,6 @@ public class DeviceDataServiceImpl implements DeviceDataService {
      */
     @Override
     public CommonResult getHistoryDeviceData(int collectionNumber, int deviceCode, String serialNumber, Integer page, Integer size) {
-
         InfoMedicalDevice medicalDevice = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(deviceCode, serialNumber);
         if (medicalDevice == null) {
             return CommonResult.failed("仪器信息不存在." + deviceCode + ", " + serialNumber);

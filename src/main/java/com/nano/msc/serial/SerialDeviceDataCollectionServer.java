@@ -16,11 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author nano
  * <p>
- * 服务启动监听器
+ * 串口仪器数据采集服务器
  **/
 @Slf4j
 @Component
-public class NettyServer {
+public class SerialDeviceDataCollectionServer {
 
     public void start(InetSocketAddress socketAddress) {
         // new一个主线程组
@@ -30,7 +30,7 @@ public class NettyServer {
         ServerBootstrap bootstrap = new ServerBootstrap()
                 .group(bossGroup, workGroup)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(new ServerChannelInitializer())
+                .childHandler(new SerialDeviceDataCollectionServerInitializer())
                 .localAddress(socketAddress)
                 // 设置队列大小
                 .option(ChannelOption.SO_BACKLOG, 1024)

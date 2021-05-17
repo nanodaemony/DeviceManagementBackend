@@ -34,22 +34,12 @@ public class DeviceDataController {
     private DeviceDataService deviceDataService;
 
     /**
-     * 新增自定义的标记事件
+     * 解析由平板上传的以太网仪器的数据并存储
      */
-    @PostMapping("/add-device-data-pad")
+    @PostMapping("/parse-ethernet-device-data-from-pad")
     @ApiOperation(value = "新增Pad上传的仪器数据")
-    public CommonResult<String> addDeviceDataAdd(@RequestBody ParamDeviceDataPad paramDeviceDataPad) {
-        return deviceDataService.parseDataAndSaveFromPad(paramDeviceDataPad);
-    }
-
-
-    /**
-     * 新增自定义的标记事件
-     */
-    @PostMapping("/add-device-data-serial")
-    @ApiOperation(value = "新增串口采集器上传的仪器数据")
-    public CommonResult<String> addDeviceDataSerial(String paramDeviceDataSerial) {
-        return deviceDataService.parseDataAndSaveFromSerial(paramDeviceDataSerial);
+    public CommonResult<String> parseEthernetDeviceDataAndSaveFromPad(@RequestBody ParamDeviceDataPad paramDeviceDataPad) {
+        return deviceDataService.parseEthernetDeviceDataAndSaveFromPad(paramDeviceDataPad);
     }
 
 
