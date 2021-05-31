@@ -87,7 +87,7 @@ public class DeviceDataServiceImpl implements DeviceDataService {
             return CommonResult.failed("当前采集号不存在.");
         }
 
-        Object result = dataHandlerMap.get(data.getDeviceCode()).getDataParser().parseDeviceData(data.getDeviceData());
+        Object result = dataHandlerMap.get(data.getDeviceCode()).getDataManager().parseDeviceData(data.getDeviceData());
         if (result == null) {
             return CommonResult.failed("数据解析与存储失败:" + data.toString());
         }

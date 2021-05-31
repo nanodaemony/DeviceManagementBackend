@@ -1,4 +1,4 @@
-package com.nano.msc.devicedata.parser;
+package com.nano.msc.devicedata.utils;
 
 /**
  * Description: 数据解析工具类

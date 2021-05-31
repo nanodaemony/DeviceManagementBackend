@@ -57,7 +57,7 @@ public abstract class BaseDataServiceImpl<T, ID> implements BaseDataService<T, I
     }
 
     /**
-     * 通过采集场次号和序列号查询数据
+     * 通过采集场次号和序列号查询数据(全部查询)
      *
      * @param collectionNumber 采集场次号
      * @param serialNumber 序列号
@@ -70,7 +70,7 @@ public abstract class BaseDataServiceImpl<T, ID> implements BaseDataService<T, I
 
 
     /**
-     * 通过采集场次号和序列号查询数据
+     * 通过采集场次号和序列号查询数据(分页查询)
      *
      * @param collectionNumber 采集场次号
      * @param serialNumber 序列号

@@ -1,4 +1,4 @@
-package com.nano.msc.devicedata.parser;
+package com.nano.msc.devicedata.manager;
 
 import com.nano.msc.devicedata.base.DeviceDataRepository;
 import com.nano.msc.devicedata.entity.serial.DataMeiDunLiVista;
@@ -6,6 +6,8 @@ import com.nano.msc.devicedata.utils.DataParseUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * Description: 美敦力EEG-VISTA数据解析
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @date: 2021/1/23 0:56
  */
 @Component
-public class DataParserMeiDunLiVista implements DeviceDataParser<DataMeiDunLiVista>{
+public class DataManagerMeiDunLiVista implements DeviceDataManager<DataMeiDunLiVista> {
 
     @Autowired
     private DeviceDataRepository<DataMeiDunLiVista, Integer> dataRepository;
@@ -83,6 +85,12 @@ public class DataParserMeiDunLiVista implements DeviceDataParser<DataMeiDunLiVis
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getDeviceHistoryData(int collectionNumber, String serialNumber) {
+        // TODO:
         return null;
     }
 

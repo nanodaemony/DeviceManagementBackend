@@ -51,7 +51,7 @@ public class DeviceDataController {
     public CommonResult getHistoryDataForPlatform(@PathVariable Integer collectionNumber,
                                                           @PathVariable Integer deviceCode,
                                                           @PathVariable String serialNumber) {
-        return deviceDataService.getHistoryDeviceData(collectionNumber, deviceCode, serialNumber, 0, 1000);
+        return deviceDataService.getHistoryDeviceData(collectionNumber, deviceCode, serialNumber, 0, 5000);
     }
 
 

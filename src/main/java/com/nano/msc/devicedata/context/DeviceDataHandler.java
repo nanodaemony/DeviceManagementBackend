@@ -2,6 +2,7 @@ package com.nano.msc.devicedata.context;
 
 import com.nano.msc.devicedata.base.BaseDataService;
 import com.nano.msc.devicedata.base.DeviceDataRepository;
+import com.nano.msc.devicedata.manager.DeviceDataManager;
 import com.nano.msc.devicedata.parser.DeviceDataParser;
 
 import lombok.Getter;
@@ -25,13 +26,14 @@ public class DeviceDataHandler<T, ID> {
     private DeviceDataRepository<T, ID> dataRepository;
 
     /**
-     * 数据解析器
+     * 数据管理器
      */
-    private DeviceDataParser<T> dataParser;
+    private DeviceDataManager<T> dataManager;
+
 
     public DeviceDataHandler(DeviceDataRepository<T, ID> dataRepository,
-                             DeviceDataParser<T> dataParser) {
+                             DeviceDataManager<T> dataManager) {
         this.dataRepository = dataRepository;
-        this.dataParser = dataParser;
+        this.dataManager = dataManager;
     }
 }

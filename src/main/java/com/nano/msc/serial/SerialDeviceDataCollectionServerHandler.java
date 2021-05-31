@@ -220,7 +220,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
 
         // 到这里,说明采集信息也有了,直接处理数据
         // 获取数据处理器
-        Object result = dataHandlerMap.get(collection.getDeviceCode()).getDataParser().parseDeviceData(deviceDataRaw);
+        Object result = dataHandlerMap.get(collection.getDeviceCode()).getDataManager().parseDeviceData(deviceDataRaw);
         if (result == null) {
             log.error("串口仪器数据解析与存储失败:" + data.toString());
             return;

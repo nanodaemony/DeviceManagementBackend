@@ -21,7 +21,7 @@ import java.util.List;
 public interface DeviceDataRepository<T, ID> extends JpaRepository<T, ID> {
 
     /**
-     * 通过采集场次号和序列号查询数据
+     * 通过采集场次号和序列号查询数据(全部查询)
      *
      * @param collectionNumber 采集场次号
      * @param serialNumber 序列号
@@ -31,7 +31,7 @@ public interface DeviceDataRepository<T, ID> extends JpaRepository<T, ID> {
 
 
     /**
-     * 通过operationNumber和serialNumber查询指定手术的仪器输出数据
+     * 通过operationNumber和serialNumber查询指定手术的仪器输出数据(分页查询)
      *
      * @param collectionNumber 手术顺序号
      * @param serialNumber    仪器序列号
