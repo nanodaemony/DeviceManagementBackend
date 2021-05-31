@@ -25,7 +25,10 @@ import static java.util.stream.Collectors.toList;
 /**
  * Description: 医疗仪器服务实现类
  * Usage:
+ * @see #getMedicalDeviceAccessInSystemCounterTotal() 获取接入仪器的全部仪器个数(总的)
  * @see #getMedicalDeviceAccessInSystemCounterByType() 统计已经接入系统的仪器种类数量
+ * @see #getSerialNumberListByDeviceCode(int) 通过仪器号查询对应拥有的仪器列表
+ * @see #getDeviceInfoByDeviceType(DeviceTypeEnum) 根据仪器类别找到符合条件的仪器列表
  *
  * @version: 1.0
  * @author: nano
@@ -85,14 +88,13 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
     }
 
 
-
     /**
      * 根据仪器类别找到符合条件的仪器列表
      *
      * @param deviceType 仪器类别枚举
      * @return 复合条件的仪器信息
      */
-    public CommonResult<List<InfoMedicalDevice>> findByDeviceType(DeviceTypeEnum deviceType) {
+    public CommonResult<List<InfoMedicalDevice>> getDeviceInfoByDeviceType(DeviceTypeEnum deviceType) {
         return CommonResult.success(medicalDeviceRepository.findAll().stream()
                 // 筛选出包含给定类型的仪器信息
                 .filter(device -> device.getDeviceType().contains(deviceType.getCode()))

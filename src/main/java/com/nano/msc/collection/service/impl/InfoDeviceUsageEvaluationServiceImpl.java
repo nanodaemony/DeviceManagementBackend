@@ -21,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
  * Description: 仪器使用评价服务类
  * Usage:
  * @see #saveDeviceUsageEvaluationTable(InfoDeviceUsageEvaluation) 存储由APP上传而来的仪器使用评价表
+ * @see #getDeviceUsageEvaluationListByDeviceCode(int, int, int) 根据仪器号查询该仪器完成的评价信息(根据仪器号)
+ * @see #getDeviceUsageEvaluationListByDeviceCodeAndSerialNumber(int, String, int, int) 根据仪器号及序列号查询该仪器完成的评价信息(根据仪器号与序列号)
  *
  * @version: 1.0
  * @author: nano

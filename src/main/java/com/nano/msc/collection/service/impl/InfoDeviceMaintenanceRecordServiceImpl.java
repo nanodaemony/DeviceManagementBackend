@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 /**
  * Description: 仪器维修记录表服务
  * Usage:
- * 1.
+ * @see #addOneMaintenanceRecord(InfoDeviceMaintenanceRecord) 新增一个仪器维修记录
  *
  * @version: 1.0
  * @author: nano
@@ -28,7 +28,7 @@ public class InfoDeviceMaintenanceRecordServiceImpl extends BaseServiceImpl<Info
     private InfoDeviceMaintenanceRecordRepository maintenanceRecordRepository;
 
     /**
-     * 新增一个维修记录
+     * 新增一个仪器维修记录
      *
      * @param maintenanceRecord 维修记录表
      * @return 唯一序列号
@@ -38,7 +38,6 @@ public class InfoDeviceMaintenanceRecordServiceImpl extends BaseServiceImpl<Info
         maintenanceRecord = maintenanceRecordRepository.save(maintenanceRecord);
         return CommonResult.success();
     }
-
 
 
     @Override

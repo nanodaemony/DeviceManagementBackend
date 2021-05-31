@@ -27,9 +27,14 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Description: 仪器采集流程控制服务实现类
  * Usage:
-
- * @see #getMedicalDeviceHistoryOpenTimes(int) 获取指定天数内的仪器开机信息
+ * @see #getDeviceDataCollectionListByStatusAll(int, int) 根据状态获取当前数据采集信息列表(全部状态)
+ * @see #getDeviceDataCollectionListByStatusWaiting(int, int) 根据状态获取当前数据采集信息列表(等待状态)
+ * @see #getDeviceDataCollectionListByStatusCollecting(int, int) 根据状态获取当前数据采集信息列表(采集状态)
+ * @see #getDeviceDataCollectionListByStatusFinish(int, int) 根据状态获取当前数据采集信息列表(完成状态)
+ * @see #getDeviceDataCollectionListByStatusAbandon(int, int) 根据状态获取当前数据采集信息列表(丢弃状态)
  * @see #getCollectionUsedDeviceInfo(int) 根据手术场次号获取使用仪器的信息
+ * @see #getSystemTotalDataCollectionNumber() 获取系统总采集场次数
+ * @see #getDeviceDataCollectionInfoByCollectionNumber(int) 通过采集场次号获取仪器数据采集详细信息
  *
  * @version: 1.0
  * @author: nano
@@ -98,34 +103,6 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
                 .findByCollectionStatusOrderByCollectionNumberDesc(CollectionStatusEnum.ABANDON.getCode(), PageRequest.of(page, size)));
     }
 
-    /**
-     * 获取指定天数内的仪器开机信息
-     *
-     * @return 开机信息
-     */
-    @Override
-    public CommonResult getMedicalDeviceHistoryOpenTimes(int historyDays) {
-        // 存放历史开机数的Map,key是历史日期,0是今天,1是昨天,value是当天开机的仪器数
-        Map<LocalDate, Integer> deviceOpenNumberMap = new TreeMap<>();
-
-        // 获取当天的信息
-        List<InfoDeviceDataCollection> operationDevice = deviceDataCollectionRepository.findByGmtCreateAfter(TimestampUtils.getCurrentDayZeroLocalDateTime());
-        int todayCount = (int) operationDevice.stream().map(InfoDeviceDataCollection::getMedicalDeviceId).distinct().count();
-        deviceOpenNumberMap.put(TimestampUtils.getCurrentDayZeroLocalDateTime().toLocalDate(), todayCount);
-
-        // 获取历史的信息
-        for (int day = 0; day < historyDays - 1; day++) {
-            // 获取前一天开始与结束的时间戳
-            LocalDateTime after = TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(day + 1);
-            LocalDateTime before = TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(day);
-            // 获取历史一天的手术仪器信息
-            List<InfoDeviceDataCollection> operationDevices = deviceDataCollectionRepository.findByGmtCreateAfterAndGmtCreateBefore(after, before);
-            // 这里需要去重，因为有的仪器可能一天采集多次，所以只安装仪器信息ID进行统计
-            int count = (int) operationDevices.stream().map(InfoDeviceDataCollection::getMedicalDeviceId).distinct().count();
-            deviceOpenNumberMap.put(after.toLocalDate(), count);
-        }
-        return CommonResult.success(deviceOpenNumberMap);
-    }
 
     /**
      * 根据手术场次号获取使用仪器的信息
@@ -137,7 +114,6 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
     public CommonResult getCollectionUsedDeviceInfo(int collectionNumber) {
         // TODO:
         return null;
-
     }
 
 

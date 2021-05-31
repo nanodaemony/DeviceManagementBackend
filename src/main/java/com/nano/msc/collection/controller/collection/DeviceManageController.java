@@ -40,7 +40,7 @@ public class DeviceManageController {
      * @param days 历史天数
      * @return 开机信息
      */
-    @ApiOperation(value = "获取过去一段时间内每一天开机仪器数据(全部仪器)", notes = "参数为历史天数,如7,15,30")
+    @ApiOperation(value = "获取过去一段时间内每一天开机仪器数量(全部仪器)", notes = "参数为历史天数,如7,15,30")
     @GetMapping("/history-device-open-counter-all-of-one-day")
     public CommonResult getDeviceHistoryOpenNumberOfOneDay(@RequestParam(value = "days", defaultValue = "7") int days) {
         return deviceManageService.getDeviceHistoryOpenNumberOfOneDay(days);
@@ -59,6 +59,20 @@ public class DeviceManageController {
                                                  @Min(value = 1, message = "查询历史日期不能小于1")  int days) {
         return deviceManageService.getDeviceHistoryTotalCollectionTimeOfOneDay(days);
     }
+
+
+    /**
+     * 获取历史开机的仪器数量
+     *
+     * @param days 历史天数
+     * @return 开机信息
+     */
+    @ApiOperation(value = "获取过去一段时间内每一天采集场次", notes = "参数为历史天数,如7,15,30")
+    @GetMapping("/history-total-collection-counter-of-one-day")
+    public CommonResult getDeviceHistoryCollectionNumberOfOneDay(@RequestParam(value = "days", defaultValue = "7") int days) {
+        return deviceManageService.getDeviceHistoryCollectionCounterOfOneDay(days);
+    }
+
 
 
 

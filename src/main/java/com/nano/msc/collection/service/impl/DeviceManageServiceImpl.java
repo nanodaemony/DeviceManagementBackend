@@ -22,7 +22,9 @@ import java.util.TreeMap;
 /**
  * Description: 仪器管理相关接口
  * Usage:
- * 1.
+ * @see #getDeviceHistoryOpenNumberOfOneDay(int) 获取仪器历史开机个数信息
+ * @see #getDeviceHistoryCollectionCounterOfOneDay(int) 获取仪器过去一段时间采集场次信息(总的)
+ * @see #getDeviceHistoryTotalCollectionTimeOfOneDay(int) 获取仪器过去一段时间内每一天的采集时长信息
  *
  * @version: 1.0
  * @author: nano
@@ -75,7 +77,7 @@ public class DeviceManageServiceImpl implements DeviceManageService {
      * @return 过去每天的采集时长
      */
     @Override
-    public CommonResult getDeviceHistoryTotalCollectionTimeOfOneDay(int historyDays) {
+    public CommonResult<Map<LocalDate, Long>> getDeviceHistoryTotalCollectionTimeOfOneDay(int historyDays) {
         // 历史采集时长的Map，key日期，value是当天开机的仪器数
         Map<LocalDate, Long> collectionTimeMap = new TreeMap<>();
         // 获取(当天)已经完成的全部手术信息
@@ -95,6 +97,32 @@ public class DeviceManageServiceImpl implements DeviceManageService {
             collectionTimeMap.put(after.toLocalDate(), totalCollectionTime);
         }
         return CommonResult.success(collectionTimeMap);
+    }
+
+    /**
+     * 获取仪器过去一段时间采集场次信息(总的)
+     * @return 采集场次信息
+     */
+    @Override
+    public CommonResult<Map<LocalDate, Integer>> getDeviceHistoryCollectionCounterOfOneDay(int historyDays) {
+        // 存放历史采集场次号数的Map,key是历史日期,0是今天,1是昨天,value是当天开机的仪器数
+        Map<LocalDate, Integer> collectionNumberMap = new TreeMap<>();
+
+        // 获取当天的信息
+        List<InfoDeviceDataCollection> dataCollectionList = deviceDataCollectionRepository.findByGmtCreateAfter(TimestampUtils.getCurrentDayZeroLocalDateTime());
+        collectionNumberMap.put(TimestampUtils.getCurrentDayZeroLocalDateTime().toLocalDate(), dataCollectionList.size());
+
+        // 获取历史的信息
+        for (int day = 0; day < historyDays - 1; day++) {
+            // 获取前一天开始与结束的时间戳
+            LocalDateTime after = TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(day + 1);
+            LocalDateTime before = TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(day);
+            // 获取历史一天的手术仪器信息
+            List<InfoDeviceDataCollection> dataCollectionList1 = deviceDataCollectionRepository.findByGmtCreateAfterAndGmtCreateBefore(after, before);
+            // 这里需要去重，因为有的仪器可能一天采集多次，所以只安装仪器信息ID进行统计
+            collectionNumberMap.put(after.toLocalDate(), dataCollectionList1.size());
+        }
+        return CommonResult.success(collectionNumberMap);
     }
 
 }

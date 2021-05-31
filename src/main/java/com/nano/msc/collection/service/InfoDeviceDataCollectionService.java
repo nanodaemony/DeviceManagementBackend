@@ -51,13 +51,6 @@ public interface InfoDeviceDataCollectionService extends BaseService<InfoDeviceD
 
 
     /**
-     * 获取仪器历史开机信息
-     * @return 开机信息
-     */
-    CommonResult getMedicalDeviceHistoryOpenTimes(int historyDays);
-
-
-    /**
      * 获取采集使用的仪器信息
      *
      * @param collectionNumber 手术场次号
@@ -73,6 +66,7 @@ public interface InfoDeviceDataCollectionService extends BaseService<InfoDeviceD
 
     /**
      * 通过采集场次号获取仪器数据采集详细信息
+     *
      * @param collectionNumber 采集场次号
      * @return 数据采集详细信息
      */
