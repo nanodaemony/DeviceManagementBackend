@@ -5,7 +5,7 @@ import javax.websocket.Session;
 import lombok.Data;
 
 /**
- * 封装Websocket连接的客户端连接
+ * 封装WebSocket连接的客户端连接
  *
  * @author: nano
  * @time: 2020/6/3 19:52
@@ -21,12 +21,12 @@ public class DataSession {
 	/**
 	 * 当前手术场次号
 	 */
-	private int operationNumber;
+	private int collectionNumber;
 
 	/**
 	 * 仪当前展示的仪器号
 	 */
-	private int currentDeviceCode;
+	private int deviceCode;
 
 	/**
 	 * 浏览器ID
@@ -39,11 +39,11 @@ public class DataSession {
 	private String sessionKey;
 
 
-	public DataSession(Session session, int operationNumber, int currentDeviceCode, String browserId) {
+	public DataSession(Session session, int collectionNumber, int deviceCode, String browserId) {
 		this.session = session;
-		this.operationNumber = operationNumber;
-		this.currentDeviceCode = currentDeviceCode;
+		this.collectionNumber = collectionNumber;
+		this.deviceCode = deviceCode;
 		this.browserId = browserId;
-		sessionKey = operationNumber + browserId;
+		sessionKey = collectionNumber + browserId;
 	}
 }

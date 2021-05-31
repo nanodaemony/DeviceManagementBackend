@@ -1,6 +1,9 @@
 package com.nano.msc.websocket;
 
+import com.nano.msc.system.log.service.SystemLogService;
+
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -24,9 +27,13 @@ import cn.hutool.log.LogFactory;
  * @author: nano
  * @time: 2020/6/2 18:00
  */
-@ServerEndpoint("/device-real-time-data/{collectionNumber}/{currentDeviceCode}/{browserId}")
+@ServerEndpoint("/device-real-time-data/{collectionNumber}/{deviceCode}/{browserId}")
 @Component
 public class RealTimeDeviceDataServer {
+
+
+	@Autowired
+	private SystemLogService logService;
 
 	private final static Log logger = LogFactory.get(RealTimeDeviceDataServer.class);
 
@@ -60,15 +67,17 @@ public class RealTimeDeviceDataServer {
 	 */
 	@OnOpen
 	public void onOpen(Session session, @PathParam("collectionNumber") Integer collectionNumber,
-					   @PathParam("currentDeviceCode") Integer currentDeviceCode,
+					   @PathParam("deviceCode") Integer deviceCode,
 					   @PathParam("browserId") String browserId) {
 		this.session = session;
 		this.collectionNumber = collectionNumber;
 		this.browserId = browserId;
 
 		// 构造Session
-		DataSession dataSession = new DataSession(session, this.collectionNumber, currentDeviceCode, browserId);
+		DataSession dataSession = new DataSession(session, this.collectionNumber, deviceCode, browserId);
+		// Session放入Map中, SessionKey = operationNumber + browserId;
 		dataSessionMap.put(dataSession.getSessionKey(), dataSession);
+		// 如果Map中已经有这个Session了就移除重放
 		if (dataSessionMap.containsKey(dataSession.getSessionKey())) {
 			dataSessionMap.remove(dataSession.getSessionKey());
 			dataSessionMap.put(dataSession.getSessionKey(), dataSession);
@@ -77,6 +86,7 @@ public class RealTimeDeviceDataServer {
 			// 在线数加1
 			addOnlineCount();
 		}
+		logService.info("WebSocket用户连接:" + dataSession.toString() + ", 当前在线人数:" + dataSessionMap.size());
 		logger.info("用户连接:" + dataSession.toString() + ",当前在线人数为:" + dataSessionMap.size());
 	}
 
@@ -103,16 +113,16 @@ public class RealTimeDeviceDataServer {
 	/**
 	 * 推送数据
 	 *
-	 * @param operationNumber   手术场次号
-	 * @param currentDeviceCode 仪器号
+	 * @param collectionNumber   手术场次号
+	 * @param deviceCode 仪器号
 	 * @param message           信息
 	 */
-	public static void sendDeviceRealTimeDataToClient(int operationNumber, int currentDeviceCode, String message) {
-		logger.debug("发送消息到:" + operationNumber + "，报文:" + message);
+	public static void sendDeviceRealTimeDataToClient(int collectionNumber, int deviceCode, String message) {
+		logger.debug("发送仪器实时数据至:" + collectionNumber + "，报文:" + message);
 		for (DataSession dataSession : dataSessionMap.values()) {
-			if (dataSession.getCurrentDeviceCode() == currentDeviceCode && dataSession.getOperationNumber() == operationNumber) {
-				// 发送数据
+			if (dataSession.getDeviceCode() == deviceCode && dataSession.getCollectionNumber() == collectionNumber) {
 				try {
+					// 发送数据
 					dataSession.getSession().getBasicRemote().sendText(message);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -159,7 +169,7 @@ public class RealTimeDeviceDataServer {
 				session.getBasicRemote().sendText("没有当前Key");
 			} else {
 				// 修改当前正在看的仪器号
-				dataSessionMap.get(operationNumber + browserId).setCurrentDeviceCode(newDeviceCode);
+				dataSessionMap.get(operationNumber + browserId).setDeviceCode(newDeviceCode);
 			}
 		} catch (Exception e) {
 			logger.error("更改当前查看仪器切换错误:" + message);

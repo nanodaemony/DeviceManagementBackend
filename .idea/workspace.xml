@@ -22,19 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.5.31">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/DeviceCardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceCardServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardVo.java" afterDir="false" />
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.5.31. Version 2.0;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/DeviceManageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/DeviceManageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/DataSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/DataSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/RealTimeDeviceDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/RealTimeDeviceDataServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622449010399</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="2021.5.31. Version 2.0;">
+      <created>1622452011805</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1622452011805</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,6 +342,7 @@
     <MESSAGE value="Finish modify to the APP version." />
     <MESSAGE value="2021.5.17" />
     <MESSAGE value="2021.5.31" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.5.31" />
+    <MESSAGE value="2021.5.31. Version 2.0;" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.5.31. Version 2.0;" />
   </component>
 </project>
