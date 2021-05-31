@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date: 2021/5/16 21:33
  */
 @Slf4j
-@Api(tags = "EthernetDeviceDataCollectionController", description = "EthernetDeviceDataCollectionController")
+@Api(tags = "网口类仪器数据采集接口(平板用)", description = "EthernetDeviceDataCollectionController")
 @RestController
 @RequestMapping("/ethernet-device-data-collection")
 public class EthernetDeviceDataCollectionController {

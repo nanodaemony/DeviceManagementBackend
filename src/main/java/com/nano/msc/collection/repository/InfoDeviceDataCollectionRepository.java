@@ -4,6 +4,7 @@ import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -65,13 +66,22 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
      */
     List<InfoDeviceDataCollection> findByMedicalDeviceId(Integer deviceInfoId);
 
+
     /**
-     * 获取当前正在进行的手术信息列表
-     * @param operationStatus 手术状态
+     * 查询数据采集信息并按采集号排序(全部状态)
+     * @param of 分页
+     * @return 采集信息
+     */
+    Page<InfoDeviceDataCollection> findAllByOrderByCollectionNumberDesc(Pageable of);
+
+
+    /**
+     * 查询数据采集信息并按采集号排序(按照不同状态)
+     * @param collectionStatus 手术状态
      *
      * @return 信息列表
      */
-    List<InfoDeviceDataCollection> findByCollectionStatusOrderByCollectionNumberDesc(Integer operationStatus);
+    Page<InfoDeviceDataCollection> findByCollectionStatusOrderByCollectionNumberDesc(Integer collectionStatus, Pageable of);
 
 
     /**
@@ -100,7 +110,7 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
      * @return 结果
      */
     @Query("select e from InfoDeviceDataCollection e where e.collectionStatus=?1 ORDER BY e.collectionNumber DESC")
-    Page<InfoDeviceDataCollection> findFinishedCollectionListDesc(int collectionStatus, PageRequest of);
+    Page<InfoDeviceDataCollection> findFinishedCollectionListDesc(int collectionStatus, Pageable of);
 
 
     /**
@@ -117,6 +127,6 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
      * @param collectionStatus 采集状态
      * @return 采集信息
      */
-    List<InfoDeviceDataCollection> findByCollectionStatus(int collectionStatus);
+    List<InfoDeviceDataCollection> findByCollectionStatusOrderByCollectionNumberDesc(int collectionStatus);
 
 }

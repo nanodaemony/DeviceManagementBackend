@@ -41,6 +41,7 @@ import lombok.NoArgsConstructor;
 public class InfoMedicalDevice implements Serializable {
 
     private static final long serialVersionUID = 233410313766289238L;
+
     /**
      * 自动增长ID
      */

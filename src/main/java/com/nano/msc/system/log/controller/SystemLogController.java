@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.validation.constraints.Min;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
@@ -25,6 +26,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping(value = "/system/log")
 @CrossOrigin
+@Api(tags = "日志接口", description = "SystemLogController")
 public class SystemLogController {
 
     @Autowired

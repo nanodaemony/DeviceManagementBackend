@@ -56,7 +56,7 @@ public class ManageScheduleTask {
     private void checkEthernetDeviceDataCollectionStatus() {
 
         // 查询全部正在采集的场次
-        List<InfoDeviceDataCollection> collectionList = dataCollectionRepository.findByCollectionStatus(CollectionStatusEnum.COLLECTING.getCode());
+        List<InfoDeviceDataCollection> collectionList = dataCollectionRepository.findByCollectionStatusOrderByCollectionNumberDesc(CollectionStatusEnum.COLLECTING.getCode());
         // 这里仅对网口类仪器数据采集场次做筛选,依据是网口类采集的采集器唯一ID为MAC地址
         for (InfoDeviceDataCollection collection : collectionList) {
             String collectorUniqueId = collection.getCollectorUniqueId();

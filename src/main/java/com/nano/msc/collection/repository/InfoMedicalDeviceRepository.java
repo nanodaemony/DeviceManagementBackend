@@ -41,4 +41,6 @@ public interface InfoMedicalDeviceRepository extends JpaRepository<InfoMedicalDe
      * @return 当前采集器采集的仪器信息
      */
     InfoMedicalDevice findByCollectorUniqueId(String collectorUniqueId);
+
+
 }

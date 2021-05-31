@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date: 2021/5/16 21:08
  */
 @Slf4j
-@Api(tags = "CommonController", description = "CommonController")
+@Api(tags = "通用接口", description = "CommonController")
 @RestController
 @RequestMapping("/common")
 public class CommonController {

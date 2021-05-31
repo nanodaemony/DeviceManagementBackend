@@ -96,7 +96,7 @@ CREATE TABLE `info_device_usage_evaluation` (
 -- ----------------------------
 -- 仪器维修与保养记录表
 -- ----------------------------
-CREATE TABLE `info_device_maintenance` (
+CREATE TABLE `info_device_maintenance_record` (
     `pk_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID, 主键',
 
     `device_code` INT NOT NULL COMMENT '仪器号',

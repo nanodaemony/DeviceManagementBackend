@@ -38,7 +38,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date: 2021/1/23 16:03
  */
 @Slf4j
-@Api(tags = "OperationMarkController", description = "OperationMarkController")
+@Api(tags = "手术标记接口(暂时不用)", description = "OperationMarkController")
 @RestController
 @RequestMapping("/operation-mark")
 public class OperationMarkController {

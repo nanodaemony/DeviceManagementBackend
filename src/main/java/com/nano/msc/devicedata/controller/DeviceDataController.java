@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date: 2021/1/23 23:27
  */
 @Slf4j
-@Api(tags = "DeviceDataController", description = "DeviceData")
+@Api(tags = "医疗数据接口", description = "DeviceData")
 @RestController
 @RequestMapping("/device-data")
 public class DeviceDataController {

@@ -2,6 +2,8 @@ package com.nano.msc.collection.repository;
 
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @Repository
 public interface InfoDeviceUsageEvaluationRepository extends JpaRepository<InfoDeviceUsageEvaluation, Integer> {
+
 
     /**
      * 通过采集场次号进行查询
@@ -41,7 +44,9 @@ public interface InfoDeviceUsageEvaluationRepository extends JpaRepository<InfoD
      * @param serialNumber 序列号
      * @return 信息
      */
-    List<InfoDeviceUsageEvaluation> findByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber);
+    List<InfoDeviceUsageEvaluation> findByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber, Pageable pageable);
+
+
 
     /**
      * 通过仪器号和序列号找
@@ -59,5 +64,5 @@ public interface InfoDeviceUsageEvaluationRepository extends JpaRepository<InfoD
      * @param deviceCode 仪器号
      * @return 评价信息
      */
-    List<InfoDeviceUsageEvaluation> findByDeviceCode(int deviceCode);
+    List<InfoDeviceUsageEvaluation> findByDeviceCode(int deviceCode, Pageable pageable);
 }
