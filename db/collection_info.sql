@@ -28,6 +28,7 @@ create TABLE `info_device_data_collection` (
     `medical_device_id`  TINYINT NOT NULL COMMENT '外键,医疗仪器信息表中仪器的行号ID',
 
     `device_code` VARCHAR(32)  NOT NULL COMMENT '设备号',
+    `serial_number` VARCHAR(32)  DEFAULT NULL COMMENT '设备序列号',
     `collector_unique_id`  VARCHAR(40) NOT NULL COMMENT '采集器的唯一编号,网口仪器采集时为MAC地址,串口仪器采集时为唯一编号',
     `collection_status` TINYINT NOT NULL COMMENT '采集状态,对应状态枚举的值',
     `collection_start_time`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '采集整体开始时间',

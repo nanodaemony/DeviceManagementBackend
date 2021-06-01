@@ -100,7 +100,16 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
      * @param deviceCode 仪器号
      * @return 手术仪器信息
      */
-    List<InfoDeviceDataCollection> findByDeviceCode(String deviceCode);
+    List<InfoDeviceDataCollection> findByDeviceCode(int deviceCode);
+
+    /**
+     * 通过仪器号与序列号找手术使用的仪器信息
+     *
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @return 手术仪器信息
+     */
+    List<InfoDeviceDataCollection> findByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber);
 
 
     /**

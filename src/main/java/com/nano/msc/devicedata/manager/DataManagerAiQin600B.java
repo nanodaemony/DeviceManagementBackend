@@ -6,6 +6,7 @@ import com.nano.msc.devicedata.entity.serial.DataAiQin600A;
 import com.nano.msc.devicedata.entity.serial.DataAiQin600B;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  * @author: nano
  * @date: 2021/5/31 21:57
  */
+@Component
 public class DataManagerAiQin600B implements DeviceDataManager<DataAiQin600B>{
 
     @Autowired

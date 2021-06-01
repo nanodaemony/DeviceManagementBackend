@@ -1,9 +1,7 @@
 package com.nano.msc.devicedata.context;
 
-import com.nano.msc.devicedata.base.BaseDataService;
 import com.nano.msc.devicedata.base.DeviceDataRepository;
 import com.nano.msc.devicedata.manager.DeviceDataManager;
-import com.nano.msc.devicedata.parser.DeviceDataParser;
 
 import lombok.Getter;
 

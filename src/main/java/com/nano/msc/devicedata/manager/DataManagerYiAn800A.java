@@ -3,7 +3,6 @@ package com.nano.msc.devicedata.manager;
 import com.alibaba.fastjson.JSON;
 import com.nano.msc.devicedata.base.DeviceDataRepository;
 import com.nano.msc.devicedata.entity.ethernet.DataYiAn8700A;
-import com.nano.msc.devicedata.parser.DeviceDataParser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

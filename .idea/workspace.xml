@@ -22,27 +22,44 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.5.31. Version 3.0;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600C.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerBaoLaiTeA8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerLiBangEliteV8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiT8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiWatoex65.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLiVista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerNuoHe9002S.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuKeYY106.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerYiAn800A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DeviceDataManager.java" afterDir="false" />
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.5.31. Finish modify device data handler part.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/DeviceCardUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardDetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardTotalVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/BaseDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/BaseDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/DeviceDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/DeviceDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceDataCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceDataCollectionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/DeviceCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/DeviceCardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceCardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceCardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardVo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/controller/DeviceDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/controller/DeviceDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/utils/DataParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserMeiDunLiVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserMeiDunLiVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600B.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600B.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600C.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600C.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerBaoLaiTeA8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerBaoLaiTeA8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerLiBangEliteV8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerLiBangEliteV8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiT8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiT8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiWatoex65.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiWatoex65.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLiVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLiVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerNuoHe9002S.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerNuoHe9002S.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuKeYY106.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuKeYY106.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerYiAn800A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerYiAn800A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserAiQin600A.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserAiQin600B.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserAiQin600C.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserBaoLaiTeA8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserLiBangEliteV8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserMaiRuiT8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserMaiRuiWatoex65.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserMeiDunLiVista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserNuoHe9002S.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserPuKeYY106.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DataParserYiAn800A.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/parser/DeviceDataParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/service/DeviceDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/service/DeviceDataServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,11 +118,11 @@
       <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nano.msc.collection.vo" />
       <recent name="com.nano.msc.devicedata.manager" />
       <recent name="com.nano.msc.collection.service" />
       <recent name="com.nano.msc.collection.repository" />
       <recent name="com.nano.msc.collection.entity" />
-      <recent name="com.nano.msc.devicedata.parser" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DeviceManagementApplication">
@@ -338,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622466056408</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="2021.5.31. Finish modify device data handler part.">
+      <created>1622470410710</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622470410710</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,6 +393,7 @@
     <MESSAGE value="2021.5.31" />
     <MESSAGE value="2021.5.31. Version 2.0;" />
     <MESSAGE value="2021.5.31. Version 3.0;" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.5.31. Version 3.0;" />
+    <MESSAGE value="2021.5.31. Finish modify device data handler part." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.5.31. Finish modify device data handler part." />
   </component>
 </project>

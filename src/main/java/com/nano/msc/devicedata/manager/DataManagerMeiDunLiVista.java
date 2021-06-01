@@ -1,13 +1,17 @@
 package com.nano.msc.devicedata.manager;
 
 import com.nano.msc.devicedata.base.DeviceDataRepository;
+import com.nano.msc.devicedata.entity.serial.DataAiQin600C;
 import com.nano.msc.devicedata.entity.serial.DataMeiDunLiVista;
 import com.nano.msc.devicedata.utils.DataParseUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Description: 美敦力EEG-VISTA数据解析
@@ -90,8 +94,21 @@ public class DataManagerMeiDunLiVista implements DeviceDataManager<DataMeiDunLiV
 
     @Override
     public Map<String, Object> getDeviceHistoryData(int collectionNumber, String serialNumber) {
-        // TODO:
-        return null;
+        Map<String, Object> dataMap = new HashMap<>();
+        List<DataMeiDunLiVista> dataList = dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
+        dataMap.put("bis1", dataList.stream().map(DataMeiDunLiVista::getBis1).collect(Collectors.toList()));
+        dataMap.put("bis2", dataList.stream().map(DataMeiDunLiVista::getBis2).collect(Collectors.toList()));
+        dataMap.put("bis3", dataList.stream().map(DataMeiDunLiVista::getBis3).collect(Collectors.toList()));
+        dataMap.put("totpow1", dataList.stream().map(DataMeiDunLiVista::getTotpow1).collect(Collectors.toList()));
+        dataMap.put("totpow2", dataList.stream().map(DataMeiDunLiVista::getTotpow2).collect(Collectors.toList()));
+        dataMap.put("totpow3", dataList.stream().map(DataMeiDunLiVista::getTotpow3).collect(Collectors.toList()));
+        dataMap.put("emglow1", dataList.stream().map(DataMeiDunLiVista::getEmglow1).collect(Collectors.toList()));
+        dataMap.put("emglow2", dataList.stream().map(DataMeiDunLiVista::getEmglow2).collect(Collectors.toList()));
+        dataMap.put("emglow3", dataList.stream().map(DataMeiDunLiVista::getEmglow3).collect(Collectors.toList()));
+        dataMap.put("sqi1", dataList.stream().map(DataMeiDunLiVista::getSqi1).collect(Collectors.toList()));
+        dataMap.put("sqi2", dataList.stream().map(DataMeiDunLiVista::getSqi2).collect(Collectors.toList()));
+        dataMap.put("sqi3", dataList.stream().map(DataMeiDunLiVista::getSqi3).collect(Collectors.toList()));
+        return dataMap;
     }
 
     /**

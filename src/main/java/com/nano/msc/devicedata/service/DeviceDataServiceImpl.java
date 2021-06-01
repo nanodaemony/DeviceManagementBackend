@@ -1,6 +1,7 @@
 package com.nano.msc.devicedata.service;
 
 import com.alibaba.fastjson.JSON;
+import com.nano.msc.GlobalContext;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.utils.CollectionNumberCacheUtil;
@@ -125,105 +126,16 @@ public class DeviceDataServiceImpl implements DeviceDataService {
      */
     @Override
     public CommonResult getHistoryDeviceData(int collectionNumber, int deviceCode, String serialNumber, Integer page, Integer size) {
+        log.info("查询仪器历史数据...");
+        if (!GlobalContext.deviceCodeSet.contains(deviceCode)) {
+            return CommonResult.failed("仪器号不存在:" + deviceCode);
+        }
         InfoMedicalDevice medicalDevice = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(deviceCode, serialNumber);
         if (medicalDevice == null) {
             return CommonResult.failed("仪器信息不存在." + deviceCode + ", " + serialNumber);
         }
-        // 返回数据的Map对象
-        Map<String, Object> dataMap = new HashMap<>();
-        // 获取仪器历史数据 分页查询(默认1000条数据)
-        if (deviceCode == MedicalDeviceEnum.NUO_HE_NW9002S.getDeviceCode()) {
-            List<DataNuoHe9002s> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("BS", dataList.stream().map(DataNuoHe9002s::getBs).collect(Collectors.toList()));
-            dataMap.put("EMG", dataList.stream().map(DataNuoHe9002s::getEmg).collect(Collectors.toList()));
-            dataMap.put("SQI", dataList.stream().map(DataNuoHe9002s::getSqi).collect(Collectors.toList()));
-            dataMap.put("CSI", dataList.stream().map(DataNuoHe9002s::getCsi).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataNuoHe9002s::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.PU_KE_YY106.getDeviceCode()) {
-            List<DataPuKeYy106> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("Ai", dataList.stream().map(DataPuKeYy106::getAi).collect(Collectors.toList()));
-            dataMap.put("EMG", dataList.stream().map(DataPuKeYy106::getEmg).collect(Collectors.toList()));
-            dataMap.put("SQI", dataList.stream().map(DataPuKeYy106::getSqi).collect(Collectors.toList()));
-            dataMap.put("BSR", dataList.stream().map(DataPuKeYy106::getBsr).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataPuKeYy106::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.BAO_LAI_TE_A8.getDeviceCode()) {
-            List<DataBaoLaiTeA8> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            // 这里宝莱特显示的参数其实更多
-            dataMap.put("HR", dataList.stream().map(DataBaoLaiTeA8::getHr).collect(Collectors.toList()));
-            dataMap.put("SpO2", dataList.stream().map(DataBaoLaiTeA8::getSpo2).collect(Collectors.toList()));
-            dataMap.put("PR", dataList.stream().map(DataBaoLaiTeA8::getPr).collect(Collectors.toList()));
-            dataMap.put("Temp", dataList.stream().map(DataBaoLaiTeA8::getTemperature1).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataBaoLaiTeA8::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.YI_AN_8700A.getDeviceCode()) {
-            List<DataYiAn8700A> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("PEAK", dataList.stream().map(DataYiAn8700A::getPeak).collect(Collectors.toList()));
-            dataMap.put("MEAN", dataList.stream().map(DataYiAn8700A::getPmean).collect(Collectors.toList()));
-            dataMap.put("PEEP", dataList.stream().map(DataYiAn8700A::getPeep).collect(Collectors.toList()));
-            dataMap.put("MV", dataList.stream().map(DataYiAn8700A::getMv).collect(Collectors.toList()));
-            dataMap.put("Vte", dataList.stream().map(DataYiAn8700A::getVte).collect(Collectors.toList()));
-            dataMap.put("Freq", dataList.stream().map(DataYiAn8700A::getFreq).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataYiAn8700A::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.MAI_RUI_T8.getDeviceCode()) {
-            List<DataMaiRuiT8> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("Resp", dataList.stream().map(DataMaiRuiT8::getRespRespirationRate).collect(Collectors.toList()));
-            dataMap.put("ECG", dataList.stream().map(DataMaiRuiT8::getEcgHeartRate).collect(Collectors.toList()));
-            dataMap.put("SpO2", dataList.stream().map(DataMaiRuiT8::getSpo2PercentOxygenSaturation).collect(Collectors.toList()));
-            dataMap.put("PR", dataList.stream().map(DataMaiRuiT8::getSpo2PulseRate).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataMaiRuiT8::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.MAI_RUI_WATOEX_65.getDeviceCode()) {
-            List<DataMaiRuiWatoex65> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("Ppeak", dataList.stream().map(DataMaiRuiWatoex65::getPPeak).collect(Collectors.toList()));
-            dataMap.put("Pmean", dataList.stream().map(DataMaiRuiWatoex65::getPMean).collect(Collectors.toList()));
-            dataMap.put("PEEP", dataList.stream().map(DataMaiRuiWatoex65::getPeep).collect(Collectors.toList()));
-            dataMap.put("MV", dataList.stream().map(DataMaiRuiWatoex65::getMv).collect(Collectors.toList()));
-            dataMap.put("I:E", dataList.stream().map(DataMaiRuiWatoex65::getIe).collect(Collectors.toList()));
-            dataMap.put("Rate", dataList.stream().map(DataMaiRuiWatoex65::getRate).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataMaiRuiWatoex65::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.LI_BANG_ELITE_V8.getDeviceCode()) {
-            List<DataLiBangEliteV8> dataList =  dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("HR", dataList.stream().map(DataLiBangEliteV8::getHr).collect(Collectors.toList()));
-            dataMap.put("SpO2", dataList.stream().map(DataLiBangEliteV8::getSpo2).collect(Collectors.toList()));
-            dataMap.put("RR", dataList.stream().map(DataLiBangEliteV8::getRr).collect(Collectors.toList()));
-            dataMap.put("T1", dataList.stream().map(DataLiBangEliteV8::getTemp1).collect(Collectors.toList()));
-            dataMap.put("PR", dataList.stream().map(DataLiBangEliteV8::getPr).collect(Collectors.toList()));
-            dataMap.put("CVP", dataList.stream().map(DataLiBangEliteV8::getCvpMap).collect(Collectors.toList()));
-            dataMap.put("LAP", dataList.stream().map(DataLiBangEliteV8::getLapMap).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.AI_QIN_EGOS600A.getDeviceCode()) {
-            List<DataAiQin600A> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("TOI1", dataList.stream().map(DataAiQin600A::getToi1).collect(Collectors.toList()));
-            dataMap.put("TOI2", dataList.stream().map(DataAiQin600A::getToi2).collect(Collectors.toList()));
-            dataMap.put("TOI3", dataList.stream().map(DataAiQin600A::getToi3).collect(Collectors.toList()));
-            dataMap.put("TOI4", dataList.stream().map(DataAiQin600A::getToi4).collect(Collectors.toList()));
-            dataMap.put("THI1", dataList.stream().map(DataAiQin600A::getThi1).collect(Collectors.toList()));
-            dataMap.put("THI2", dataList.stream().map(DataAiQin600A::getThi2).collect(Collectors.toList()));
-            dataMap.put("THI3", dataList.stream().map(DataAiQin600A::getThi3).collect(Collectors.toList()));
-            dataMap.put("THI4", dataList.stream().map(DataAiQin600A::getThi4).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataAiQin600A::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.AI_QIN_EGOS600B.getDeviceCode()) {
-            List<DataAiQin600B> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("TOI1", dataList.stream().map(DataAiQin600B::getToi1).collect(Collectors.toList()));
-            dataMap.put("TOI2", dataList.stream().map(DataAiQin600B::getToi2).collect(Collectors.toList()));
-            dataMap.put("THI1", dataList.stream().map(DataAiQin600B::getThi1).collect(Collectors.toList()));
-            dataMap.put("THI2", dataList.stream().map(DataAiQin600B::getThi2).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataAiQin600B::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        } else if (deviceCode == MedicalDeviceEnum.AI_QIN_EGOS600C.getDeviceCode()) {
-            List<DataAiQin600C> dataList = dataHandlerMap.get(deviceCode).getDataRepository().findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-            dataMap.put("TOI1", dataList.stream().map(DataAiQin600C::getToi1).collect(Collectors.toList()));
-            dataMap.put("THI1", dataList.stream().map(DataAiQin600C::getThi1).collect(Collectors.toList()));
-            dataMap.put("time", dataList.stream().map(DataAiQin600C::getGmtCreate).collect(Collectors.toList()));
-            return CommonResult.success(dataMap);
-        }
-
-        return CommonResult.failed("无效的deviceCode:" + deviceCode);
+        // 默认全部查询
+        return CommonResult.success(dataHandlerMap.get(deviceCode).getDataManager().getDeviceHistoryData(collectionNumber, serialNumber));
     }
 
 

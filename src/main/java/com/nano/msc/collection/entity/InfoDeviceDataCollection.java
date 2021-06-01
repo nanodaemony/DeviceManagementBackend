@@ -62,6 +62,14 @@ public class InfoDeviceDataCollection implements Serializable {
     @Column(name = "device_code")
     private Integer deviceCode;
 
+
+    /**
+     * 设备序列号,不一定唯一,初始化为NULL
+     */
+    @ApiModelProperty(value = "设备序列号", example = "B123XY182019")
+    @Column(name = "serial_number")
+    private String serialNumber;
+
     /**
      * 仪器信息的ID号 外键仪器信息表的主键ID号
      */
