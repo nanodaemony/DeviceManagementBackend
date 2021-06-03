@@ -108,6 +108,8 @@ public class InfoDeviceUsageEvaluationServiceImpl extends BaseServiceImpl<InfoDe
         // 默认好评
         evaluation.setExperienceLevel(EvaluationLevelEnum.VERY_GOOD.getLevel());
         evaluation.setReliabilityLevel(EvaluationLevelEnum.VERY_GOOD.getLevel());
+        evaluation.setKnownError("");
+        evaluation.setOtherError("");
         evaluation.setHasError(false);
         evaluation.setRemark("无");
         evaluation.setRecordName("系统管理员");

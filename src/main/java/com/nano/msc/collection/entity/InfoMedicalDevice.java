@@ -117,13 +117,12 @@ public class InfoMedicalDevice implements Serializable {
     @Column(name = "interface_type")
     private Integer interfaceType;
 
-
     /**
      * 使用科室
      */
+    @ApiModelProperty(value = "使用科室", example = "麻醉科2手术室")
     @Column(name = "device_department")
     private String deviceDepartment;
-
 
     /**
      * 数据创建时间

@@ -131,7 +131,7 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
      * @return 信息信息
      */
     @Override
-    public CommonResult<String> getDeviceDataCollectionDetailInfoVo(int collectionNumber) {
+    public CommonResult getDeviceDataCollectionDetailInfoVo(int collectionNumber) {
         // 查询信息
         InfoDeviceDataCollection collection = deviceDataCollectionRepository.findByCollectionNumber(collectionNumber);
         if (collection == null) {
@@ -149,7 +149,7 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
         int collectionCounter = dataHandlerMap.get(collection.getDeviceCode())
                 .getDataManager().getDeviceHistoryData(collectionNumber, collection.getSerialNumber()).size();
         vo.setCollectedDataCounter(collectionCounter);
-        return CommonResult.success(JSON.toJSONString(vo));
+        return CommonResult.success(vo);
     }
 
 

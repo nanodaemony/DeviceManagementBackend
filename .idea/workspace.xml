@@ -22,30 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.3 Finish modify device data collection part.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoMaintenanceRecordUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceDataCollectionDetailInfoVo.java" afterDir="false" />
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.3 Finish add device card part.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceDataCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceDataCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceUsageEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceUsageEvaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoMedicalDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoMedicalDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/deviceusage/SatisfactionLevelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/deviceusage/EvaluationLevelEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceMaintenanceRecordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceMaintenanceRecordRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceUsageEvaluationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceUsageEvaluationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceUsageEvaluationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceUsageEvaluationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceCardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceCardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/DeviceManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceDataCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoDeviceDataCollectionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDataUsageEvaluationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceUsageEvaluationUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardDetailVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/DeviceCardTotalVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/utils/TimestampUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/utils/TimestampUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/service/DeviceDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/service/DeviceDataServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/schedule/ManageScheduleTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/schedule/ManageScheduleTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622701058727</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="2021.6.3 Finish add device card part.">
+      <created>1622709845235</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622709845235</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,6 +391,7 @@
     <MESSAGE value="2021.5.31. Finish modify device data handler part." />
     <MESSAGE value="2021.6.1 First day of June." />
     <MESSAGE value="2021.6.3 Finish modify device data collection part." />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.3 Finish modify device data collection part." />
+    <MESSAGE value="2021.6.3 Finish add device card part." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.3 Finish add device card part." />
   </component>
 </project>

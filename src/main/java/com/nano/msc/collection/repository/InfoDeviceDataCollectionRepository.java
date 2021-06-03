@@ -140,6 +140,16 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
      */
     List<InfoDeviceDataCollection> findByCollectorUniqueIdAndCollectionStatus(String collectorUniqueId, int collectionStatus);
 
+
+    /**
+     * 通过状态与ID查询采集信息
+     *
+     * @param collectionStatus 采集状态
+     * @param collectorUniqueId ID
+     */
+    InfoDeviceDataCollection findByCollectionStatusAndCollectorUniqueId(int collectionStatus, String collectorUniqueId);
+
+
     /**
      * 根据采集状态查询采集信息
      * @param collectionStatus 采集状态

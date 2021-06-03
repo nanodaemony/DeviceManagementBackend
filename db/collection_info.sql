@@ -34,11 +34,11 @@ create TABLE `info_device_data_collection` (
     `serial_number` VARCHAR(32)  DEFAULT NULL COMMENT '设备序列号',
     `collector_unique_id`  VARCHAR(40) NOT NULL COMMENT '采集器的唯一编号,网口仪器采集时为MAC地址,串口仪器采集时为唯一编号',
     `collection_status` TINYINT NOT NULL COMMENT '采集状态,对应状态枚举的值',
-    `collection_start_time`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '采集整体开始时间',
-    `collection_finish_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '采集整体结束时间',
+    `collection_start_time`  DATETIME COMMENT '采集整体开始时间',
+    `collection_finish_time` DATETIME COMMENT '采集整体结束时间',
 
-    `last_receive_heart_message_time` LONG COMMENT '上次接收心跳消息的时间戳',
-    `last_receive_device_data_time` LONG COMMENT '上次接收仪器数据消息的时间戳',
+    `last_receive_heart_message_time` DATETIME COMMENT '上次接收心跳消息的时间戳',
+    `last_receive_device_data_time` DATETIME COMMENT '上次接收仪器数据消息的时间戳',
 
     `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
     `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',

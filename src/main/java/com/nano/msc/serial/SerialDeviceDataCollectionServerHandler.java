@@ -17,12 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import cn.hutool.core.bean.BeanUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -130,11 +128,13 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             log.info("该采集器并未进行系统录入.");
             return;
         }
-        // 获取采集信息
-        InfoDeviceDataCollection collection = GlobalContext.serialDataCollectionMap.get(uniqueId);
+        // 查询采集信息
+        InfoDeviceDataCollection collection = deviceDataCollectionRepository.findByCollectionStatusAndCollectorUniqueId(CollectionStatusEnum.COLLECTING.getCode(), uniqueId);
         // 如果不为空则记录当前接收时间
         if (collection != null) {
-            collection.setLastReceiveHeartMessageTime(System.currentTimeMillis());
+            // 更新接收心跳的时间
+            collection.setLastReceiveHeartMessageTime(TimestampUtils.getCurrentTimeForDataBase());
+            deviceDataCollectionRepository.save(collection);
         }
         // 返回收到心跳包
         ctx.write("#1#" + Long.parseLong(("" + System.currentTimeMillis() / 1000).substring(5)) + "#");
@@ -162,8 +162,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             log.error("不包含当前采集器信息,仪器数据为:" + data);
             return;
         }
-        // 获取采集信息
-        InfoDeviceDataCollection collection = GlobalContext.serialDataCollectionMap.get(uniqueId);
+        InfoDeviceDataCollection collection = deviceDataCollectionRepository.findByCollectionStatusAndCollectorUniqueId(CollectionStatusEnum.COLLECTING.getCode(), uniqueId);
         // 说明没有采集信息
         if (collection == null) {
             collection = new InfoDeviceDataCollection();
@@ -174,11 +173,11 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             collection.setCollectionStatus(CollectionStatusEnum.COLLECTING.getCode());
             collection.setSerialNumber(medicalDevice.getSerialNumber());
             collection.setCollectorUniqueId(uniqueId);
-            collection.setLastReceiveDeviceDataTime(System.currentTimeMillis());
+            collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
+            collection.setLastReceiveHeartMessageTime(TimestampUtils.getCurrentTimeForDataBase());
+            collection.setCollectionStartTime(TimestampUtils.getCurrentTimeForDataBase());
             // 存入数据库
             collection = deviceDataCollectionRepository.save(collection);
-            // 开始采集,进行缓存
-            GlobalContext.startSerialDeviceDataCollection(uniqueId, collection);
         }
         // 构造发送到解析器的数据
         String deviceDataRaw = collection.getCollectionNumber() + DATA_SEPARATOR
@@ -193,12 +192,12 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             log.info("解析到串口仪器数据: " + result);
         }
         // 仪器数据实时推送到前端
-        RealTimeDeviceDataServer.sendDeviceRealTimeDataToClient(collection.getCollectionNumber(),
-                collection.getDeviceCode(), JSON.toJSONString(result));
-
+        RealTimeDeviceDataServer.sendDeviceRealTimeDataToClient(collection.getCollectionNumber(), collection.getDeviceCode(), JSON.toJSONString(result));
         // 更新上次接收仪器数据报文时间
-        collection.setLastReceiveDeviceDataTime(System.currentTimeMillis());
-
+        collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
+        // 更新接收仪器数据的时间
+        deviceDataCollectionRepository.save(collection);
+        log.info("当前信息:" + collection.toString());
         // 返回这个表明正常收到仪器数据
         ctx.write("#3#");
         ctx.flush();

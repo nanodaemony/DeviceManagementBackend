@@ -188,7 +188,7 @@ public class TimestampUtils {
      * @return 持续的时间：单位为秒S
      */
     public static long getDurationTime(LocalDateTime startTime, LocalDateTime endTime) {
-        return Duration.between(startTime, endTime).getSeconds();
+        return Math.abs(Duration.between(startTime, endTime).getSeconds());
     }
 
 

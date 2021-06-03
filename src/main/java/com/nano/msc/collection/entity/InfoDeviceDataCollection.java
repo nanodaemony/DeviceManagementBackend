@@ -34,7 +34,6 @@ import lombok.NoArgsConstructor;
  * Description:手术场次号 仪器号 仪器序列号
  */
 @DynamicInsert
-@DynamicUpdate
 @Entity
 @Data
 @NoArgsConstructor
@@ -108,13 +107,13 @@ public class InfoDeviceDataCollection implements Serializable {
      * 串口数据采集器上次接收心跳消息的时间戳
      */
     @Column(name = "last_receive_heart_message_time")
-    private Long lastReceiveHeartMessageTime = System.currentTimeMillis();
+    private LocalDateTime lastReceiveHeartMessageTime = TimestampUtils.getCurrentTimeForDataBase();
 
     /**
      * 串口数据采集器上次接收仪器数据消息的时间戳
      */
     @Column(name = "last_receive_device_data_time")
-    private Long lastReceiveDeviceDataTime = System.currentTimeMillis();
+    private LocalDateTime lastReceiveDeviceDataTime = TimestampUtils.getCurrentTimeForDataBase();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // 采集统计与分析相关信息

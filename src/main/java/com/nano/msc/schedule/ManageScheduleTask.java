@@ -42,8 +42,8 @@ public class ManageScheduleTask {
     /**
      * 仪器采集完成时间间隔(ms)
      */
-    private static final int ETHERNET_COLLECTION_FINISH_TIME_LENGTH = 10 * 60 * 1000;
-    private static final int SERIAL_COLLECTION_FINISH_TIME_LENGTH = 10 * 60 * 1000;
+    private static final int ETHERNET_COLLECTION_FINISH_TIME_LENGTH = 10 * 60;
+    private static final int SERIAL_COLLECTION_FINISH_TIME_LENGTH = 10 * 60;
 
 
     @Autowired
@@ -76,10 +76,10 @@ public class ManageScheduleTask {
                     .findByDeviceCodeAndCollectionStatus(deviceCode, CollectionStatusEnum.COLLECTING.getCode());
             for (InfoDeviceDataCollection collection : collectionList) {
                 // 下面进行筛选,最后接收仪器数据时间大于20分钟则认定采集完成
-                if (System.currentTimeMillis() - collection.getLastReceiveDeviceDataTime() > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
+                if (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
                     log.info("网口仪器超过10分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
                     // 设置上传接收数据时间为结束采集时间
-                    collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(collection.getLastReceiveDeviceDataTime()));
+                    collection.setCollectionFinishTime((collection.getLastReceiveDeviceDataTime()));
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     dataCollectionRepository.save(collection);
 
@@ -101,6 +101,7 @@ public class ManageScheduleTask {
     @Scheduled(fixedRate = 20 * 1000)
     private void checkSerialCollectionStatusTask() {
 
+        log.info("检查网口类仪器采集情况...");
         // 查询全部串口类仪器
         List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByInterfaceType(InterfaceTypeEnum.SERIAL.getCode());
         // 获取全部串口类仪器的采集器的唯一ID号
@@ -109,17 +110,21 @@ public class ManageScheduleTask {
                 .map(InfoMedicalDevice::getCollectorUniqueId).collect(Collectors.toSet());
 
         for (String uniqueId : collectorUniqueIdSet) {
+            log.info("当前采集器ID:" + uniqueId);
             // 查找这个采集器全部处于采集中的记录
             List<InfoDeviceDataCollection> collectionList = dataCollectionRepository
                     .findByCollectorUniqueIdAndCollectionStatus(uniqueId, CollectionStatusEnum.COLLECTING.getCode());
             // 遍历这些信息
             for (InfoDeviceDataCollection collection : collectionList) {
+                log.info("当前采集:" + collection.toString());
+                log.info("持续时间:" + TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()));
                 // 600000
-                if ((System.currentTimeMillis() - collection.getLastReceiveHeartMessageTime() > SERIAL_COLLECTION_FINISH_TIME_LENGTH)
-                        || (System.currentTimeMillis() - collection.getLastReceiveDeviceDataTime() > SERIAL_COLLECTION_FINISH_TIME_LENGTH)) {
+                if ((TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)
+                        || (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)) {
                     log.info("超过10分钟无心跳信息或仪器数据信息,当前采集完成." + uniqueId);
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
-                    collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(System.currentTimeMillis() - SERIAL_COLLECTION_FINISH_TIME_LENGTH));
+                    // 设置完成时间
+                    collection.setCollectionFinishTime(collection.getLastReceiveDeviceDataTime());
                     // 持久化到服务器
                     dataCollectionRepository.save(collection);
 
@@ -127,10 +132,6 @@ public class ManageScheduleTask {
                     InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
                     // 进行默认使用评价
                     usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
-
-
-
-
                     // TODO: 这里可以做相关采集的统计信息
 
                     // 完成串口采集,移除缓存
@@ -151,5 +152,23 @@ public class ManageScheduleTask {
     private void refreshCacheContent() {
         configuration.refreshCacheContent();
     }
+
+
+    /**
+     * 将串口类的采集信息入数据库
+     */
+    @Scheduled(fixedRate = 20000)
+    private void saveSerialCollectionInfo() {
+        // 一个个去数据库对比
+        for (InfoDeviceDataCollection collection : GlobalContext.serialDataCollectionMap.values()) {
+//            InfoDeviceDataCollection originCollectionInfo = dataCollectionRepository.findByCollectionNumber(collection.getCollectionNumber());
+//            originCollectionInfo.setLastReceiveHeartMessageTime(collection.getLastReceiveHeartMessageTime());
+//            originCollectionInfo.setLastReceiveDeviceDataTime(collection.getLastReceiveDeviceDataTime());
+//            dataCollectionRepository.save(originCollectionInfo);
+//            log.info("更新接收时间...");
+//            log.info(collection.toString());
+        }
+    }
+
 
 }

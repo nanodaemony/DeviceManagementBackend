@@ -9,6 +9,7 @@ import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.common.enums.ExceptionEnum;
+import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.common.vo.CommonResult;
 import com.nano.msc.devicedata.context.DeviceDataContext;
 import com.nano.msc.devicedata.context.DeviceDataHandler;
@@ -100,7 +101,7 @@ public class DeviceDataServiceImpl implements DeviceDataService {
             InfoDeviceDataCollection collection = dataCollectionRepository.findByCollectionNumber(collectionNumber);
             if (collection != null) {
                 // 更新接收仪器数据的时间
-                collection.setLastReceiveDeviceDataTime(System.currentTimeMillis());
+                collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
                 dataCollectionRepository.save(collection);
             }
         }
