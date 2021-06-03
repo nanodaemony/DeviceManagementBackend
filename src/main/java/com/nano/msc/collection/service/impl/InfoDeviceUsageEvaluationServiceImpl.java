@@ -1,6 +1,7 @@
 package com.nano.msc.collection.service.impl;
 
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
+import com.nano.msc.collection.enums.deviceusage.EvaluationLevelEnum;
 import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
@@ -9,6 +10,7 @@ import com.nano.msc.common.vo.CommonResult;
 import com.nano.msc.system.log.service.SystemLogService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -69,7 +71,7 @@ public class InfoDeviceUsageEvaluationServiceImpl extends BaseServiceImpl<InfoDe
      * @return 评价信息列表
      */
     @Override
-    public CommonResult<List<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCode(int deviceCode, int page, int size) {
+    public CommonResult<Page<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCode(int deviceCode, int page, int size) {
         return CommonResult.success(deviceUsageEvaluationRepository.findByDeviceCode(deviceCode, PageRequest.of(page, size)));
     }
 
@@ -83,6 +85,33 @@ public class InfoDeviceUsageEvaluationServiceImpl extends BaseServiceImpl<InfoDe
     @Override
     public CommonResult<List<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber, int page, int size) {
         return CommonResult.success(deviceUsageEvaluationRepository.findByDeviceCodeAndSerialNumber(deviceCode, serialNumber, PageRequest.of(page, size)));
+    }
+
+    /**
+     * 新增默认的仪器使用评价
+     *
+     * @param collectionNumber 采集场次号
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @param deviceDepartment 使用科室
+     * @return 是否成功
+     */
+    @Override
+    public void addDefaultUsageEvaluation(Integer collectionNumber, Integer deviceCode, String serialNumber, String deviceDepartment) {
+        InfoDeviceUsageEvaluation evaluation = new InfoDeviceUsageEvaluation();
+        evaluation.setUniqueNumber(System.currentTimeMillis() + "");
+        evaluation.setDeviceCode(deviceCode);
+        evaluation.setSerialNumber(serialNumber);
+        evaluation.setCollectionNumber(collectionNumber);
+        evaluation.setDeviceDepartment(deviceDepartment);
+
+        // 默认好评
+        evaluation.setExperienceLevel(EvaluationLevelEnum.VERY_GOOD.getLevel());
+        evaluation.setReliabilityLevel(EvaluationLevelEnum.VERY_GOOD.getLevel());
+        evaluation.setHasError(false);
+        evaluation.setRemark("无");
+        evaluation.setRecordName("系统管理员");
+        deviceUsageEvaluationRepository.save(evaluation);
     }
 
 

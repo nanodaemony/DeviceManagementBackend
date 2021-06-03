@@ -4,6 +4,8 @@ import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.common.service.BaseService;
 import com.nano.msc.common.vo.CommonResult;
 
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 /**
@@ -30,7 +32,7 @@ public interface InfoDeviceUsageEvaluationService extends BaseService<InfoDevice
      * @param deviceCode 仪器号
      * @return 评价信息列表
      */
-    CommonResult<List<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCode(int deviceCode, int page, int size);
+    CommonResult<Page<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCode(int deviceCode, int page, int size);
 
 
     /**
@@ -41,4 +43,14 @@ public interface InfoDeviceUsageEvaluationService extends BaseService<InfoDevice
      * @return 评价信息列表
      */
     CommonResult<List<InfoDeviceUsageEvaluation>> getDeviceUsageEvaluationListByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber, int page, int size);
+
+    /**
+     * 新增默认的仪器使用评价
+     *
+     * @param collectionNumber 采集场次号
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @param deviceDepartment 使用科室
+     */
+    void addDefaultUsageEvaluation(Integer collectionNumber, Integer deviceCode, String serialNumber, String deviceDepartment);
 }

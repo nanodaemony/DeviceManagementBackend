@@ -120,16 +120,15 @@ public class InfoDeviceDataCollectionController {
 
     /**
      * 通过采集场次号获取仪器数据采集详细信息
+     *
      * @param collectionNumber 采集场次号
      * @return 数据采集详细信息
      */
     @ApiOperation("获取某次数据采集详细信息")
-    @GetMapping("/all_info")
-    public CommonResult getDeviceDataCollectionInfo(@RequestParam(value = "collectionNumber")
-                                            @Min(value = 1, message = "查询采集场次号不能小于1")  int collectionNumber) {
-        return deviceDataCollectionService.getDeviceDataCollectionInfoByCollectionNumber(collectionNumber);
+    @GetMapping("/detail-info")
+    public CommonResult getDeviceDataCollectionInfo(@RequestParam(value = "collectionNumber") @Min(value = 1, message = "查询采集场次号不能小于1")  int collectionNumber) {
+        return deviceDataCollectionService.getDeviceDataCollectionDetailInfoVo(collectionNumber);
     }
-
 
 
 

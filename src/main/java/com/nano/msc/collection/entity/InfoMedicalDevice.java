@@ -117,6 +117,14 @@ public class InfoMedicalDevice implements Serializable {
     @Column(name = "interface_type")
     private Integer interfaceType;
 
+
+    /**
+     * 使用科室
+     */
+    @Column(name = "device_department")
+    private String deviceDepartment;
+
+
     /**
      * 数据创建时间
      */

@@ -17,4 +17,22 @@ import java.util.List;
 @Repository
 public interface InfoDeviceMaintenanceRecordRepository extends JpaRepository<InfoDeviceMaintenanceRecord, Integer> {
 
+
+    /**
+     * 根据仪器号查询维修记录
+     *
+     * @param deviceCode 仪器号
+     * @return 列表
+     */
+    List<InfoDeviceMaintenanceRecord> findByDeviceCode(int deviceCode);
+
+    /**
+     * 根据仪器号及序列号查询维修记录
+     *
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @return 列表
+     */
+    List<InfoDeviceMaintenanceRecord> findByDeviceCodeAndSerialNumber(int deviceCode, String serialNumber);
+
 }

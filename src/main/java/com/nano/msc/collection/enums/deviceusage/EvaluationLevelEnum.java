@@ -3,14 +3,14 @@ package com.nano.msc.collection.enums.deviceusage;
 import lombok.Getter;
 
 /**
- * Description: 满意度等级枚举
+ * Description: 评价等级等级枚举
  *
  * @version: 1.0
  * @author: nano
  * @date: 2021/5/3 17:30
  */
 @Getter
-public enum SatisfactionLevelEnum {
+public enum EvaluationLevelEnum {
 
     /**
      * 非常满意
@@ -49,7 +49,7 @@ public enum SatisfactionLevelEnum {
     String msg;
 
 
-    SatisfactionLevelEnum(Integer level, String msg) {
+    EvaluationLevelEnum(Integer level, String msg) {
         this.level = level;
         this.msg = msg;
     }
@@ -61,7 +61,7 @@ public enum SatisfactionLevelEnum {
      * @return 信息
      */
     public static String getLevelMsg(Integer level){
-        for (SatisfactionLevelEnum levelEnum : SatisfactionLevelEnum.values()) {
+        for (EvaluationLevelEnum levelEnum : EvaluationLevelEnum.values()) {
             if (levelEnum.level.equals(level)) {
                 return levelEnum.getMsg();
             }

@@ -2,13 +2,16 @@ package com.nano.msc.collection.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
+import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
 import com.nano.msc.collection.param.ParamPad;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
+import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.EthernetDeviceDataCollectionService;
+import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
 import com.nano.msc.collection.utils.CollectionNumberCacheUtil;
 import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.common.vo.CommonResult;
@@ -44,6 +47,9 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
 
     @Autowired
     private InfoMedicalDeviceRepository medicalDeviceRepository;
+
+    @Autowired
+    private InfoDeviceUsageEvaluationService usageEvaluationService;
 
     /**
      * 上传医疗仪器信息(由Pad控制),并分配采集场次号
@@ -158,6 +164,12 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
 
             // 持久化更新采集信息
             deviceDataCollectionRepository.save(collection);
+
+            // 查询医疗仪器
+            InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
+            // 进行默认使用评价
+            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+
             logService.info("成功结束仪器采集:" + collection.toString());
             CollectionNumberCacheUtil.removeCollectionNumber(collection.getCollectionNumber());
             return CommonResult.success(collection.getCollectionNumber());

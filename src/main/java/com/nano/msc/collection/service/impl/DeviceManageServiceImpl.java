@@ -125,4 +125,9 @@ public class DeviceManageServiceImpl implements DeviceManageService {
         return CommonResult.success(collectionNumberMap);
     }
 
+
+
+
+
+
 }

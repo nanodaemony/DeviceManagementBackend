@@ -3,11 +3,14 @@ package com.nano.msc.schedule;
 import com.nano.msc.GlobalConfiguration;
 import com.nano.msc.GlobalContext;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
+import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.enums.InterfaceTypeEnum;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
+import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
+import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
 import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.devicedata.service.DeviceDataServiceImpl;
 import com.nano.msc.serial.SerialStaticInfo;
@@ -52,13 +55,17 @@ public class ManageScheduleTask {
     @Autowired
     private InfoDeviceDataCollectionRepository dataCollectionRepository;
 
+    @Autowired
+    private InfoDeviceUsageEvaluationService usageEvaluationService;
+
 
     /**
      * 检查网口类仪器数据采集状态(单位是ms)
      */
-    @Scheduled(fixedRate = 600 * 1000)
+    @Scheduled(fixedRate = 60 * 1000)
     private void checkEthernetDeviceDataCollectionStatus() {
 
+        log.info("检查网口类仪器采集情况...");
         // 查询全部以太网类型的仪器
         List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByInterfaceType(InterfaceTypeEnum.ETHERNET.getCode());
         // 得到全部以太网仪器的DeviceCode
@@ -75,6 +82,11 @@ public class ManageScheduleTask {
                     collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(collection.getLastReceiveDeviceDataTime()));
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     dataCollectionRepository.save(collection);
+
+                    // 查询医疗仪器
+                    InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
+                    // 进行默认使用评价
+                    usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
                 }
             }
         }
@@ -86,7 +98,7 @@ public class ManageScheduleTask {
      * 检查串口采集器心跳是否有定时更新(单位是ms)
      * 1. 到一定时间如果采集器没有心跳,认为采集停止;
      */
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 20 * 1000)
     private void checkSerialCollectionStatusTask() {
 
         // 查询全部串口类仪器
@@ -110,6 +122,15 @@ public class ManageScheduleTask {
                     collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(System.currentTimeMillis() - SERIAL_COLLECTION_FINISH_TIME_LENGTH));
                     // 持久化到服务器
                     dataCollectionRepository.save(collection);
+
+                    // 查询医疗仪器
+                    InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
+                    // 进行默认使用评价
+                    usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+
+
+
+
                     // TODO: 这里可以做相关采集的统计信息
 
                     // 完成串口采集,移除缓存

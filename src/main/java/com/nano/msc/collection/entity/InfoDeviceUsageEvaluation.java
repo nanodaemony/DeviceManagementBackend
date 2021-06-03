@@ -1,6 +1,7 @@
 package com.nano.msc.collection.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.nano.msc.collection.enums.deviceusage.EvaluationLevelEnum;
 import com.nano.msc.common.converter.LocalDateTimeConverter;
 
 import org.hibernate.annotations.CreationTimestamp;

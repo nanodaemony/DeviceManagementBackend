@@ -14,6 +14,7 @@ create TABLE `info_medical_device` (
     `service_life` FLOAT COMMENT '设备使用年限',
     `interface_type`  INT  NOT NULL COMMENT '接口类型, 1: 网口 2: 串口',
     `collector_unique_id` VARCHAR(64) COMMENT '当前对应的采集器的唯一ID',
+    `device_department` VARCHAR(256) NOT NULL COMMENT '使用科室',
 
     `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
     `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',

@@ -2,6 +2,7 @@ package com.nano.msc.collection.service;
 
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.param.ParamPad;
+import com.nano.msc.collection.vo.DeviceDataCollectionDetailInfoVo;
 import com.nano.msc.common.service.BaseService;
 import com.nano.msc.common.vo.CommonResult;
 
@@ -49,6 +50,14 @@ public interface InfoDeviceDataCollectionService extends BaseService<InfoDeviceD
      */
     CommonResult<Page<InfoDeviceDataCollection>> getDeviceDataCollectionListByStatusAbandon(int page, int size);
 
+    /**
+     * 通过采集场次号获取详细采集信息
+     *
+     * @param collectionNumber 采集场次号
+     * @return 信息信息
+     */
+    CommonResult<String> getDeviceDataCollectionDetailInfoVo(int collectionNumber);
+
 
     /**
      * 获取采集使用的仪器信息
@@ -64,11 +73,4 @@ public interface InfoDeviceDataCollectionService extends BaseService<InfoDeviceD
      */
     CommonResult<Integer> getSystemTotalDataCollectionNumber();
 
-    /**
-     * 通过采集场次号获取仪器数据采集详细信息
-     *
-     * @param collectionNumber 采集场次号
-     * @return 数据采集详细信息
-     */
-    CommonResult<InfoDeviceDataCollection> getDeviceDataCollectionInfoByCollectionNumber(int collectionNumber);
 }
