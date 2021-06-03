@@ -43,4 +43,13 @@ public interface InfoMedicalDeviceRepository extends JpaRepository<InfoMedicalDe
     InfoMedicalDevice findByCollectorUniqueId(String collectorUniqueId);
 
 
+    /**
+     * 通过接口类型查询仪器
+     *
+     * @param interfaceType 接口类型, 1: 网口 2: 串口
+     * @see com.nano.msc.collection.enums.InterfaceTypeEnum
+     */
+    List<InfoMedicalDevice> findByInterfaceType(Integer interfaceType);
+
+
 }

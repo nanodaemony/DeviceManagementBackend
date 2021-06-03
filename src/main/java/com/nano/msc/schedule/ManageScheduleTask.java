@@ -1,8 +1,11 @@
 package com.nano.msc.schedule;
 
+import com.nano.msc.GlobalConfiguration;
+import com.nano.msc.GlobalContext;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
+import com.nano.msc.collection.enums.InterfaceTypeEnum;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.common.utils.TimestampUtils;
@@ -34,9 +37,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ManageScheduleTask {
 
     /**
-     * 串口仪器采集完成时间间隔(ms)
+     * 仪器采集完成时间间隔(ms)
      */
-    private static final int SERIAL_COLLECTION_FINISH_TIME_LENGTH = 600 * 1000;
+    private static final int ETHERNET_COLLECTION_FINISH_TIME_LENGTH = 10 * 60 * 1000;
+    private static final int SERIAL_COLLECTION_FINISH_TIME_LENGTH = 10 * 60 * 1000;
 
 
     @Autowired
@@ -55,21 +59,22 @@ public class ManageScheduleTask {
     @Scheduled(fixedRate = 600 * 1000)
     private void checkEthernetDeviceDataCollectionStatus() {
 
-        // 查询全部正在采集的场次
-        List<InfoDeviceDataCollection> collectionList = dataCollectionRepository.findByCollectionStatusOrderByCollectionNumberDesc(CollectionStatusEnum.COLLECTING.getCode());
-        // 这里仅对网口类仪器数据采集场次做筛选,依据是网口类采集的采集器唯一ID为MAC地址
-        for (InfoDeviceDataCollection collection : collectionList) {
-            String collectorUniqueId = collection.getCollectorUniqueId();
-            if (collectorUniqueId != null && collectorUniqueId.split(":").length > 4) {
+        // 查询全部以太网类型的仪器
+        List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByInterfaceType(InterfaceTypeEnum.ETHERNET.getCode());
+        // 得到全部以太网仪器的DeviceCode
+        Set<Integer> deviceCodeSet = medicalDeviceList.stream().map(InfoMedicalDevice::getDeviceCode).collect(Collectors.toSet());
+        for (Integer deviceCode : deviceCodeSet) {
+            // 查询这个仪器号全部正在采集的信息
+            List<InfoDeviceDataCollection> collectionList = dataCollectionRepository
+                    .findByDeviceCodeAndCollectionStatus(deviceCode, CollectionStatusEnum.COLLECTING.getCode());
+            for (InfoDeviceDataCollection collection : collectionList) {
                 // 下面进行筛选,最后接收仪器数据时间大于20分钟则认定采集完成
-                if (System.currentTimeMillis() - collection.getLastReceiveDeviceDataTime() > 1000 * 20) {
-                    log.info("网口仪器超过20分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
+                if (System.currentTimeMillis() - collection.getLastReceiveDeviceDataTime() > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
+                    log.info("网口仪器超过10分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
                     // 设置上传接收数据时间为结束采集时间
                     collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(collection.getLastReceiveDeviceDataTime()));
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     dataCollectionRepository.save(collection);
-                    // 移除Map中关于采集场次号的记录信息
-                    DeviceDataServiceImpl.receiveCounterMap.remove(collection.getCollectionNumber());
                 }
             }
         }
@@ -84,8 +89,9 @@ public class ManageScheduleTask {
     @Scheduled(fixedRate = 20000)
     private void checkSerialCollectionStatusTask() {
 
-        // 查询系统中全部的采集器UniqueId集合
-        List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findAll();
+        // 查询全部串口类仪器
+        List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByInterfaceType(InterfaceTypeEnum.SERIAL.getCode());
+        // 获取全部串口类仪器的采集器的唯一ID号
         Set<String> collectorUniqueIdSet = medicalDeviceList.stream()
                 .filter(device -> device.getCollectorUniqueId() != null && device.getCollectorUniqueId().length() > 0)
                 .map(InfoMedicalDevice::getCollectorUniqueId).collect(Collectors.toSet());
@@ -104,15 +110,25 @@ public class ManageScheduleTask {
                     collection.setCollectionFinishTime(TimestampUtils.parseTimeStampToLocalDateTime(System.currentTimeMillis() - SERIAL_COLLECTION_FINISH_TIME_LENGTH));
                     // 持久化到服务器
                     dataCollectionRepository.save(collection);
-
                     // TODO: 这里可以做相关采集的统计信息
 
-                    // 将采集设置为null
-                    SerialStaticInfo.collectionMap.remove(uniqueId);
+                    // 完成串口采集,移除缓存
+                    GlobalContext.finishSerialDeviceDataCollection(uniqueId);
                 }
             }
         }
     }
 
+
+    @Autowired
+    private GlobalConfiguration configuration;
+
+    /**
+     * 刷新缓存内容
+     */
+    @Scheduled(fixedRate = 20000)
+    private void refreshCacheContent() {
+        configuration.refreshCacheContent();
+    }
 
 }

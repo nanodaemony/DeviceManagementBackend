@@ -1,17 +1,21 @@
 package com.nano.msc.collection.controller.collection;
 
+import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
+import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.service.InfoMedicalDeviceService;
 import com.nano.msc.common.vo.CommonResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import io.swagger.annotations.Api;
@@ -35,6 +39,18 @@ public class InfoMedicalDeviceController {
 
     @Autowired
     private InfoMedicalDeviceService medicalDeviceService;
+
+    /**
+     * 新增医疗仪器信息
+     *
+     * @param medicalDevice 术后评价信息表
+     * @return 返回唯一UniqueNumber
+     */
+    @PostMapping("/add")
+    @ApiOperation(value = "新增一条仪器医疗仪器信息")
+    public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoMedicalDevice medicalDevice) {
+        return medicalDeviceService.addMedicalDeviceInfo(medicalDevice);
+    }
 
     /**
      * 获取医疗仪器信息列表

@@ -51,33 +51,33 @@ public class DataManagerMeiDunLiVista implements DeviceDataManager<DataMeiDunLiV
 
                 dataMeiDunLiVista.setSr1(DataParseUtil.parseDoubleValue(temps[8]));
                 dataMeiDunLiVista.setSef1(DataParseUtil.parseDoubleValue(temps[9]));
-                dataMeiDunLiVista.setBisbit1(temps[10]);
+                dataMeiDunLiVista.setBisbit1(temps[10].trim());
                 dataMeiDunLiVista.setBis1(DataParseUtil.parseDoubleValue(temps[11]));
                 dataMeiDunLiVista.setTotpow1(DataParseUtil.parseDoubleValue(temps[12]));
                 dataMeiDunLiVista.setEmglow1(DataParseUtil.parseDoubleValue(temps[13]));
                 dataMeiDunLiVista.setSqi1(DataParseUtil.parseDoubleValue(temps[14]));
                 dataMeiDunLiVista.setImpednce1(DataParseUtil.parseDoubleValue(temps[15]));
-                dataMeiDunLiVista.setArtf21(temps[16]);
+                dataMeiDunLiVista.setArtf21(temps[16].trim());
 
                 dataMeiDunLiVista.setSr2(DataParseUtil.parseDoubleValue(temps[17]));
                 dataMeiDunLiVista.setSef2(DataParseUtil.parseDoubleValue(temps[18]));
-                dataMeiDunLiVista.setBisbit2(temps[19]);
+                dataMeiDunLiVista.setBisbit2(temps[19].trim());
                 dataMeiDunLiVista.setBis2(DataParseUtil.parseDoubleValue(temps[20]));
                 dataMeiDunLiVista.setTotpow2(DataParseUtil.parseDoubleValue(temps[21]));
                 dataMeiDunLiVista.setEmglow2(DataParseUtil.parseDoubleValue(temps[22]));
                 dataMeiDunLiVista.setSqi2(DataParseUtil.parseDoubleValue(temps[23]));
                 dataMeiDunLiVista.setImpednce2(DataParseUtil.parseDoubleValue(temps[24]));
-                dataMeiDunLiVista.setArtf22(temps[25]);
+                dataMeiDunLiVista.setArtf22(temps[25].trim());
 
                 dataMeiDunLiVista.setSr3(DataParseUtil.parseDoubleValue(temps[26]));
                 dataMeiDunLiVista.setSef3(DataParseUtil.parseDoubleValue(temps[27]));
-                dataMeiDunLiVista.setBisbit3(temps[28]);
+                dataMeiDunLiVista.setBisbit3(temps[28].trim());
                 dataMeiDunLiVista.setBis3(DataParseUtil.parseDoubleValue(temps[29]));
                 dataMeiDunLiVista.setTotpow3(DataParseUtil.parseDoubleValue(temps[30]));
                 dataMeiDunLiVista.setEmglow3(DataParseUtil.parseDoubleValue(temps[31]));
                 dataMeiDunLiVista.setSqi3(DataParseUtil.parseDoubleValue(temps[32]));
                 dataMeiDunLiVista.setImpednce3(DataParseUtil.parseDoubleValue(temps[33]));
-                dataMeiDunLiVista.setArtf23(temps[34]);
+                dataMeiDunLiVista.setArtf23(temps[34].trim());
 
                 // 解析并存储数据
                 return dataRepository.save(dataMeiDunLiVista);

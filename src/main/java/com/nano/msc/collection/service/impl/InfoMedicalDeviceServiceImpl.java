@@ -1,11 +1,14 @@
 package com.nano.msc.collection.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.DeviceTypeEnum;
+import com.nano.msc.collection.enums.MedicalDeviceEnum;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.InfoMedicalDeviceService;
 import com.nano.msc.common.service.BaseServiceImpl;
 import com.nano.msc.common.vo.CommonResult;
+import com.nano.msc.system.log.service.SystemLogService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,6 +28,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * Description: 医疗仪器服务实现类
  * Usage:
+ * @see #addMedicalDeviceInfo(InfoMedicalDevice) 保存医疗仪器信息,目前由Mobile端上传
  * @see #getMedicalDeviceAccessInSystemCounterTotal() 获取接入仪器的全部仪器个数(总的)
  * @see #getMedicalDeviceAccessInSystemCounterByType() 统计已经接入系统的仪器种类数量
  * @see #getSerialNumberListByDeviceCode(int) 通过仪器号查询对应拥有的仪器列表
@@ -40,6 +44,36 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
 
     @Autowired
     private InfoMedicalDeviceRepository medicalDeviceRepository;
+
+
+    @Autowired
+    private SystemLogService logger;
+
+    /**
+     * 保存来自Mobile端的医疗仪器信息
+     * @param medicalDevice 医疗仪器
+     * @return 是否成功
+     */
+    @Override
+    public CommonResult<String> addMedicalDeviceInfo(InfoMedicalDevice medicalDevice) {
+        if (medicalDevice.getDeviceCode() == null) {
+            return CommonResult.failed("添加失败,缺少DeviceCode.");
+        }
+        if (medicalDevice.getSerialNumber() == null || medicalDevice.getSerialNumber().length() == 0) {
+            return CommonResult.failed("添加失败,仪器序列号格式错误.");
+        }
+        MedicalDeviceEnum deviceEnum = MedicalDeviceEnum.matchDeviceCodeEnum(medicalDevice.getDeviceCode());
+        if (deviceEnum == null) {
+            return CommonResult.failed("添加失败,当前DeviceCode不存在.");
+        }
+        // 设置基本信息
+        medicalDevice.setDeviceName(deviceEnum.getDeviceName());
+        medicalDevice.setDeviceType(deviceEnum.getDeviceType());
+        medicalDevice.setCompanyName(deviceEnum.getCompanyName());
+        medicalDevice = medicalDeviceRepository.save(medicalDevice);
+        logger.info("新增医疗仪器信息成功:" + medicalDevice);
+        return CommonResult.success(JSON.toJSONString(medicalDevice));
+    }
 
     /**
      * 获取接入仪器的全部仪器个数(总的)

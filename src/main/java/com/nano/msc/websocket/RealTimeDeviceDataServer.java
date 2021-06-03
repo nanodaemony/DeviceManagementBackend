@@ -70,12 +70,13 @@ public class RealTimeDeviceDataServer {
 					   @PathParam("deviceCode") Integer deviceCode,
 					   @PathParam("browserId") String browserId) {
 		this.session = session;
+		this.deviceCode = deviceCode;
 		this.collectionNumber = collectionNumber;
 		this.browserId = browserId;
 
 		// 构造Session
 		DataSession dataSession = new DataSession(session, this.collectionNumber, deviceCode, browserId);
-		// Session放入Map中, SessionKey = operationNumber + browserId;
+		// Session放入Map中, SessionKey = collectionNumber + browserId;
 		dataSessionMap.put(dataSession.getSessionKey(), dataSession);
 		// 如果Map中已经有这个Session了就移除重放
 		if (dataSessionMap.containsKey(dataSession.getSessionKey())) {
@@ -86,7 +87,6 @@ public class RealTimeDeviceDataServer {
 			// 在线数加1
 			addOnlineCount();
 		}
-		logService.info("WebSocket用户连接:" + dataSession.toString() + ", 当前在线人数:" + dataSessionMap.size());
 		logger.info("用户连接:" + dataSession.toString() + ",当前在线人数为:" + dataSessionMap.size());
 	}
 
@@ -121,8 +121,8 @@ public class RealTimeDeviceDataServer {
 		logger.debug("发送仪器实时数据至:" + collectionNumber + "，报文:" + message);
 		for (DataSession dataSession : dataSessionMap.values()) {
 			if (dataSession.getDeviceCode() == deviceCode && dataSession.getCollectionNumber() == collectionNumber) {
+				// 发送数据
 				try {
-					// 发送数据
 					dataSession.getSession().getBasicRemote().sendText(message);
 				} catch (IOException e) {
 					e.printStackTrace();

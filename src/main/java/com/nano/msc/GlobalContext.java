@@ -1,6 +1,11 @@
 package com.nano.msc;
 
+import com.nano.msc.collection.entity.InfoDeviceDataCollection;
+import com.nano.msc.collection.entity.InfoMedicalDevice;
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import lombok.Data;
@@ -17,16 +22,34 @@ import lombok.Data;
 @Data
 public class GlobalContext {
 
-    public static Set<Integer> deviceCodeSet = new HashSet<>();
-    static {
+    /**
+     * 数据采集器Map表
+     */
+    public static Set<String> dataCollectorSet = new HashSet<>();
 
-        int[] codes = {30, 31, 32, 33, 34, 35, 36,
-        42, 43, 44, 45, 46, 47, 48,
-        71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82};
-        for (int c : codes) {
-            deviceCodeSet.add(c);
-        }
+    public static Set<Integer> deviceCodeSet = new HashSet<>();
+
+    public static Map<String, InfoDeviceDataCollection> serialDataCollectionMap = new HashMap<>();
+
+    public static Map<String, InfoMedicalDevice> medicalDeviceMap = new HashMap<>();
+
+
+    /**
+     * 开始串口类数据采集
+     *
+     * @param uniqueId 唯一ID
+     * @param collection 采集信息
+     */
+    public static void startSerialDeviceDataCollection(String uniqueId, InfoDeviceDataCollection collection) {
+        serialDataCollectionMap.put(uniqueId, collection);
     }
 
+    /**
+     * 完成串口类数据采集
+     * @param uniqueId 采集器ID
+     */
+    public static void finishSerialDeviceDataCollection(String uniqueId){
+        serialDataCollectionMap.remove(uniqueId);
+    }
 
 }

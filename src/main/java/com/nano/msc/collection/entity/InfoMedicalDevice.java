@@ -110,6 +110,12 @@ public class InfoMedicalDevice implements Serializable {
     @Column(name = "collector_unique_id")
     private String collectorUniqueId;
 
+    /**
+     * 接口类型, 1: 网口 2: 串口
+     */
+    @ApiModelProperty(value = "接口类型", example = "2")
+    @Column(name = "interface_type")
+    private Integer interfaceType;
 
     /**
      * 数据创建时间

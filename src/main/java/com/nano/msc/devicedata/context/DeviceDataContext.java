@@ -72,7 +72,7 @@ public class DeviceDataContext implements InitializingBean, ApplicationContextAw
         dataHandlerMap.put(MedicalDeviceEnum.AI_QIN_EGOS600A.getDeviceCode(), new DeviceDataHandler<>(context.getBean(AiQin600ARepository.class), context.getBean(DataManagerAiQin600A.class)));
         dataHandlerMap.put(MedicalDeviceEnum.AI_QIN_EGOS600B.getDeviceCode(), new DeviceDataHandler<>(context.getBean(AiQin600BRepository.class), context.getBean(DataManagerAiQin600B.class)));
         dataHandlerMap.put(MedicalDeviceEnum.AI_QIN_EGOS600C.getDeviceCode(), new DeviceDataHandler<>(context.getBean(AiQin600CRepository.class), context.getBean(DataManagerAiQin600C.class)));
-        dataHandlerMap.put(MedicalDeviceEnum.MEIDUNLI_EEG_VISTA.getDeviceCode(), new DeviceDataHandler(context.getBean(MeiDunLiVistaRepository.class), context.getBean(DataManagerMeiDunLiVista.class)));
+        dataHandlerMap.put(MedicalDeviceEnum.MEIDUNLI_EEG_VISTA.getDeviceCode(), new DeviceDataHandler<>(context.getBean(MeiDunLiVistaRepository.class), context.getBean(DataManagerMeiDunLiVista.class)));
     }
 
     /**

@@ -12,12 +12,14 @@ create TABLE `info_medical_device` (
     `serial_number` VARCHAR(32)  DEFAULT NULL COMMENT '设备序列号,不一定唯一',
     `produce_date` DATE COMMENT '设备生产时间 eg: 2017-08-01',
     `service_life` FLOAT COMMENT '设备使用年限',
+    `interface_type`  INT  NOT NULL COMMENT '接口类型, 1: 网口 2: 串口',
     `collector_unique_id` VARCHAR(64) COMMENT '当前对应的采集器的唯一ID',
 
     `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
     `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',
     PRIMARY KEY(pk_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT '医疗仪器信息表';
+
 
 
 -- ----------------------------

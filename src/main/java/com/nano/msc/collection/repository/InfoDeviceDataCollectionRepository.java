@@ -103,6 +103,15 @@ public interface InfoDeviceDataCollectionRepository extends JpaRepository<InfoDe
     List<InfoDeviceDataCollection> findByDeviceCode(int deviceCode);
 
     /**
+     * 通过仪器号及采集状态找手术使用的仪器信息
+     *
+     * @param deviceCode 仪器号
+     * @param collectionStatus 采集状态
+     * @return 手术仪器信息
+     */
+    List<InfoDeviceDataCollection> findByDeviceCodeAndCollectionStatus(int deviceCode, int collectionStatus);
+
+    /**
      * 通过仪器号与序列号找手术使用的仪器信息
      *
      * @param deviceCode 仪器号
