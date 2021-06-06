@@ -29,27 +29,7 @@ public class GlobalContext {
 
     public static Set<Integer> deviceCodeSet = new HashSet<>();
 
-    public static Map<String, InfoDeviceDataCollection> serialDataCollectionMap = new HashMap<>();
-
     public static Map<String, InfoMedicalDevice> medicalDeviceMap = new HashMap<>();
 
-
-    /**
-     * 开始串口类数据采集
-     *
-     * @param uniqueId 唯一ID
-     * @param collection 采集信息
-     */
-    public static void startSerialDeviceDataCollection(String uniqueId, InfoDeviceDataCollection collection) {
-        serialDataCollectionMap.put(uniqueId, collection);
-    }
-
-    /**
-     * 完成串口类数据采集
-     * @param uniqueId 采集器ID
-     */
-    public static void finishSerialDeviceDataCollection(String uniqueId){
-        serialDataCollectionMap.remove(uniqueId);
-    }
 
 }

@@ -19,12 +19,20 @@ public interface InfoDeviceUsageEvaluationService extends BaseService<InfoDevice
 
 
     /**
+     * 通过采集场次号获取评价信息
+     *
+     * @param collectionNumber 采集场次号
+     * @return 评价信息
+     */
+    CommonResult<InfoDeviceUsageEvaluation> getDeviceUsageEvaluationInfoByCollectionNumber(int collectionNumber);
+
+    /**
      * 保存采集完成后的仪器评价信息表格
      *
      * @param evaluationTable 平板参数
      * @return 结果
      */
-    CommonResult<String> saveDeviceUsageEvaluationTable(InfoDeviceUsageEvaluation evaluationTable);
+    CommonResult<String> addDeviceUsageEvaluationTableByMobile(InfoDeviceUsageEvaluation evaluationTable);
 
     /**
      * 根据仪器号查询该仪器完成的评价信息

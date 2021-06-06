@@ -82,12 +82,7 @@ public class ManageScheduleTask {
                     collection.setCollectionFinishTime((collection.getLastReceiveDeviceDataTime()));
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     dataCollectionRepository.save(collection);
-
-                    // 查询医疗仪器
-                    InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
-                    // 进行默认使用评价
-                    usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
-                }
+               }
             }
         }
 
@@ -128,14 +123,6 @@ public class ManageScheduleTask {
                     // 持久化到服务器
                     dataCollectionRepository.save(collection);
 
-                    // 查询医疗仪器
-                    InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
-                    // 进行默认使用评价
-                    usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
-                    // TODO: 这里可以做相关采集的统计信息
-
-                    // 完成串口采集,移除缓存
-                    GlobalContext.finishSerialDeviceDataCollection(uniqueId);
                 }
             }
         }
@@ -153,22 +140,6 @@ public class ManageScheduleTask {
         configuration.refreshCacheContent();
     }
 
-
-    /**
-     * 将串口类的采集信息入数据库
-     */
-    @Scheduled(fixedRate = 20000)
-    private void saveSerialCollectionInfo() {
-        // 一个个去数据库对比
-        for (InfoDeviceDataCollection collection : GlobalContext.serialDataCollectionMap.values()) {
-//            InfoDeviceDataCollection originCollectionInfo = dataCollectionRepository.findByCollectionNumber(collection.getCollectionNumber());
-//            originCollectionInfo.setLastReceiveHeartMessageTime(collection.getLastReceiveHeartMessageTime());
-//            originCollectionInfo.setLastReceiveDeviceDataTime(collection.getLastReceiveDeviceDataTime());
-//            dataCollectionRepository.save(originCollectionInfo);
-//            log.info("更新接收时间...");
-//            log.info(collection.toString());
-        }
-    }
 
 
 }

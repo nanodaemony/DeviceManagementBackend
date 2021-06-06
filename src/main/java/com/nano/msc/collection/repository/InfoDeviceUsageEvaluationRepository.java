@@ -30,6 +30,13 @@ public interface InfoDeviceUsageEvaluationRepository extends JpaRepository<InfoD
     InfoDeviceUsageEvaluation findByCollectionNumber(Integer collectionNumber);
 
     /**
+     * 通过采集场次号判断是否存在
+     * @param collectionNumber 采集场次号
+     * @return 是否已经通过手机评价了
+     */
+    boolean existsByCollectionNumber(Integer collectionNumber);
+
+    /**
      * 通过手术场次号和仪器号查找评价信息
      *
      * @param collectionNumber 手术场次号

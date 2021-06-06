@@ -38,6 +38,21 @@ public class InfoDeviceUsageEvaluationController {
     @Autowired
     private InfoDeviceUsageEvaluationService deviceUsageEvaluationService;
 
+
+    /**
+     * 查询仪器使用评价信息(根据采集场次号号)
+     *
+     * @param collectionNumber 仪器号
+     * @return 评价信息列表
+     */
+    @ApiOperation("查询仪器使用评价信息(根据采集场次号)")
+    @GetMapping("/get-device-usage-evaluation-by-collection-number")
+    public CommonResult getDeviceUsageEvaluationInfoByCollectionNumber (
+            @RequestParam(value = "collectionNumber", defaultValue = "1") Integer collectionNumber) {
+        return deviceUsageEvaluationService.getDeviceUsageEvaluationInfoByCollectionNumber(collectionNumber);
+    }
+
+
     /**
      * 新增条术后仪器评价信息
      *
@@ -47,7 +62,7 @@ public class InfoDeviceUsageEvaluationController {
     @PostMapping("/add")
     @ApiOperation(value = "新增一条仪器使用评价信息")
     public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceUsageEvaluation afterCollectionEvaluation) {
-        return deviceUsageEvaluationService.saveDeviceUsageEvaluationTable(afterCollectionEvaluation);
+        return deviceUsageEvaluationService.addDeviceUsageEvaluationTableByMobile(afterCollectionEvaluation);
     }
 
 

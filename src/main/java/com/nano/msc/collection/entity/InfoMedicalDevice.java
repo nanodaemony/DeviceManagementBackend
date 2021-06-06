@@ -61,7 +61,6 @@ public class InfoMedicalDevice implements Serializable {
     /**
      * 公司名字
      */
-    @NotNull(message = "CompanyName must cannot empty.")
     @ApiModelProperty(value = "公司名字", example = "合肥诺和生物科技有限公司")
     @Column(name = "company_name")
     private String companyName;
@@ -69,7 +68,6 @@ public class InfoMedicalDevice implements Serializable {
     /**
      * 仪器名称
      */
-    @NotNull(message = "DeviceName must cannot empty.")
     @ApiModelProperty(value = "仪器名称", example = "NW9002S")
     @Column(name = "device_name")
     private String deviceName;
@@ -77,7 +75,6 @@ public class InfoMedicalDevice implements Serializable {
     /**
      * 仪器类别
      */
-    @NotNull(message = "DeviceType must cannot empty.")
     @ApiModelProperty(value = "仪器类别", example = "1#2#3")
     @Column(name = "device_type")
     private String deviceType;
@@ -94,7 +91,8 @@ public class InfoMedicalDevice implements Serializable {
      */
     @ApiModelProperty(value = "设备购买时间", example = "2018.06.25")
     @Column(name = "produce_date")
-    private LocalDate produceDate;
+    @JsonSerialize(using = LocalDateTimeConverter.class)
+    private LocalDateTime produceDate;
 
     /**
      * 仪器的使用年限

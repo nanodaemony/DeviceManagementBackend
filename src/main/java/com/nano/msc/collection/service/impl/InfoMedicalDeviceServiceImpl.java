@@ -56,6 +56,7 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
      */
     @Override
     public CommonResult<String> addMedicalDeviceInfo(InfoMedicalDevice medicalDevice) {
+        logger.info("添加医疗仪器信息.");
         if (medicalDevice.getDeviceCode() == null) {
             return CommonResult.failed("添加失败,缺少DeviceCode.");
         }
@@ -70,6 +71,7 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
         medicalDevice.setDeviceName(deviceEnum.getDeviceName());
         medicalDevice.setDeviceType(deviceEnum.getDeviceType());
         medicalDevice.setCompanyName(deviceEnum.getCompanyName());
+        medicalDevice.setInterfaceType(deviceEnum.getInterfaceType());
         medicalDevice = medicalDeviceRepository.save(medicalDevice);
         logger.info("新增医疗仪器信息成功:" + medicalDevice);
         return CommonResult.success(JSON.toJSONString(medicalDevice));

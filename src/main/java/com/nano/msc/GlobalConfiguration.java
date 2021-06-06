@@ -46,7 +46,6 @@ public class GlobalConfiguration implements ApplicationRunner {
     public void refreshCacheContent() {
         refreshCollectorSet();
         refreshDeviceCodeSet();
-        refreshCollectionSet();
     }
 
     /**
@@ -72,19 +71,4 @@ public class GlobalConfiguration implements ApplicationRunner {
         }
     }
 
-    /**
-     * 刷新正在采集的信息列表
-     */
-    private void refreshCollectionSet() {
-        for (String uniqueId : GlobalContext.dataCollectorSet) {
-            // 说明是串口采集器
-            if (uniqueId.startsWith("DC")) {
-                List<InfoDeviceDataCollection> dataCollectionList = dataCollectionRepository
-                        .findByCollectorUniqueIdAndCollectionStatus(uniqueId, CollectionStatusEnum.COLLECTING.getCode());
-                for (InfoDeviceDataCollection collection : dataCollectionList) {
-                    GlobalContext.serialDataCollectionMap.put(uniqueId, collection);
-                }
-            }
-        }
-    }
 }

@@ -7,6 +7,7 @@ import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
+import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
 import com.nano.msc.common.utils.SpringContextUtil;
 import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.devicedata.context.DeviceDataContext;
@@ -59,6 +60,8 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
     @Autowired
     private InfoDeviceDataCollectionRepository deviceDataCollectionRepository;
 
+    @Autowired
+    private InfoDeviceUsageEvaluationService usageEvaluationService;
 
     @Autowired
     private DeviceDataContext deviceDataContext;
@@ -178,6 +181,11 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             collection.setCollectionStartTime(TimestampUtils.getCurrentTimeForDataBase());
             // 存入数据库
             collection = deviceDataCollectionRepository.save(collection);
+
+            // 查询医疗仪器
+            InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
+            // 进行默认使用评价
+            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
         }
         // 构造发送到解析器的数据
         String deviceDataRaw = collection.getCollectionNumber() + DATA_SEPARATOR

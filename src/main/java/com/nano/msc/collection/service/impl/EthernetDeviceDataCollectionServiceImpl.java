@@ -5,6 +5,7 @@ import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
+import com.nano.msc.collection.enums.InterfaceTypeEnum;
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
 import com.nano.msc.collection.param.ParamPad;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
@@ -70,6 +71,9 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
                     newDevice.setCompanyName(deviceEnum.getCompanyName());
                     newDevice.setDeviceName(deviceEnum.getDeviceName());
                     newDevice.setDeviceType(deviceEnum.getDeviceType());
+                    newDevice.setInterfaceType(InterfaceTypeEnum.ETHERNET.getCode());
+                    newDevice.setDeviceDepartment("麻醉科2组");
+                    newDevice.setCollectorUniqueId(paramPad.getMac());
                     // 将新的仪器存入数据库中
                     device = medicalDeviceRepository.save(newDevice);
                 } else {
@@ -87,6 +91,10 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
             // 持久化信息并将CollectionNumber返回给Pad
             collection = deviceDataCollectionRepository.save(collection);
             logService.info("成功分配采集序号:" + collection.toString());
+
+            // 进行默认使用评价
+            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+
             return CommonResult.success(collection.getCollectionNumber());
 
         } catch (Exception e) {
@@ -132,7 +140,6 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
             logService.error("开始采集失败,上传信息解析失败.:" + paramPad.toString());
             return CommonResult.failed("开始采集失败,上传信息解析失败.:" + paramPad.toString());
         }
-
     }
 
     /**
@@ -159,16 +166,10 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
             // 可以停止采集(改变状态并更新数据等)
             collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
             collection.setCollectionFinishTime(TimestampUtils.getCurrentTimeForDataBase());
-            // TODO:下面进行数据统计,如掉线率等
-            // collection.setOperationDurationTime(TimestampUtils.getDurationTime(collection.getCollectionStartTime(), collection.getCollectionFinishTime()));
 
             // 持久化更新采集信息
             deviceDataCollectionRepository.save(collection);
 
-            // 查询医疗仪器
-            InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
-            // 进行默认使用评价
-            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
 
             logService.info("成功结束仪器采集:" + collection.toString());
             CollectionNumberCacheUtil.removeCollectionNumber(collection.getCollectionNumber());

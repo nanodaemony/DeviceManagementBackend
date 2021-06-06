@@ -66,7 +66,6 @@ public class DeviceDataServiceImpl implements DeviceDataService {
     @Autowired
     private InfoDeviceDataCollectionRepository dataCollectionRepository;
 
-    public static Map<Integer, Integer> receiveCounterMap = new HashMap<>();
 
     /**
      * 解析仪器数据并保存到数据库
@@ -94,19 +93,14 @@ public class DeviceDataServiceImpl implements DeviceDataService {
             return CommonResult.failed("数据解析与存储失败:" + data.toString());
         }
         int collectionNumber = data.getCollectionNumber();
-        // 获取接收的数据条数
-        int cnt = receiveCounterMap.getOrDefault(data.getCollectionNumber(), 0);
-        // 说明到了60条数据,此时更新一次接收时间
-        if (cnt > 0 && cnt % 60 == 0) {
-            InfoDeviceDataCollection collection = dataCollectionRepository.findByCollectionNumber(collectionNumber);
-            if (collection != null) {
-                // 更新接收仪器数据的时间
-                collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
-                dataCollectionRepository.save(collection);
-            }
-        }
-        receiveCounterMap.put(collectionNumber, cnt + 1);
 
+        // 更新接收数据的时间
+        InfoDeviceDataCollection collection = dataCollectionRepository.findByCollectionNumber(collectionNumber);
+        if (collection != null) {
+            // 更新接收仪器数据的时间
+            collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
+            dataCollectionRepository.save(collection);
+        }
         // 仪器数据实时推送到前端
         RealTimeDeviceDataServer
                 .sendDeviceRealTimeDataToClient(data.getCollectionNumber(), data.getDeviceCode(), JSON.toJSONString(result));

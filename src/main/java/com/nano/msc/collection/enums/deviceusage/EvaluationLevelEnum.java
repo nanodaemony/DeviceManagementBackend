@@ -15,12 +15,12 @@ public enum EvaluationLevelEnum {
     /**
      * 非常满意
      */
-    VERY_GOOD(1, "非常满意"),
+    VERY_GOOD(5, "非常满意"),
 
     /**
      * 满意
      */
-    GOOD(2, "满意"),
+    GOOD(4, "满意"),
 
     /**
      * 一般
@@ -30,12 +30,12 @@ public enum EvaluationLevelEnum {
     /**
      * 不满意
      */
-    BAD(4, "不满意"),
+    BAD(2, "不满意"),
 
     /**
      * 非常不满意
      */
-    VERY_BAD(5, "非常不满意")
+    VERY_BAD(1, "非常不满意")
     ;
 
     /**
