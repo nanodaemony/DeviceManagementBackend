@@ -52,15 +52,29 @@ public class InfoMedicalDeviceController {
         return medicalDeviceService.addMedicalDeviceInfo(medicalDevice);
     }
 
+
     /**
-     * 获取医疗仪器信息列表
+     * 获取医疗仪器信息列表(根据deviceCode)
+     */
+    @GetMapping("/get-medical-device-info-by-device-code")
+    @ApiOperation(value = "获取医疗仪器信息列表(通过DeviceCode)")
+    public CommonResult getMedicalDeviceInfoListByDeviceCode(@RequestParam(value = "deviceCode", defaultValue = "30") int deviceCode) {
+        return medicalDeviceService.getMedicalDeviceInfoListByDeviceCode(deviceCode);
+    }
+
+
+    /**
+     * 获取医疗仪器信息列表(全部)
      */
     @GetMapping("/list")
-    @ApiOperation(value = "获取医疗仪器信息列表")
+    @ApiOperation(value = "获取医疗仪器信息列表(全部)")
     public CommonResult getMedicalDeviceInfoList(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
                                       @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
         return medicalDeviceService.list(page, size);
     }
+
+
+
 
     /**
      * 获取接入仪器的全部仪器个数(总的)

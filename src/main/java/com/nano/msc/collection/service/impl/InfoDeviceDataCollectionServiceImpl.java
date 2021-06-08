@@ -147,7 +147,7 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
 
         // 设置采集的数据条数
         int collectionCounter = dataHandlerMap.get(collection.getDeviceCode())
-                .getDataManager().getDeviceHistoryData(collectionNumber, collection.getSerialNumber()).size();
+                .getDataManager().getDataCollectionCounterInOneCollection(collectionNumber, collection.getSerialNumber());
         vo.setCollectedDataCounter(collectionCounter);
         return CommonResult.success(vo);
     }

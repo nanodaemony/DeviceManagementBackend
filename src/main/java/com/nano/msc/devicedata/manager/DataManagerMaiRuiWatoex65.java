@@ -48,7 +48,20 @@ public class DataManagerMaiRuiWatoex65 implements DeviceDataManager<DataMaiRuiWa
         dataMap.put("MV", dataList.stream().map(DataMaiRuiWatoex65::getMv).collect(Collectors.toList()));
         dataMap.put("I:E", dataList.stream().map(DataMaiRuiWatoex65::getIe).collect(Collectors.toList()));
         dataMap.put("Rate", dataList.stream().map(DataMaiRuiWatoex65::getRate).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataMaiRuiWatoex65::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataMaiRuiWatoex65::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

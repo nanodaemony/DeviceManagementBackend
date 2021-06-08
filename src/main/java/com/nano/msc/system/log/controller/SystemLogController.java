@@ -33,6 +33,13 @@ public class SystemLogController {
     private SystemLogService logService;
 
 
+    @GetMapping("/list/all")
+    @ApiOperation(value = "获取全部日志")
+    public CommonResult listAll(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                    @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "60") Integer size) {
+        return CommonResult.success(logService.getNewestSystemLog(page, size));
+    }
+
     @GetMapping("/list/info/log")
     @ApiOperation(value = "获取Info日志")
     public CommonResult listInfoLog(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,

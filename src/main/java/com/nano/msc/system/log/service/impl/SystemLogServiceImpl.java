@@ -49,6 +49,12 @@ public class SystemLogServiceImpl implements SystemLogService {
         return systemLogRepository.findByGmtCreateAfterAndLogLevel(TimestampUtils.getCurrentDayZeroLocalDateTime(), logLevel, pageable);
     }
 
+    @Override
+    public List<SystemLog> getNewestSystemLog(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return systemLogRepository.findByOrderByIdDesc(pageable);
+    }
+
     /**
      * 列出全部日志
      * @param page 页

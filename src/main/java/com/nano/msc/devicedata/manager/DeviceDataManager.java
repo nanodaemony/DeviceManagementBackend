@@ -29,4 +29,13 @@ public interface DeviceDataManager<T> {
      */
     Map<String, Object> getDeviceHistoryData(int collectionNumber, String serialNumber);
 
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber);
+
 }

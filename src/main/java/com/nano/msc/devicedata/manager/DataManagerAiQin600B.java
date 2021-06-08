@@ -58,7 +58,19 @@ public class DataManagerAiQin600B implements DeviceDataManager<DataAiQin600B>{
         dataMap.put("TOI2", dataList.stream().map(DataAiQin600B::getToi2).collect(Collectors.toList()));
         dataMap.put("THI1", dataList.stream().map(DataAiQin600B::getThi1).collect(Collectors.toList()));
         dataMap.put("THI2", dataList.stream().map(DataAiQin600B::getThi2).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataAiQin600B::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataAiQin600B::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

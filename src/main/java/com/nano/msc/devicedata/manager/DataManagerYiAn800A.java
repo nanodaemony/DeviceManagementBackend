@@ -48,7 +48,20 @@ public class DataManagerYiAn800A implements DeviceDataManager<DataYiAn8700A> {
         dataMap.put("MV", dataList.stream().map(DataYiAn8700A::getMv).collect(Collectors.toList()));
         dataMap.put("Vte", dataList.stream().map(DataYiAn8700A::getVte).collect(Collectors.toList()));
         dataMap.put("Freq", dataList.stream().map(DataYiAn8700A::getFreq).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataYiAn8700A::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataYiAn8700A::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

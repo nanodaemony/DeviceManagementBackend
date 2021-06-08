@@ -35,6 +35,9 @@ public interface SystemLogService {
      */
     List<SystemLog> listCurrentDayAndLogLevel(int page, int size, int logLevel);
 
+
+    List<SystemLog> getNewestSystemLog(int page, int size);
+
     /**
      * 得到所有的日志
      *

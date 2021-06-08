@@ -78,6 +78,14 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
     }
 
     /**
+     * 获取医疗仪器信息列表
+     */
+    @Override
+    public CommonResult<List<InfoMedicalDevice>> getMedicalDeviceInfoListByDeviceCode(int deviceCode) {
+        return CommonResult.success(medicalDeviceRepository.findByDeviceCode(deviceCode));
+    }
+
+    /**
      * 获取接入仪器的全部仪器个数(总的)
      */
     @Override

@@ -35,4 +35,7 @@ public interface SystemLogRepository extends JpaRepository<SystemLog, Integer> {
      * @return List<SystemLog>
      */
     List<SystemLog> findByGmtCreateAfterAndLogLevel(LocalDateTime localDateTime, Integer logLevel, Pageable pageable);
+
+
+    List<SystemLog> findByOrderByIdDesc(Pageable pageable);
 }

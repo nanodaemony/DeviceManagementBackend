@@ -51,4 +51,16 @@ public class DataManagerLiBangEliteV8 implements DeviceDataManager<DataLiBangEli
         dataMap.put("LAP", dataList.stream().map(DataLiBangEliteV8::getLapMap).collect(Collectors.toList()));
         return dataMap;
     }
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
+    }
 }

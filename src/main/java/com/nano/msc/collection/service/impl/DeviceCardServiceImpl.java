@@ -60,6 +60,9 @@ public class DeviceCardServiceImpl implements DeviceCardService {
         }
         // 查找这个仪器号下面的全部仪器信息
         List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByDeviceCode(deviceCode);
+        if (medicalDeviceList.size() == 0) {
+            return CommonResult.failed("该仪器号暂时没有仪器信息.");
+        }
         // 1. 构造返回的信息
         DeviceCardVo deviceCardVo = new DeviceCardVo();
         BeanUtil.copyProperties(medicalDeviceList.get(0), deviceCardVo);

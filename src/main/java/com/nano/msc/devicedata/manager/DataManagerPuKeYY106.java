@@ -46,7 +46,20 @@ public class DataManagerPuKeYY106 implements DeviceDataManager<DataPuKeYy106> {
         dataMap.put("EMG", dataList.stream().map(DataPuKeYy106::getEmg).collect(Collectors.toList()));
         dataMap.put("SQI", dataList.stream().map(DataPuKeYy106::getSqi).collect(Collectors.toList()));
         dataMap.put("BSR", dataList.stream().map(DataPuKeYy106::getBsr).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataPuKeYy106::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataPuKeYy106::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

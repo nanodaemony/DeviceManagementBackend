@@ -25,6 +25,11 @@ public interface InfoMedicalDeviceService extends BaseService<InfoMedicalDevice,
      */
     CommonResult<String> addMedicalDeviceInfo(InfoMedicalDevice medicalDevice);
 
+    /**
+     * 获取医疗仪器信息列表
+     */
+    CommonResult<List<InfoMedicalDevice>> getMedicalDeviceInfoListByDeviceCode(int deviceCode);
+
 
     /**
      * 获取接入仪器的全部仪器个数(总的)

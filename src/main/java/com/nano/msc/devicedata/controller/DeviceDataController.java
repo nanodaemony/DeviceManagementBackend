@@ -5,10 +5,12 @@ import com.nano.msc.devicedata.param.ParamDeviceDataPad;
 import com.nano.msc.devicedata.service.DeviceDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -46,11 +48,11 @@ public class DeviceDataController {
     /**
      * 获取仪器历史数据(用于平台展示)
      */
-    @PostMapping("/get-history-data-for-platform/{collectionNumber}/{deviceCode}/{serialNumber}")
+    @GetMapping("/get-history-data-for-platform")
     @ApiOperation(value = "获取仪器历史数据(用于平台展示)")
-    public CommonResult getHistoryDataForPlatform(@PathVariable Integer collectionNumber,
-                                                          @PathVariable Integer deviceCode,
-                                                          @PathVariable String serialNumber) {
+    public CommonResult getHistoryDataForPlatform(@RequestParam Integer collectionNumber,
+                                                          @RequestParam Integer deviceCode,
+                                                          @RequestParam String serialNumber) {
         return deviceDataService.getHistoryDeviceData(collectionNumber, deviceCode, serialNumber, 0, 5000);
     }
 

@@ -1,6 +1,7 @@
 package com.nano.msc.collection.vo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
@@ -45,11 +46,10 @@ public class DeviceCardVo {
      */
     private String deviceType = "";
 
-
     /**
      * 设备购买时间(可后续补充)
      */
-    private LocalDate produceDate;
+    private LocalDateTime produceDate;
 
     /**
      * 仪器的使用年限

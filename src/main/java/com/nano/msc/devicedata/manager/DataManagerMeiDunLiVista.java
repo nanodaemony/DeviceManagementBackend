@@ -112,6 +112,18 @@ public class DataManagerMeiDunLiVista implements DeviceDataManager<DataMeiDunLiV
     }
 
     /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
+    }
+
+    /**
      * 判断数据是否合法
      * @param data 数据
      * @return 是否合法

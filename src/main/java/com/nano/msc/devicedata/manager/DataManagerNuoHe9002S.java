@@ -46,7 +46,20 @@ public class DataManagerNuoHe9002S implements DeviceDataManager<DataNuoHe9002s> 
         dataMap.put("EMG", dataList.stream().map(DataNuoHe9002s::getEmg).collect(Collectors.toList()));
         dataMap.put("SQI", dataList.stream().map(DataNuoHe9002s::getSqi).collect(Collectors.toList()));
         dataMap.put("CSI", dataList.stream().map(DataNuoHe9002s::getCsi).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataNuoHe9002s::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataNuoHe9002s::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

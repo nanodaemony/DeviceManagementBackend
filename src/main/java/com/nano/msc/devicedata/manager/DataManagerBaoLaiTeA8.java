@@ -47,7 +47,20 @@ public class DataManagerBaoLaiTeA8 implements DeviceDataManager<DataBaoLaiTeA8> 
         dataMap.put("SpO2", dataList.stream().map(DataBaoLaiTeA8::getSpo2).collect(Collectors.toList()));
         dataMap.put("PR", dataList.stream().map(DataBaoLaiTeA8::getPr).collect(Collectors.toList()));
         dataMap.put("Temp", dataList.stream().map(DataBaoLaiTeA8::getTemperature1).collect(Collectors.toList()));
-        dataMap.put("time", dataList.stream().map(DataBaoLaiTeA8::getGmtCreate).collect(Collectors.toList()));
+        // dataMap.put("time", dataList.stream().map(DataBaoLaiTeA8::getGmtCreate).collect(Collectors.toList()));
         return dataMap;
+    }
+
+
+    /**
+     * 获取某次采集采集了多少条数据
+     *
+     * @param collectionNumber 采集号
+     * @param serialNumber 序列号
+     * @return 采集了多少条数据
+     */
+    @Override
+    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+        return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }
