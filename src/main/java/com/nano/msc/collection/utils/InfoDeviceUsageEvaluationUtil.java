@@ -56,4 +56,20 @@ public class InfoDeviceUsageEvaluationUtil {
     }
 
 
+    /**
+     * 获取总的记录的错误发生次数
+     *
+     * @param evaluationList 评价列表
+     * @return 总错误次数
+     */
+    public static int getTotalRecordErrorCounter(List<InfoDeviceUsageEvaluation> evaluationList) {
+        int res = 0;
+        for (InfoDeviceUsageEvaluation evaluation : evaluationList) {
+            if (evaluation.getHasError()) {
+                res++;
+            }
+        }
+        return res;
+    }
+
 }

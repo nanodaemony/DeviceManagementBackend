@@ -16,6 +16,25 @@ import java.util.List;
  */
 public class InfoMaintenanceRecordUtil {
 
+    /**
+     * 获取维修费用之和(全部)
+     *
+     * @param maintenanceRecordList 维修记录情况
+     * @return 全部维修费之和
+     */
+    public static double getHistoryMaintenanceCostSum(List<InfoDeviceMaintenanceRecord> maintenanceRecordList) {
+        if (maintenanceRecordList == null || maintenanceRecordList.size() == 0) {
+            return 0D;
+        }
+        double sum = 0;
+        for (InfoDeviceMaintenanceRecord record : maintenanceRecordList) {
+            sum = sum + record.getCostAccessoryNum();
+            sum = sum + record.getCostRepairNum();
+            sum = sum + record.getCostOtherNum();
+        }
+        return sum;
+    }
+
 
     /**
      * 获取历史配件费之和

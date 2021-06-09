@@ -1,5 +1,6 @@
 package com.nano.msc.system;
 
+import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.system.log.service.SystemLogService;
 
 import org.junit.Test;
@@ -21,13 +22,21 @@ import java.util.Comparator;
  * @author: nano
  * @date: 2021/1/22 16:50
  */
-@SpringBootTest
-@RunWith(SpringRunner.class)
 public class LogTest {
 
     @Autowired
     private SystemLogService logService;
 
+
+    @Test
+    public void test() {
+
+        System.out.println(TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(2));
+
+        System.out.println(TimestampUtils.getCurrentDayZeroLocalDateTime());
+
+
+    }
 
 
 
