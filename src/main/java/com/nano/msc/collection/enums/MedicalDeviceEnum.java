@@ -90,6 +90,13 @@ public enum MedicalDeviceEnum {
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
             InterfaceTypeEnum.ETHERNET.getCode(), true),
 
+    /**
+     * 科曼 AX700 麻醉机
+     */
+    KE_MAN_AX700(48, "深圳市科曼医疗设备有限公司", "麻醉机(AX700)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
+            InterfaceTypeEnum.ETHERNET.getCode(), false),
+
     //------------------------------------------------------
     // 串口类仪器
     //------------------------------------------------------
@@ -164,21 +171,28 @@ public enum MedicalDeviceEnum {
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
             InterfaceTypeEnum.SERIAL.getCode(), true),
 
+    /**
+     * 普博 5000D呼吸机
+     */
+    PU_BO_5000D (81, "深圳市普博科技有限公司", "呼吸机(5000D)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
+    /**
+     * 晨伟 麻醉机
+     */
+    CHEN_WEI_CWH302 (82, "南京晨伟医疗设备有限公司", "麻醉机(CWM302)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
-
-    //------------------------------------------------------
-    // 无法调试的仪器
-    //------------------------------------------------------
-
-
-
-
+    /**
+     * 晨伟 呼吸机
+     */
+    CHEN_WEI_CWH3020B (83, "南京晨伟医疗设备有限公司", "呼吸机(CWM3020B)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     ;
-
-
-
 
 
     /**

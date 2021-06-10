@@ -1,7 +1,6 @@
 package com.nano.msc.collection.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.nano.msc.collection.enums.deviceusage.EvaluationLevelEnum;
 import com.nano.msc.common.converter.LocalDateTimeConverter;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -49,19 +48,6 @@ public class InfoDeviceUsageEvaluation implements Serializable {
     private Integer id;
 
     /**
-     * 手术顺序号
-     */
-    @Column(name = "collection_number")
-    private Integer collectionNumber;
-
-    /**
-     * 产生标记的识别号(用于回传给采集器标识哪些已经成功存储)
-     */
-    @NotBlank(message = "Unique_number must cannot empty")
-    @Column(name = "unique_number")
-    private String uniqueNumber;
-
-    /**
      * 仪器代号
      */
     @Column(name = "device_code")
@@ -72,6 +58,25 @@ public class InfoDeviceUsageEvaluation implements Serializable {
      */
     @Column(name = "serial_number")
     private String serialNumber;
+
+    /**
+     * 产生标记的识别号(用于回传给采集器标识哪些已经成功存储)
+     */
+    @NotBlank(message = "Unique_number must cannot empty")
+    @Column(name = "unique_number")
+    private String uniqueNumber;
+
+    /**
+     * 采集场次号(可以为空,表示是对无法采集仪器的评价信息)
+     */
+    @Column(name = "collection_number")
+    private Integer collectionNumber;
+
+    /**
+     * 仪器当次使用时长(单位为秒)
+     */
+    @Column(name = "device_use_duration_time")
+    private Integer deviceUseDurationTime;
 
     /**
      * 使用科室
@@ -110,10 +115,10 @@ public class InfoDeviceUsageEvaluation implements Serializable {
     private String otherError;
 
     /**
-     * 备注
+     * 备注信息
      */
-    @Column(name = "remark")
-    private String remark;
+    @Column(name = "remark_info")
+    private String remarkInfo;
 
     /**
      * 记录人签名
@@ -149,7 +154,7 @@ public class InfoDeviceUsageEvaluation implements Serializable {
     public InfoDeviceUsageEvaluation() {
     }
 
-    public InfoDeviceUsageEvaluation(Integer collectionNumber, Integer deviceCode, String serialNumber, String deviceDepartment, Integer experienceLevel, Integer reliabilityLevel, Boolean hasError, String knownError, String otherError, String remark, String recordName) {
+    public InfoDeviceUsageEvaluation(Integer collectionNumber, Integer deviceCode, String serialNumber, String deviceDepartment, Integer experienceLevel, Integer reliabilityLevel, Boolean hasError, String knownError, String otherError, String remarkInfo, String recordName) {
         this.collectionNumber = collectionNumber;
         this.deviceCode = deviceCode;
         this.serialNumber = serialNumber;
@@ -159,7 +164,7 @@ public class InfoDeviceUsageEvaluation implements Serializable {
         this.hasError = hasError;
         this.knownError = knownError;
         this.otherError = otherError;
-        this.remark = remark;
+        this.remarkInfo = remarkInfo;
         this.recordName = recordName;
     }
 

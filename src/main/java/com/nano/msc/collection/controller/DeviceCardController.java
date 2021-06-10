@@ -1,4 +1,4 @@
-package com.nano.msc.collection.controller.collection;
+package com.nano.msc.collection.controller;
 
 import com.nano.msc.collection.service.DeviceCardService;
 import com.nano.msc.common.vo.CommonResult;

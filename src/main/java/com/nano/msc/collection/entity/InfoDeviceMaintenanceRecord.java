@@ -101,22 +101,35 @@ public class InfoDeviceMaintenanceRecord implements Serializable {
     private String maintenancePeople;
 
     /**
+     * 故障原因
+     */
+    @Column(name = "error_reason")
+    private String errorReason;
+
+
+    /**
      * 是否在保质期内
      */
     @Column(name = "within_the_shelf_life")
     private boolean withinTheShelfLife;
 
     /**
-     * 故障原因
-     */
-    @Column(name = "error_reason")
-    private String errorReason;
-
-    /**
      * 是否更换配件
      */
     @Column(name = "replace_accessory")
     private boolean replaceAccessory;
+
+    /**
+     * 是否解决故障
+     */
+    @Column(name = "error_overcome")
+    private boolean errorOvercome;
+
+    /**
+     * 故障未解决原因
+     */
+    @Column(name = "error_not_overcome_reason")
+    private String errorNotOvercomeReason;
 
     /**
      * 配件费数值
@@ -141,19 +154,6 @@ public class InfoDeviceMaintenanceRecord implements Serializable {
      */
     @Column(name = "cost_other_num")
     private Double costOtherNum;
-
-    /**
-     * 是否解决故障
-     */
-    @Column(name = "error_overcome")
-    private boolean errorOvercome;
-
-    /**
-     * 故障未解决原因
-     */
-    @Column(name = "error_not_overcome_reason")
-    private String errorNotOvercomeReason;
-
 
     /**
      * 维修响应时间满意度
@@ -192,6 +192,13 @@ public class InfoDeviceMaintenanceRecord implements Serializable {
     private String recordName;
 
     /**
+     * 记录填写时间
+     */
+    @JsonSerialize(using = LocalDateTimeConverter.class)
+    @Column(name = "record_time")
+    private LocalDateTime recordTime;
+
+    /**
      * 是否有效
      */
     @Column(name = "valid")
@@ -217,6 +224,7 @@ public class InfoDeviceMaintenanceRecord implements Serializable {
 
 
     public InfoDeviceMaintenanceRecord() {
+
     }
 
 

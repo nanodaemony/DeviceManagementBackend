@@ -115,27 +115,6 @@ public class InfoDeviceDataCollection implements Serializable {
     @Column(name = "last_receive_device_data_time")
     private LocalDateTime lastReceiveDeviceDataTime = TimestampUtils.getCurrentTimeForDataBase();
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // 采集统计与分析相关信息
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-//    /**
-//     * 这个仪器这场手术采集数据总条数
-//     */
-//    @Column(name = "data_number")
-//    private Integer dataNumber;
-//
-//    /**
-//     * 手术持续时间
-//     */
-//    @Column(name = "operation_duration_time")
-//    private Long operationDurationTime;
-//
-//    /**
-//     * 掉线率
-//     */
-//    @Column(name = "collection_drop_rate")
-//    private Double collectionDropRate;
 
     /**
      * 数据创建时间
@@ -156,7 +135,7 @@ public class InfoDeviceDataCollection implements Serializable {
     private LocalDateTime gmtModified;
 
 
-    public InfoDeviceDataCollection(@NotNull(message = "collectionNumber must cannot empty") Integer collectionNumber,
+    public InfoDeviceDataCollection(@NotNull(message = "CollectionNumber must cannot empty") Integer collectionNumber,
                                     @NotNull(message = "DeviceCode must cannot empty") Integer deviceCode,
                                     @NotNull(message = "DeviceInfoId must cannot empty") Integer medicalDeviceId) {
         this.collectionNumber = collectionNumber;

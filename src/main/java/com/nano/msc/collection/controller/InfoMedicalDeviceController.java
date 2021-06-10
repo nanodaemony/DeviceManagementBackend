@@ -1,4 +1,4 @@
-package com.nano.msc.collection.controller.collection;
+package com.nano.msc.collection.controller;
 
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.service.InfoMedicalDeviceService;

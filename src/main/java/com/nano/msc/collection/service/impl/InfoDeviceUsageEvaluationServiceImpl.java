@@ -1,7 +1,7 @@
 package com.nano.msc.collection.service.impl;
 
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
-import com.nano.msc.collection.enums.deviceusage.EvaluationLevelEnum;
+import com.nano.msc.collection.enums.EvaluationLevelEnum;
 import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import cn.hutool.core.bean.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -130,7 +129,7 @@ public class InfoDeviceUsageEvaluationServiceImpl extends BaseServiceImpl<InfoDe
         evaluation.setKnownError("");
         evaluation.setOtherError("");
         evaluation.setHasError(false);
-        evaluation.setRemark("无");
+        evaluation.setRemarkInfo("无");
         evaluation.setRecordName("系统管理员");
         deviceUsageEvaluationRepository.save(evaluation);
     }

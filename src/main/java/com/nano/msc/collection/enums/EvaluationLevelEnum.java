@@ -1,4 +1,4 @@
-package com.nano.msc.collection.enums.deviceusage;
+package com.nano.msc.collection.enums;
 
 import lombok.Getter;
 

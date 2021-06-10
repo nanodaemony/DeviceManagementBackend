@@ -116,11 +116,39 @@ public class InfoMedicalDevice implements Serializable {
     private Integer interfaceType;
 
     /**
+     * 能否实现数据采集
+     */
+    @ApiModelProperty(value = "能否实现数据采集", example = "false")
+    @Column(name = "can_collect_data")
+    private Boolean canCollectData;
+
+    /**
      * 使用科室
      */
     @ApiModelProperty(value = "使用科室", example = "麻醉科2手术室")
     @Column(name = "device_department")
     private String deviceDepartment;
+
+    /**
+     * 耗材费用
+     */
+    @ApiModelProperty(value = "耗材费用", example = "200")
+    @Column(name = "consumable_cost_money")
+    private Double consumableCostMoney;
+
+    /**
+     * 单次收益费用
+     */
+    @ApiModelProperty(value = "单次收益费用", example = "500")
+    @Column(name = "profit_money")
+    private Double profitMoney;
+
+    /**
+     * 仪器功率
+     */
+    @ApiModelProperty(value = "仪器功率(KW)", example = "3")
+    @Column(name = "device_power")
+    private Double devicePower;
 
     /**
      * 数据创建时间

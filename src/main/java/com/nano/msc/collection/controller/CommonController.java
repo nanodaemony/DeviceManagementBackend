@@ -1,15 +1,10 @@
-package com.nano.msc.collection.controller.common;
+package com.nano.msc.collection.controller;
 
-import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.common.vo.CommonResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

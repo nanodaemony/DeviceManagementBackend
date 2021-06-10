@@ -61,7 +61,6 @@ public enum CollectorCodeEnum {
      */
     POST_DEVICE_COLLECTION_ABANDON(123, "仪器放弃本次采集"),
 
-
     /**
      * 查询匹配的标记事件
      */
