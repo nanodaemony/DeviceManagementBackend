@@ -28,29 +28,29 @@ public enum MedicalDeviceEnum {
      * 合肥诺和NW9002S
      */
     NUO_HE_NW9002S(30, "合肥诺和电子科技有限公司", "麻醉深度多参数监护仪(NW-9002S)",
-            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR, DeviceTypeEnum.HEMOGLOBIN_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 浙江普可YY-106
      */
     PU_KE_YY106(31, "浙江普可医疗科技有限公司", "麻醉深度监测仪(YY-106)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 广东宝莱特 A8
      */
     BAO_LAI_TE_A8(32, "广东宝莱特医用科技股份有限公司", "重症插件式监护仪(A8)",
-            DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR, DeviceTypeEnum.HEMOGLOBIN_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 宜安
      */
     YI_AN_8700A(33, "北京宜安医疗系统股份有限公司", "麻醉机(Aeon8700A)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     //------------------------------------------------------
     // TCP类仪器
@@ -60,35 +60,35 @@ public enum MedicalDeviceEnum {
      */
     MAI_RUI_T8(42, "深圳迈瑞生物医疗电子股份有限公司", "监护仪(BeneViewT8)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 迈瑞 WATOEX 65
      */
     MAI_RUI_WATOEX_65(43, "深圳迈瑞生物医疗电子股份有限公司", "麻醉机(WATOEX65)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 理邦 ELite V8
      */
     LI_BANG_ELITE_V8(45, "深圳市理邦精密仪器股份有限公司", "监护仪(ELiteV8)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 科曼 C90
      */
     KE_MAN_C90(46, "深圳市科曼医疗设备有限公司", "无创血压/监护仪(C90)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
      * 威浩康 Angle600D麻醉深度监测仪
      */
     WEI_HAO_KANG_ANGEL6000D (47, "深圳市威浩康医疗器械有限公司","麻醉深度监测仪(ANGEL6000D)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode()),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     //------------------------------------------------------
     // 串口类仪器
@@ -99,71 +99,86 @@ public enum MedicalDeviceEnum {
      */
     AI_QIN_EGOS600A(71, "苏州爱琴生物医疗电子有限公司", "近红外组织血氧参数无损监测仪(EGOS600A)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.HEMOGLOBIN_MONITOR, DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 苏州爱琴
      */
     AI_QIN_EGOS600B(72, "苏州爱琴生物医疗电子有限公司", "近红外组织血氧参数无损监测仪(EGOS600B)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.HEMOGLOBIN_MONITOR, DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 苏州爱琴
      */
     AI_QIN_EGOS600C(73, "苏州爱琴生物医疗电子有限公司", "近红外组织血氧参数无损监测仪(EGOS600C)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 重庆名希
      */
     MING_XI(74, "重庆名希医疗器械有限公司", "脑血氧无创检测仪(MINER-P100)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 美敦力 麻醉深度
      */
     MEIDUNLI_EEG_VISTA(75, "美国美敦力公司", "麻醉深度监护仪(EEG-VISTA)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 美敦力 血红蛋白
      */
     MEIDUNLI_5100C(76, "美国美敦力公司", "脑氧饱和度监测仪(5100C)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 普博 Boaray700麻醉机
      */
     PU_BO_BOARAY700 (77, "深圳市普博科技有限公司", "麻醉机(Boaray700)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 德尔格呼吸机V300
      */
     DRAGER_V300(78, "德国德尔格公司", "呼吸机(V300)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 德尔格 Fabius Plus麻醉机
      */
     DRAGER_FABIUS_PLUS (79, "德国德尔格公司", "麻醉机(Fabius Plus)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
      * 舒普思达 S1200呼吸机
      */
     SHU_PU_SI_DA_S1200 (80, "南京舒普思达医疗设备有限公司", "呼吸机(S1200)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode()),
+            InterfaceTypeEnum.SERIAL.getCode(), true),
+
+
+
+
+    //------------------------------------------------------
+    // 无法调试的仪器
+    //------------------------------------------------------
+
+
+
+
+
     ;
+
+
+
 
 
     /**
@@ -191,13 +206,19 @@ public enum MedicalDeviceEnum {
      */
     Integer interfaceType;
 
+    /**
+     * 能否采集数据
+     */
+    Boolean canCollectData;
 
-    MedicalDeviceEnum(Integer deviceCode, String companyName, String deviceName, String deviceType, Integer interfaceType) {
+
+    MedicalDeviceEnum(Integer deviceCode, String companyName, String deviceName, String deviceType, Integer interfaceType, Boolean canCollectData) {
         this.deviceCode = deviceCode;
         this.companyName = companyName;
         this.deviceName = deviceName;
         this.deviceType = deviceType;
         this.interfaceType = interfaceType;
+        this.canCollectData = canCollectData;
     }
 
     /**

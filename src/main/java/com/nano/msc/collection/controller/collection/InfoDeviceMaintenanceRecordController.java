@@ -1,14 +1,15 @@
 package com.nano.msc.collection.controller.collection;
 
 import com.nano.msc.collection.entity.InfoDeviceMaintenanceRecord;
-import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.service.InfoDeviceMaintenanceRecordService;
 import com.nano.msc.common.vo.CommonResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -46,6 +47,21 @@ public class InfoDeviceMaintenanceRecordController {
     public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceMaintenanceRecord deviceMaintenanceRecord) {
         log.info(deviceMaintenanceRecord.toString());
         return maintenanceRecordService.save(deviceMaintenanceRecord);
+    }
+
+
+    /**
+     * 通过仪器号与序列号查询维修记录
+     *
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @return 维修记录
+     */
+    @ApiOperation("获取维修记录信息(根据DeviceCode与SerialNumber)")
+    @GetMapping("/get-maintenance-record-by-device-code-and-serial-number")
+    public CommonResult getMaintenanceRecordByDeviceCodeAndSerialNumber(@RequestParam(value = "deviceCode", defaultValue = "30") int deviceCode,
+                                                            @RequestParam(value = "serialNumber", defaultValue = "11111") String serialNumber) {
+        return maintenanceRecordService.getMaintenanceRecordByDeviceCodeAndSerialNumberOrderByTimeErrorOccurDesc(deviceCode, serialNumber);
     }
 
 }

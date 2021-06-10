@@ -1,6 +1,5 @@
 package com.nano.msc.collection.controller.collection;
 
-import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.service.InfoMedicalDeviceService;
 import com.nano.msc.common.vo.CommonResult;
@@ -48,10 +47,21 @@ public class InfoMedicalDeviceController {
      */
     @PostMapping("/add")
     @ApiOperation(value = "新增一条仪器医疗仪器信息")
-    public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoMedicalDevice medicalDevice) {
+    public CommonResult addMedicalDeviceInfo(@Valid @RequestBody InfoMedicalDevice medicalDevice) {
         return medicalDeviceService.addMedicalDeviceInfo(medicalDevice);
     }
 
+    /**
+     * 更新医疗仪器信息
+     *
+     * @param medicalDevice 术后评价信息表
+     * @return 返回唯一UniqueNumber
+     */
+    @PostMapping("/update")
+    @ApiOperation(value = "更新一条仪器医疗仪器信息")
+    public CommonResult updateMedicalDeviceInfo(@Valid @RequestBody InfoMedicalDevice medicalDevice) {
+        return medicalDeviceService.updateMedicalDeviceInfo(medicalDevice);
+    }
 
     /**
      * 获取医疗仪器信息列表(根据deviceCode)

@@ -22,27 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.8">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/EconomicEvaluationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/FollowUpEvaluationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/MaintenanceEvaluationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/EconomicEvaluationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/FollowUpEvaluationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/MaintenanceEvaluationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EconomicEvaluationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/FollowUpEvaluationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/MaintenanceEvaluationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/DeviceFollowUpEvaluationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/MaintenanceEvaluationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/EconomicEvaluationVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/FollowUpEvaluationVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/MaintenanceEvaluationVo.java" afterDir="false" />
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.9 Add three evaluation part.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceDataCollectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceDataCollectionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceUsageEvaluationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceUsageEvaluationUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoMaintenanceRecordUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoMaintenanceRecordUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nano/msc/system/LogTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nano/msc/system/LogTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceMaintenanceRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceMaintenanceRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceUsageEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceUsageEvaluationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoMedicalDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoMedicalDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoMedicalDeviceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/InfoMedicalDeviceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceMaintenanceRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceMaintenanceRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623153851725</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="2021.6.9 Add three evaluation part.">
+      <created>1623230617429</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1623230617429</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,6 +424,7 @@
     <MESSAGE value="2021.6.3 Finish add data collection part." />
     <MESSAGE value="2021.6.6 Finish add device info and usage evaluation part." />
     <MESSAGE value="2021.6.8" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.8" />
+    <MESSAGE value="2021.6.9 Add three evaluation part." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.9 Add three evaluation part." />
   </component>
 </project>

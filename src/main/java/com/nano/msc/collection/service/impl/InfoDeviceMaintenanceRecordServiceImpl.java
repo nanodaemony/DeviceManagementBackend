@@ -40,6 +40,19 @@ public class InfoDeviceMaintenanceRecordServiceImpl extends BaseServiceImpl<Info
     }
 
 
+    /**
+     * 通过仪器号与序列号查询维修记录
+     *
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @return 维修记录
+     */
+    @Override
+    public CommonResult getMaintenanceRecordByDeviceCodeAndSerialNumberOrderByTimeErrorOccurDesc(int deviceCode, String serialNumber) {
+        return CommonResult.success(maintenanceRecordRepository.findByDeviceCodeAndSerialNumber(deviceCode, serialNumber));
+    }
+
+
     @Override
     protected JpaRepository<InfoDeviceMaintenanceRecord, Integer> initRepository() {
         return maintenanceRecordRepository;

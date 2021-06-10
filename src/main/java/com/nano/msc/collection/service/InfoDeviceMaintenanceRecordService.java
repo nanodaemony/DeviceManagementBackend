@@ -24,4 +24,12 @@ public interface InfoDeviceMaintenanceRecordService extends BaseService<InfoDevi
      */
     CommonResult<String> addOneMaintenanceRecord(InfoDeviceMaintenanceRecord maintenanceRecord);
 
+    /**
+     * 通过仪器号与序列号查询维修记录(按故障时间降序)
+     *
+     * @param deviceCode 仪器号
+     * @param serialNumber 序列号
+     * @return 维修记录
+     */
+    CommonResult getMaintenanceRecordByDeviceCodeAndSerialNumberOrderByTimeErrorOccurDesc(int deviceCode, String serialNumber);
 }

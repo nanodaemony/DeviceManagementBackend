@@ -77,7 +77,7 @@ public class InfoDeviceUsageEvaluationController {
     public CommonResult getDeviceUsageEvaluationListByDeviceCode (
             @RequestParam(value = "deviceCode", defaultValue = "30") Integer deviceCode,
             @Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
+            @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "300") Integer size) {
         return deviceUsageEvaluationService.getDeviceUsageEvaluationListByDeviceCode(deviceCode, page, size);
     }
 

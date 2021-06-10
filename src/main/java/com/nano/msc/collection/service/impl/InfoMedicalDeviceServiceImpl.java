@@ -14,12 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,15 +26,15 @@ import static java.util.stream.Collectors.toList;
 /**
  * Description: 医疗仪器服务实现类
  * Usage:
+ *
+ * @version: 1.0
+ * @author: nano
+ * @date: 2021/1/22 21:42
  * @see #addMedicalDeviceInfo(InfoMedicalDevice) 保存医疗仪器信息,目前由Mobile端上传
  * @see #getMedicalDeviceAccessInSystemCounterTotal() 获取接入仪器的全部仪器个数(总的)
  * @see #getMedicalDeviceAccessInSystemCounterByType() 统计已经接入系统的仪器种类数量
  * @see #getSerialNumberListByDeviceCode(int) 通过仪器号查询对应拥有的仪器列表
  * @see #getDeviceInfoByDeviceType(DeviceTypeEnum) 根据仪器类别找到符合条件的仪器列表
- *
- * @version: 1.0
- * @author: nano
- * @date: 2021/1/22 21:42
  */
 @Slf4j
 @Service
@@ -50,7 +48,8 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
     private SystemLogService logger;
 
     /**
-     * 保存来自Mobile端的医疗仪器信息
+     * 保存或更新来自Mobile端的医疗仪器信息
+     *
      * @param medicalDevice 医疗仪器
      * @return 是否成功
      */
@@ -63,9 +62,15 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
         if (medicalDevice.getSerialNumber() == null || medicalDevice.getSerialNumber().length() == 0) {
             return CommonResult.failed("添加失败,仪器序列号格式错误.");
         }
+        // 根据仪器号获取静态信息
         MedicalDeviceEnum deviceEnum = MedicalDeviceEnum.matchDeviceCodeEnum(medicalDevice.getDeviceCode());
         if (deviceEnum == null) {
             return CommonResult.failed("添加失败,当前DeviceCode不存在.");
+        }
+
+        InfoMedicalDevice hisDevice = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(medicalDevice.getDeviceCode(), medicalDevice.getSerialNumber());
+        if (hisDevice != null) {
+            return CommonResult.failed("添加失败,当前仪器信息已经存在,如需更新请进行修改.");
         }
         // 设置基本信息
         medicalDevice.setDeviceName(deviceEnum.getDeviceName());
@@ -74,6 +79,35 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
         medicalDevice.setInterfaceType(deviceEnum.getInterfaceType());
         medicalDevice = medicalDeviceRepository.save(medicalDevice);
         logger.info("新增医疗仪器信息成功:" + medicalDevice);
+        return CommonResult.success(JSON.toJSONString(medicalDevice));
+    }
+
+
+    /**
+     * 更新来自Mobile端的医疗仪器信息
+     *
+     * @param medicalDevice 医疗仪器
+     * @return 是否成功
+     */
+    @Override
+    public CommonResult<String> updateMedicalDeviceInfo(InfoMedicalDevice medicalDevice) {
+
+        if (medicalDevice.getId() == 0) {
+            return CommonResult.failed("更新失败,仪器ID非法:" + medicalDevice);
+        }
+        // 查询历史信息
+        InfoMedicalDevice hisDevice = medicalDeviceRepository.findByIdAndDeviceCode(medicalDevice.getId(), medicalDevice.getDeviceCode());
+        if (hisDevice == null) {
+            return CommonResult.failed("更新失败,查询不到该仪器信息:" + medicalDevice);
+        }
+        // 更新仪器信息
+        hisDevice.setSerialNumber(medicalDevice.getSerialNumber());
+        hisDevice.setDeviceDepartment(medicalDevice.getDeviceDepartment());
+        hisDevice.setProduceDate(medicalDevice.getProduceDate());
+        hisDevice.setCollectorUniqueId(medicalDevice.getCollectorUniqueId());
+        // historyDevice.setServiceLife(medicalDevice.getServiceLife());
+        medicalDevice = medicalDeviceRepository.save(hisDevice);
+        logger.info("更新医疗仪器信息成功:" + medicalDevice);
         return CommonResult.success(JSON.toJSONString(medicalDevice));
     }
 
@@ -90,7 +124,7 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
      */
     @Override
     public CommonResult<Integer> getMedicalDeviceAccessInSystemCounterTotal() {
-        return CommonResult.success((int)medicalDeviceRepository.count());
+        return CommonResult.success((int) medicalDeviceRepository.count());
     }
 
     /**
@@ -121,6 +155,7 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
 
     /**
      * 通过仪器号查询对应拥有的仪器列表
+     *
      * @param deviceCode 仪器号
      * @return 仪器列表
      */
@@ -150,7 +185,6 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
     protected JpaRepository<InfoMedicalDevice, Integer> initRepository() {
         return medicalDeviceRepository;
     }
-
 
 
 }

@@ -27,6 +27,15 @@ public interface InfoMedicalDeviceRepository extends JpaRepository<InfoMedicalDe
     InfoMedicalDevice findByDeviceCodeAndSerialNumber(Integer deviceCode, String serialNumber);
 
     /**
+     * 通过ID与仪器号查询已有的仪器信息
+     *
+     * @param id 数据库ID号
+     * @param deviceCode 仪器号
+     * @return 仪器信息
+     */
+    InfoMedicalDevice findByIdAndDeviceCode(int id, int deviceCode);
+
+    /**
      * 通过仪器号查询仪器信息列表
      *
      * @param deviceCode 仪器号
