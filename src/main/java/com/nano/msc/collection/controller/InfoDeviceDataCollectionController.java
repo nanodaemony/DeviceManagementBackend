@@ -1,6 +1,5 @@
 package com.nano.msc.collection.controller;
 
-import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.service.InfoDeviceDataCollectionService;
 import com.nano.msc.common.vo.CommonResult;
 
@@ -19,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Description: 仪器数据采集控制器
  * Usage:
- * 1. 服务器是否在线接口
  *
  * @version: 1.0
  * @author: nano
@@ -35,13 +33,12 @@ public class InfoDeviceDataCollectionController {
     @Autowired
     private InfoDeviceDataCollectionService deviceDataCollectionService;
 
-
     /**
      * 获取系统中有的总采集场次数
      *
      * @return 手术信息
      */
-    @ApiOperation("获取系统总采集场次数")
+    @ApiOperation("获取系统总数据采集场次数")
     @GetMapping("/system-total-data-collection-number")
     public CommonResult getSystemTotalDataCollectionNumber() {
         return deviceDataCollectionService.getSystemTotalDataCollectionNumber();
@@ -54,10 +51,10 @@ public class InfoDeviceDataCollectionController {
      * @param size 个数
      * @return 结果
      */
-    @ApiOperation("分页查询采集信息(全部状态)")
+    @ApiOperation("分页查询数据采集信息(全部状态)")
     @GetMapping("/list-all-status")
     public CommonResult getDeviceDataCollectionListByStatusAll(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                             @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
+                                             @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "20") Integer size) {
         return deviceDataCollectionService.getDeviceDataCollectionListByStatusAll(page, size);
     }
 
@@ -68,7 +65,7 @@ public class InfoDeviceDataCollectionController {
      * @param size 个数
      * @return 结果
      */
-    @ApiOperation("分页查询采集信息(Waiting状态)")
+    @ApiOperation("分页查询数据采集信息(Waiting状态)")
     @GetMapping("/list-waiting-status")
     public CommonResult getDeviceDataCollectionListByStatusWaiting(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
                                              @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
@@ -83,7 +80,7 @@ public class InfoDeviceDataCollectionController {
      * @param size 个数
      * @return 结果
      */
-    @ApiOperation("分页查询采集信息(Collecting状态)")
+    @ApiOperation("分页查询数据采集信息(Collecting状态)")
     @GetMapping("/list-collecting-status")
     public CommonResult getDeviceDataCollectionListByStatusCollecting(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                    @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
@@ -97,7 +94,7 @@ public class InfoDeviceDataCollectionController {
      * @param size 个数
      * @return 结果
      */
-    @ApiOperation("分页查询采集信息(Finish状态)")
+    @ApiOperation("分页查询数据采集信息(Finish状态)")
     @GetMapping("/list-finish-status")
     public CommonResult getDeviceDataCollectionListByStatusFinish(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                       @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
@@ -111,7 +108,7 @@ public class InfoDeviceDataCollectionController {
      * @param size 个数
      * @return 结果
      */
-    @ApiOperation("分页查询采集信息(Abandon状态)")
+    @ApiOperation("分页查询数据采集信息(Abandon状态)")
     @GetMapping("/list-abandon-status")
     public CommonResult getDeviceDataCollectionListByStatusAbandon(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                   @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
@@ -127,13 +124,8 @@ public class InfoDeviceDataCollectionController {
     @ApiOperation("获取某次数据采集详细信息")
     @GetMapping("/detail-info")
     public CommonResult getDeviceDataCollectionInfo(@RequestParam(value = "collectionNumber") @Min(value = 1, message = "查询采集场次号不能小于1")  int collectionNumber) {
-        return deviceDataCollectionService.getDeviceDataCollectionDetailInfoVo(collectionNumber);
+        return deviceDataCollectionService.getDeviceDataCollectionDetailInfoByCollectionNumber(collectionNumber);
     }
-
-
-
-
-
 
 
 

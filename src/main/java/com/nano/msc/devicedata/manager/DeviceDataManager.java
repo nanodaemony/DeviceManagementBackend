@@ -36,6 +36,6 @@ public interface DeviceDataManager<T> {
      * @param serialNumber 序列号
      * @return 采集了多少条数据
      */
-    int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber);
+    int getCollectedDataCounterInOneCollection(int collectionNumber, String serialNumber);
 
 }

@@ -170,7 +170,6 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
                 .map(InfoMedicalDevice::getSerialNumber).collect(toList()));
     }
 
-
     /**
      * 初始化仓库
      */

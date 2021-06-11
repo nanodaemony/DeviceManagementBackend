@@ -2,14 +2,12 @@ package com.nano.msc.collection.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
-import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.enums.InterfaceTypeEnum;
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
 import com.nano.msc.collection.param.ParamPad;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
-import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.EthernetDeviceDataCollectionService;
 import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
@@ -93,7 +91,7 @@ public class EthernetDeviceDataCollectionServiceImpl implements EthernetDeviceDa
             logService.info("成功分配采集序号:" + collection.toString());
 
             // 进行默认使用评价
-            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
 
             return CommonResult.success(collection.getCollectionNumber());
 

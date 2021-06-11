@@ -61,7 +61,7 @@ public class DataManagerMaiRuiWatoex65 implements DeviceDataManager<DataMaiRuiWa
      * @return 采集了多少条数据
      */
     @Override
-    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+    public int getCollectedDataCounterInOneCollection(int collectionNumber, String serialNumber) {
         return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 }

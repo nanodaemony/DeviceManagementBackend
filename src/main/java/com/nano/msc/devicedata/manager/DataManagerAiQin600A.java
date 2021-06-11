@@ -73,7 +73,7 @@ public class DataManagerAiQin600A implements DeviceDataManager<DataAiQin600A> {
      * @return 采集了多少条数据
      */
     @Override
-    public int getDataCollectionCounterInOneCollection(int collectionNumber, String serialNumber) {
+    public int getCollectedDataCounterInOneCollection(int collectionNumber, String serialNumber) {
         return dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber).size();
     }
 

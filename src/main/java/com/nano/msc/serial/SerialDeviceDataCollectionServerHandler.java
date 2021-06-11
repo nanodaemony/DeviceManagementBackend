@@ -185,7 +185,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             // 查询医疗仪器
             InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
             // 进行默认使用评价
-            usageEvaluationService.addDefaultUsageEvaluation(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
         }
         // 构造发送到解析器的数据
         String deviceDataRaw = collection.getCollectionNumber() + DATA_SEPARATOR

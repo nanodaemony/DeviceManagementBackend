@@ -59,12 +59,11 @@ public class InfoDeviceUsageEvaluationController {
      * @param afterCollectionEvaluation 术后评价信息表
      * @return 返回唯一UniqueNumber
      */
-    @PostMapping("/add")
-    @ApiOperation(value = "新增一条仪器使用评价信息")
-    public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceUsageEvaluation afterCollectionEvaluation) {
-        return deviceUsageEvaluationService.addDeviceUsageEvaluationTableByMobile(afterCollectionEvaluation);
+    @PostMapping("/update")
+    @ApiOperation(value = "更新一条仪器使用评价信息")
+    public CommonResult updateAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceUsageEvaluation afterCollectionEvaluation) {
+        return deviceUsageEvaluationService.updateDeviceUsageEvaluationInfoFromMobile(afterCollectionEvaluation);
     }
-
 
     /**
      * 查询仪器使用评价信息(根据仪器号)

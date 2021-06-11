@@ -22,24 +22,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.10 Start to modify all.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDataCollector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorStatusEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorTypeEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/UserGuide.txt" afterDir="false" />
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.11 Finish modify info medical device info part.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoMedicalDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoMedicalDeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorCodeEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceDataCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceDataCollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceUsageEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceUsageEvaluationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceDataCollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceUsageEvaluationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoDeviceUsageEvaluationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceDataCollectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceMaintenanceRecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/constants/CacheCons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/constants/DataConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/service/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/service/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/Idea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/Idea.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600B.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600B.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600C.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerAiQin600C.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerBaoLaiTeA8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerBaoLaiTeA8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerLiBangEliteV8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerLiBangEliteV8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiT8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiT8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiWatoex65.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMaiRuiWatoex65.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLiVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLiVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerNuoHe9002S.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerNuoHe9002S.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuKeYY106.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuKeYY106.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerYiAn800A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerYiAn800A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DeviceDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DeviceDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +110,7 @@
       <recent name="com.nano.msc.collection.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LogTest.test">
+  <component name="RunManager" selected="Application.DeviceManagementApplication">
     <configuration name="DataParserMeiDunLiVista" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.nano.msc.devicedata.parser.DataParserMeiDunLiVista" />
       <module name="DeviceManagementBackend" />
@@ -407,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623333972052</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="2021.6.11 Finish modify info medical device info part.">
+      <created>1623393116753</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1623393116753</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +436,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2021.1.23 Modify a lot." />
     <MESSAGE value="2021.1.23 Finish some services." />
     <MESSAGE value="2021.1.23 ...." />
     <MESSAGE value="2021.1.24 Finish modify the project." />
@@ -448,6 +460,7 @@
     <MESSAGE value="2021.6.9 Add three evaluation part." />
     <MESSAGE value="2021.6.10 Nearly finish." />
     <MESSAGE value="2021.6.10 Start to modify all." />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.10 Start to modify all." />
+    <MESSAGE value="2021.6.11 Finish modify info medical device info part." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.11 Finish modify info medical device info part." />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package com.nano.msc.collection.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.entity.InfoDeviceMaintenanceRecord;
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
@@ -36,12 +37,11 @@ public class InfoDeviceMaintenanceRecordServiceImpl extends BaseServiceImpl<Info
     @Override
     public CommonResult<String> addOneMaintenanceRecord(InfoDeviceMaintenanceRecord maintenanceRecord) {
         maintenanceRecord = maintenanceRecordRepository.save(maintenanceRecord);
-        return CommonResult.success();
+        return CommonResult.success(JSON.toJSONString(maintenanceRecord));
     }
 
-
     /**
-     * 通过仪器号与序列号查询维修记录
+     * 通过仪器号与序列号查询某个仪器的全部历史维修记录
      *
      * @param deviceCode 仪器号
      * @param serialNumber 序列号

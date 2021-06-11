@@ -1,6 +1,5 @@
 package com.nano.msc.collection.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
@@ -10,7 +9,6 @@ import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.InfoDeviceDataCollectionService;
 import com.nano.msc.collection.vo.DeviceDataCollectionDetailInfoVo;
 import com.nano.msc.common.service.BaseServiceImpl;
-import com.nano.msc.common.utils.TimestampUtils;
 import com.nano.msc.common.vo.CommonResult;
 import com.nano.msc.devicedata.context.DeviceDataContext;
 import com.nano.msc.devicedata.context.DeviceDataHandler;
@@ -22,11 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 
@@ -41,9 +35,8 @@ import lombok.extern.slf4j.Slf4j;
  * @see #getDeviceDataCollectionListByStatusCollecting(int, int) 根据状态获取当前数据采集信息列表(采集状态)
  * @see #getDeviceDataCollectionListByStatusFinish(int, int) 根据状态获取当前数据采集信息列表(完成状态)
  * @see #getDeviceDataCollectionListByStatusAbandon(int, int) 根据状态获取当前数据采集信息列表(丢弃状态)
- * @see #getCollectionUsedDeviceInfo(int) 根据手术场次号获取使用仪器的信息
  * @see #getSystemTotalDataCollectionNumber() 获取系统总采集场次数
- * @see #getDeviceDataCollectionDetailInfoVo(int) 通过采集场次号获取详细采集信息
+ * @see #getDeviceDataCollectionDetailInfoByCollectionNumber(int) 通过采集场次号获取详细采集信息
  *
  * @version: 1.0
  * @author: nano
@@ -53,12 +46,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDeviceDataCollection, Integer> implements InfoDeviceDataCollectionService {
 
-
     @Autowired
     private InfoDeviceDataCollectionRepository deviceDataCollectionRepository;
-
-    @Autowired
-    private SystemLogService logService;
 
     @Autowired
     private InfoMedicalDeviceRepository medicalDeviceRepository;
@@ -68,6 +57,9 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
 
     @Autowired
     private DeviceDataContext deviceDataContext;
+
+    @Autowired
+    private SystemLogService logger;
 
     /**
      * 数据处理器的Map
@@ -80,7 +72,8 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
      */
     @Override
     public CommonResult<Page<InfoDeviceDataCollection>> getDeviceDataCollectionListByStatusAll(int page, int size) {
-        return CommonResult.success(deviceDataCollectionRepository.findAllByOrderByCollectionNumberDesc(PageRequest.of(page, size)));
+        return CommonResult.success(deviceDataCollectionRepository
+                .findAllByOrderByCollectionNumberDesc(PageRequest.of(page, size)));
     }
 
     /**
@@ -125,49 +118,38 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
 
     /**
      * 通过采集场次号获取某次采集的详细采集信息
-     * 注意: 对于正在采集的场次没有评价信息
      *
      * @param collectionNumber 采集场次号
-     * @return 信息信息
+     * @return 该次采集的详细信息
      */
     @Override
-    public CommonResult getDeviceDataCollectionDetailInfoVo(int collectionNumber) {
+    public CommonResult getDeviceDataCollectionDetailInfoByCollectionNumber(int collectionNumber) {
         // 查询信息
         InfoDeviceDataCollection collection = deviceDataCollectionRepository.findByCollectionNumber(collectionNumber);
         if (collection == null) {
-            return CommonResult.failed("采集场次号不存在:" + collectionNumber);
+            logger.error("通过采集场次号获取某次采集的详细采集信息失败,不存在该采集场次号:" + collectionNumber);
+            return CommonResult.failed("通过采集场次号获取某次采集的详细采集信息失败,不存在该采集场次号:" + collectionNumber);
         }
+        // 采集信息存在
         DeviceDataCollectionDetailInfoVo vo = new DeviceDataCollectionDetailInfoVo();
-        // 拷贝属性
+        // 拷贝基本采集信息
         BeanUtil.copyProperties(collection, vo);
 
         // 查找该次采集的评价记录
         InfoDeviceUsageEvaluation usageEvaluation = usageEvaluationRepository.findByCollectionNumber(collectionNumber);
+        // 拷贝评价记录信息
         BeanUtil.copyProperties(usageEvaluation, vo);
 
         // 设置采集的数据条数
         int collectionCounter = dataHandlerMap.get(collection.getDeviceCode())
-                .getDataManager().getDataCollectionCounterInOneCollection(collectionNumber, collection.getSerialNumber());
+                .getDataManager().getCollectedDataCounterInOneCollection(collectionNumber, collection.getSerialNumber());
         vo.setCollectedDataCounter(collectionCounter);
         return CommonResult.success(vo);
     }
 
-
-    /**
-     * 根据手术场次号获取使用仪器的信息
-     *
-     * @param collectionNumber 手术场次号
-     * @return 仪器信息
-     */
-    @Override
-    public CommonResult getCollectionUsedDeviceInfo(int collectionNumber) {
-        // TODO:
-        return null;
-    }
-
-
     /**
      * 获取系统总采集场次数
+     *
      * @return 总场次数
      */
     @Override
@@ -176,11 +158,13 @@ public class InfoDeviceDataCollectionServiceImpl extends BaseServiceImpl<InfoDev
     }
 
 
+    /**
+     * 初始化仓库
+     */
     @Override
     protected JpaRepository<InfoDeviceDataCollection, Integer> initRepository() {
         return deviceDataCollectionRepository;
     }
-
 
     /**
      * 容器构造时初始化(这里通过上下文获取仪器解析器的Map信息)
