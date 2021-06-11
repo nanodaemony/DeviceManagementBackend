@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -67,30 +68,26 @@ public class InfoMedicalDeviceController {
      * 获取医疗仪器信息列表(根据deviceCode)
      */
     @GetMapping("/get-medical-device-info-by-device-code")
-    @ApiOperation(value = "获取医疗仪器信息列表(通过DeviceCode)")
+    @ApiOperation(value = "获取医疗仪器信息列表(按DeviceCode)")
     public CommonResult getMedicalDeviceInfoListByDeviceCode(@RequestParam(value = "deviceCode", defaultValue = "30") int deviceCode) {
         return medicalDeviceService.getMedicalDeviceInfoListByDeviceCode(deviceCode);
     }
-
 
     /**
      * 获取医疗仪器信息列表(全部)
      */
     @GetMapping("/list")
-    @ApiOperation(value = "获取医疗仪器信息列表(全部)")
+    @ApiOperation(value = "获取医疗仪器信息列表(全部仪器)")
     public CommonResult getMedicalDeviceInfoList(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                      @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
+                                      @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "300") Integer size) {
         return medicalDeviceService.list(page, size);
     }
-
-
-
 
     /**
      * 获取接入仪器的全部仪器个数(总的)
      */
     @GetMapping("/access-in-system-counter-total")
-    @ApiOperation(value = "获取接入仪器的全部仪器个数(总的)")
+    @ApiOperation(value = "获取接入仪器的全部仪器个数(全部仪器)")
     public CommonResult<Integer> getMedicalDeviceAccessInSystemCounterTotal() {
         return medicalDeviceService.getMedicalDeviceAccessInSystemCounterTotal();
     }
@@ -101,7 +98,7 @@ public class InfoMedicalDeviceController {
     @GetMapping("/access-in-system-counter-by-type")
     @ApiOperation(value = "获取接入仪器的仪器个数(按仪器类别)")
     public CommonResult<Map<String, Integer>> getMedicalDeviceAccessInSystemCounterByType() {
-        return medicalDeviceService.getMedicalDeviceAccessInSystemCounterByType();
+        return medicalDeviceService.getMedicalDeviceAccessInSystemCounterByDeviceType();
     }
 
     /**
@@ -109,13 +106,11 @@ public class InfoMedicalDeviceController {
      * @param deviceCode 仪器号
      * @return 该仪器号下面对应的仪器序列号列表
      */
-    @ApiOperation("查询某仪器拥有的序列号列表")
+    @ApiOperation(value = "获取某型号仪器的序列号列表(按DeviceCode)")
     @GetMapping("/device-serial-number-list")
-    public CommonResult getSerialNumberListByDeviceCode(@RequestParam(value = "deviceCode", defaultValue = "30") Integer deviceCode) {
-        return medicalDeviceService.getSerialNumberListByDeviceCode(deviceCode);
+    public CommonResult<List<String>> getSerialNumberListByDeviceCode(@RequestParam(value = "deviceCode", defaultValue = "30") Integer deviceCode) {
+        return medicalDeviceService.getMedicalDeviceSerialNumberListByDeviceCode(deviceCode);
     }
-
-
 
 
 }

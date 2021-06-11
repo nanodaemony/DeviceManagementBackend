@@ -19,14 +19,17 @@ public interface InfoMedicalDeviceService extends BaseService<InfoMedicalDevice,
 
 
     /**
-     * 保存来自Mobile端的医疗仪器信息
+     * 新增一个医疗仪器信息
+     *
      * @param medicalDevice 医疗仪器
      * @return 是否成功
      */
     CommonResult<String> addMedicalDeviceInfo(InfoMedicalDevice medicalDevice);
 
+
     /**
-     * 更新来自Mobile端的医疗仪器信息
+     * 更新一个医疗仪器信息
+     *
      * @param medicalDevice 医疗仪器
      * @return 是否成功
      */
@@ -34,13 +37,18 @@ public interface InfoMedicalDeviceService extends BaseService<InfoMedicalDevice,
 
 
     /**
-     * 获取医疗仪器信息列表
+     * 获取医疗仪器信息列表(按仪器号)
+     *
+     * @param deviceCode 仪器号
+     * @return 仪器信息列表
      */
     CommonResult<List<InfoMedicalDevice>> getMedicalDeviceInfoListByDeviceCode(int deviceCode);
 
 
     /**
-     * 获取接入仪器的全部仪器个数(总的)
+     * 获取接入仪器的全部仪器个数(总的仪器个数)
+     *
+     * @return 仪器个数
      */
     CommonResult<Integer> getMedicalDeviceAccessInSystemCounterTotal();
 
@@ -50,15 +58,16 @@ public interface InfoMedicalDeviceService extends BaseService<InfoMedicalDevice,
      *
      * @return 个数Map
      */
-    CommonResult<Map<String, Integer>> getMedicalDeviceAccessInSystemCounterByType();
+    CommonResult<Map<String, Integer>> getMedicalDeviceAccessInSystemCounterByDeviceType();
 
 
     /**
      * 通过仪器号查询对应拥有的仪器列表
+     *
      * @param deviceCode 仪器号
      * @return 仪器列表
      */
-    CommonResult<List<String>> getSerialNumberListByDeviceCode(int deviceCode);
+    CommonResult<List<String>> getMedicalDeviceSerialNumberListByDeviceCode(int deviceCode);
 
 
 }

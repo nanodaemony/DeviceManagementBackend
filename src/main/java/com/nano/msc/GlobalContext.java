@@ -1,6 +1,5 @@
 package com.nano.msc;
 
-import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 
 import java.util.HashMap;
@@ -23,7 +22,7 @@ import lombok.Data;
 public class GlobalContext {
 
     /**
-     * 数据采集器Map表
+     * 数据采集器集合
      */
     public static Set<String> dataCollectorSet = new HashSet<>();
 

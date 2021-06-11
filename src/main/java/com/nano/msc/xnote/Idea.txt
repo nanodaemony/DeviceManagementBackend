@@ -15,12 +15,9 @@ IDEA：
 13. 仪器数据并发量较大是否可以用消息队列？或者MQTT？
 14. Token时效是1小时，如果没有进行操作就认为失效，失效后的手术信息数据通过消息队列删除？
 15. 平板上传标记等时间都用LocalDateTime
-16. 将还未开始或正在进行的手术场次号存入Redis,这样就可以不用每次访问数据库看是否存在这个
 17. 注意: 计算掉线率应该使用在手术开始至结束范围内的数据,而不是全部统计
 好帖子：
 1. 参数校验：https://www.jianshu.com/p/89a675b7c900
 
 {"admissionId":"268495895","choosedOperationName":"","hospitalArea":"重庆","hospitalCode":"50","hospitalLevel":"三甲","hospitalOperationNumber":"111111111111111","operationASALevel":"3","operationAnesthesiaMode":"局麻","operationIsUrgent":"false","operationName":"TestName","pastMedicalHistory":"无","patientAge":"90","patientHeight":"190","patientId":"12312312312342866750","patientSex":"1","patientWeight":"70","specialCase":"无","usedDeviceInfo":"[{\"deviceCode\":\"30\",\"deviceSerialNumber\":\"2323332\",\"deviceServiceLife\":6},{\"deviceCode\":\"31\",\"deviceSerialNumber\":\"14331634583614\",\"deviceServiceLife\":9}]"}
 
-
-1. 可以通过APP直接配置某个采集器所采集仪器的序列化!!!!!!!

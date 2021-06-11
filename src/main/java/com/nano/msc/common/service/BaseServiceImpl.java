@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public abstract class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
 
     /**
-     * 抽象方法 实现类需要传入自己的JpaRepository
+     * 抽象方法(实现类需要传入自己的JpaRepository)
      */
     protected abstract JpaRepository<T, ID> initRepository();
 
@@ -48,7 +48,5 @@ public abstract class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
     public CommonResult update(T t) {
         return BaseServiceUtils.updateObjectAndCheck(initRepository(), t);
     }
-
-
 
 }

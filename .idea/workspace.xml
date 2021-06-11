@@ -22,35 +22,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.10 Nearly finish.">
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.10 Start to modify all.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDataCollector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/UserGuide.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/DeviceCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/DeviceManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/DeviceManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/EconomicEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/EconomicEvaluationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/EthernetDeviceDataCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/EthernetDeviceDataCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/FollowUpEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/FollowUpEvaluationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceDataCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceDataCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceMaintenanceRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceMaintenanceRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoDeviceUsageEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceUsageEvaluationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoMedicalDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoMedicalDeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/InfoOperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoOperationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/MaintenanceEvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/MaintenanceEvaluationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/collection/OperationMarkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/OperationMarkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/common/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/CommonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceDataCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceMaintenanceRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceMaintenanceRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceUsageEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoDeviceUsageEvaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoMedicalDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/InfoMedicalDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/deviceusage/EvaluationErrorReasonEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/deviceusage/EvaluationLevelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/EvaluationLevelEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/operationinfo/OperationHeartFunctionLevelEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/operationinfo/OperationKidneyFunctionLevelEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/operationinfo/OperationLiverFunctionLevelEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/operationinfo/OperationLungFunctionLevelEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoDeviceUsageEvaluationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/GlobalContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoMedicalDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoMedicalDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/CollectorCodeEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/InfoMedicalDeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/InfoMedicalDeviceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/constants/CacheCons.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/constants/DataConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/service/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/service/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/Idea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/Idea.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/TODO.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,9 +97,9 @@
       <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nano.msc.collection.enums" />
       <recent name="com.nano.msc.collection.vo" />
       <recent name="com.nano.msc.collection.controller.collection" />
-      <recent name="com.nano.msc.collection.enums" />
       <recent name="com.nano.msc.collection.service" />
       <recent name="com.nano.msc.collection.repository" />
     </key>
@@ -411,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623317005850</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="2021.6.10 Start to modify all.">
+      <created>1623333972052</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1623333972052</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -451,6 +447,7 @@
     <MESSAGE value="2021.6.8" />
     <MESSAGE value="2021.6.9 Add three evaluation part." />
     <MESSAGE value="2021.6.10 Nearly finish." />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.10 Nearly finish." />
+    <MESSAGE value="2021.6.10 Start to modify all." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.10 Start to modify all." />
   </component>
 </project>

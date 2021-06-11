@@ -51,6 +51,25 @@ create TABLE `info_device_data_collection` (
 
 
 -- ----------------------------
+-- 数据采集器表
+-- ----------------------------
+create TABLE `info_data_collector` (
+    `pk_id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，自增,采集场次号',
+    `collector_unique_id`  VARCHAR(40) NOT NULL COMMENT '采集器的唯一编号,网口仪器采集时为MAC地址,串口仪器采集时为唯一编号',
+
+    `device_code` VARCHAR(32)  NOT NULL COMMENT '设备号',
+    `serial_number` VARCHAR(32)  DEFAULT NULL COMMENT '设备序列号',
+    `collector_type` TINYINT NOT NULL COMMENT '采集器类型,1: Pad采集器, 2: 串口采集器',
+    `collector_status` TINYINT NOT NULL COMMENT '采集器状态,对应状态枚举的值',
+
+    `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
+    `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',
+    PRIMARY KEY(`pk_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT '数据采集器表';
+
+
+
+-- ----------------------------
 -- 仪器使用情况评价表
 -- ----------------------------
 CREATE TABLE `info_device_usage_evaluation` (
