@@ -85,10 +85,10 @@ CREATE TABLE `info_device_usage_evaluation` (
     `experience_level` TINYINT NOT NULL COMMENT '使用评价等级',
     `reliability_level` TINYINT NOT NULL COMMENT '可靠性等级',
     `has_error` BOOL NOT NULL COMMENT '是否有错误信息',
-    `known_error` VARCHAR(256) NOT NULL COMMENT '错误原因',
-    `other_error` VARCHAR(256) NOT NULL COMMENT '其他错误',
-    `remark_info` VARCHAR(256) NOT NULL COMMENT '备注信息',
-    `record_name` VARCHAR(32) NOT NULL COMMENT '记录人签名',
+    `known_error` VARCHAR(256) COMMENT '错误原因',
+    `other_error` VARCHAR(256) COMMENT '其他错误',
+    `remark_info` VARCHAR(256) COMMENT '备注信息',
+    `record_name` VARCHAR(32) COMMENT '记录人签名',
 
     `valid` BOOL NOT NULL COMMENT '是否有效',
 

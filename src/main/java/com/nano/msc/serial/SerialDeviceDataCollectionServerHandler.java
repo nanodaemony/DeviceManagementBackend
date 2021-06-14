@@ -56,7 +56,6 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
     @Resource
     private InfoMedicalDeviceRepository medicalDeviceRepository;
 
-
     @Autowired
     private InfoDeviceDataCollectionRepository deviceDataCollectionRepository;
 
@@ -78,7 +77,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("采集器已连接: " + ctx.channel().remoteAddress().toString());
-        // 这里导入必要的类!!!!!!!!!
+        // 这里注入必要的类对象!!!!!!!!!
         ApplicationContext context = SpringContextUtil.getApplicationContext();
         medicalDeviceRepository = context.getBean(InfoMedicalDeviceRepository.class);
         deviceDataCollectionRepository = context.getBean(InfoDeviceDataCollectionRepository.class);
@@ -93,16 +92,18 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         // 接收的数据
         String data = msg.toString();
-        log.info("串口接收:" + ctx.channel().remoteAddress().toString() + ": {}", data);
         // 说明是心跳报文
-        if (data.startsWith(SerialStaticInfo.HEART_MESSAGE_PREFIX)) {
+        if (data.startsWith(MessagePrefix.HEART_MESSAGE_PREFIX)) {
+            log.info("串口心跳:" + ctx.channel().remoteAddress().toString() + ": {}", data);
             handleCollectorHeartMessage(ctx, data);
 
             // 说明是仪器数据报文
-        } else if (data.startsWith(SerialStaticInfo.DEVICE_DATA_MESSAGE_PREFIX)) {
+        } else if (data.startsWith(MessagePrefix.DEVICE_DATA_MESSAGE_PREFIX)) {
+            log.info("串口数据:" + ctx.channel().remoteAddress().toString() + ": {}", data);
             handleDeviceDataMessage(ctx, data);
+        } else {
+            log.info("串口接收未知数据:" + ctx.channel().remoteAddress().toString() + ": {}", data);
         }
-
     }
 
     /**
@@ -113,7 +114,6 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
         cause.printStackTrace();
         ctx.close();
     }
-
 
     /**
      * 处理采集器心跳消息
@@ -139,7 +139,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             collection.setLastReceiveHeartMessageTime(TimestampUtils.getCurrentTimeForDataBase());
             deviceDataCollectionRepository.save(collection);
         }
-        // 返回收到心跳包
+        // 如果是合法注册的采集器则直接返回收到心跳包
         ctx.write("#1#" + Long.parseLong(("" + System.currentTimeMillis() / 1000).substring(5)) + "#");
         ctx.flush();
     }
@@ -165,60 +165,55 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             log.error("不包含当前采集器信息,仪器数据为:" + data);
             return;
         }
+        // 寻找找到数据库中的采集信息
         InfoDeviceDataCollection collection = deviceDataCollectionRepository.findByCollectionStatusAndCollectorUniqueId(CollectionStatusEnum.COLLECTING.getCode(), uniqueId);
-        // 说明没有采集信息
+        // 说明没有采集信息,此时直接生成一个新的采集信息
         if (collection == null) {
             collection = new InfoDeviceDataCollection();
-            // 通过唯一序号找到仪器信息
+            // 通过采集器的序号找到其对应的仪器信息
             InfoMedicalDevice medicalDevice = medicalDeviceRepository.findByCollectorUniqueId(uniqueId);
-            collection.setDeviceCode(medicalDevice.getDeviceCode());
             collection.setMedicalDeviceId(medicalDevice.getId());
+            collection.setDeviceCode(medicalDevice.getDeviceCode());
+            collection.setCollectorUniqueId(uniqueId);
             collection.setCollectionStatus(CollectionStatusEnum.COLLECTING.getCode());
             collection.setSerialNumber(medicalDevice.getSerialNumber());
-            collection.setCollectorUniqueId(uniqueId);
+            collection.setCollectionStartTime(TimestampUtils.getCurrentTimeForDataBase());
+            collection.setCollectionFinishTime(TimestampUtils.getCurrentTimeForDataBase());
             collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
             collection.setLastReceiveHeartMessageTime(TimestampUtils.getCurrentTimeForDataBase());
-            collection.setCollectionStartTime(TimestampUtils.getCurrentTimeForDataBase());
             // 存入数据库
             collection = deviceDataCollectionRepository.save(collection);
 
-            // 查询医疗仪器
-            InfoMedicalDevice device = medicalDeviceRepository.findByDeviceCodeAndSerialNumber(collection.getDeviceCode(), collection.getSerialNumber());
-            // 进行默认使用评价
-            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), device.getDeviceDepartment());
+            // 添加本次采集的默认使用评价信息
+            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), medicalDevice.getDeviceDepartment());
         }
         // 构造发送到解析器的数据
         String deviceDataRaw = collection.getCollectionNumber() + DATA_SEPARATOR
                 + collection.getSerialNumber() + DATA_SEPARATOR
                 + deviceData;
-        // 获取数据处理器
+        // 进行数据解析
         Object result = dataHandlerMap.get(collection.getDeviceCode()).getDataManager().parseDeviceData(deviceDataRaw);
         if (result == null) {
             log.error("串口仪器数据解析与存储失败:" + data);
             return;
         } else {
-            log.info("解析到串口仪器数据: " + result);
+            log.info("获取并解析到串口仪器数据: " + result);
         }
         // 仪器数据实时推送到前端
         RealTimeDeviceDataServer.sendDeviceRealTimeDataToClient(collection.getCollectionNumber(), collection.getDeviceCode(), JSON.toJSONString(result));
         // 更新上次接收仪器数据报文时间
         collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
-        // 更新接收仪器数据的时间
         deviceDataCollectionRepository.save(collection);
-        log.info("当前信息:" + collection.toString());
         // 返回这个表明正常收到仪器数据
         ctx.write("#3#");
         ctx.flush();
     }
-
 
     public static void main(String[] args) {
         String[] values = "#3#DC-75-0001#1231231231237829304902424348293048902".split("#");
         System.out.println(values[2]);
         System.out.println(values[3]);
     }
-
-
 
 }
 

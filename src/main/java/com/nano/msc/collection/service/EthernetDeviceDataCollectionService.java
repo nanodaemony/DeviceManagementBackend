@@ -15,7 +15,7 @@ public interface EthernetDeviceDataCollectionService {
     /**
      * 保存Pad发送而来的医疗仪器信息
      */
-    CommonResult saveEthernetMedicalDeviceInfoFromPad(ParamPad paramPad);
+    CommonResult saveEthernetMedicalDeviceInfoFromPadAndGrantCollectionNumber(ParamPad paramPad);
 
     /**
      * 开始采集仪器数据(由Pad控制)

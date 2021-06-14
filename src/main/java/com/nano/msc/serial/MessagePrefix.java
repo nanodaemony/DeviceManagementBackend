@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Description: 串口仪器采集静态信息
+ * Description: 报文前缀
  * Usage:
  * 1.
  *
@@ -14,7 +14,7 @@ import java.util.Map;
  * @author: nano
  * @date: 2021/5/10 17:26
  */
-public class SerialStaticInfo {
+public class MessagePrefix {
 
     /**
      * 心跳报文前缀
@@ -33,16 +33,4 @@ public class SerialStaticInfo {
     public static final String DEVICE_DATA_MESSAGE_PREFIX = "#3#";
 
 
-
-
-    public static Map<String, SerialDeviceEntity> collectionMap = new HashMap<>();
-
-
-    /**
-     * 构造返回给采集器的采集场次号格式字符串
-     * @param collectionNumber 采集场次号
-     */
-    public static String formatCollectionNumberForCollector(int collectionNumber) {
-        return "#2#" + collectionNumber + "#";
-    }
 }

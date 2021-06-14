@@ -1,19 +1,14 @@
 package com.nano.msc.schedule;
 
 import com.nano.msc.GlobalConfiguration;
-import com.nano.msc.GlobalContext;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
-import com.nano.msc.collection.entity.InfoDeviceUsageEvaluation;
 import com.nano.msc.collection.entity.InfoMedicalDevice;
 import com.nano.msc.collection.enums.CollectionStatusEnum;
 import com.nano.msc.collection.enums.InterfaceTypeEnum;
 import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
-import com.nano.msc.collection.repository.InfoDeviceUsageEvaluationRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
 import com.nano.msc.common.utils.TimestampUtils;
-import com.nano.msc.devicedata.service.DeviceDataServiceImpl;
-import com.nano.msc.serial.SerialStaticInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

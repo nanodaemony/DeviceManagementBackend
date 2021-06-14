@@ -45,8 +45,11 @@ public class FollowUpEvaluationServiceImpl implements FollowUpEvaluationService 
     @Autowired
     private InfoDeviceUsageEvaluationRepository usageEvaluationRepository;
 
-
-
+    /**
+     * 获取全部仪器的追踪评价信息列表(按DeviceCode与SerialNumber统计)
+     *
+     * @return 详细信息
+     */
     @Override
     public CommonResult getDeviceFollowUpEvaluationCoverDeviceAllByDeviceCodeAndSerialNumber() {
         // 查询全部医疗仪器信息
