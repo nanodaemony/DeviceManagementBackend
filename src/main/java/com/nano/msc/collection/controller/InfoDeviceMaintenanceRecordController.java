@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,6 +48,21 @@ public class InfoDeviceMaintenanceRecordController {
     public CommonResult addAfterCollectionEvaluation(@Valid @RequestBody InfoDeviceMaintenanceRecord deviceMaintenanceRecord) {
         log.info(deviceMaintenanceRecord.toString());
         return maintenanceRecordService.save(deviceMaintenanceRecord);
+    }
+
+
+    /**
+     * 查询全部历史维修记录列表
+     *
+     * @param page 页数
+     * @param size 个数
+     * @return 结果
+     */
+    @ApiOperation("查询全部历史维修记录列表")
+    @GetMapping("/list")
+    public CommonResult getMaintenanceRecordService(@Min(value = 0, message = "页数不能小于1") @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                                   @Min(value = 1, message = "数据个数不能小于1") @RequestParam(value = "size", defaultValue = "5") Integer size) {
+        return maintenanceRecordService.list(page, size);
     }
 
 

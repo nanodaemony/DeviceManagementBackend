@@ -32,7 +32,7 @@ public class InfoDeviceUsageEvaluationUtil {
         double experienceScore = 0;
         for (InfoDeviceUsageEvaluation evaluation : evaluationList) {
             // 因为满意度最高在数据库中为1,需要切换为5分
-            experienceScore = experienceScore + 6 - evaluation.getExperienceLevel();
+            experienceScore = experienceScore + evaluation.getExperienceLevel();
         }
         return experienceScore / evaluationList.size();
     }
@@ -50,7 +50,7 @@ public class InfoDeviceUsageEvaluationUtil {
         }
         double reliabilityScore = 0;
         for (InfoDeviceUsageEvaluation evaluation : evaluationList) {
-            reliabilityScore = reliabilityScore + (6 - evaluation.getReliabilityLevel());
+            reliabilityScore = reliabilityScore + evaluation.getReliabilityLevel();
         }
         return reliabilityScore / evaluationList.size();
     }
@@ -73,3 +73,6 @@ public class InfoDeviceUsageEvaluationUtil {
     }
 
 }
+
+
+

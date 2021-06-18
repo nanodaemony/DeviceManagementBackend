@@ -1,7 +1,6 @@
 package com.nano.msc.devicedata.context;
 
 import com.nano.msc.collection.enums.MedicalDeviceEnum;
-import com.nano.msc.devicedata.base.DeviceDataRepository;
 import com.nano.msc.devicedata.manager.DataManagerAiQin600A;
 import com.nano.msc.devicedata.manager.DataManagerAiQin600B;
 import com.nano.msc.devicedata.manager.DataManagerAiQin600C;
@@ -9,8 +8,11 @@ import com.nano.msc.devicedata.manager.DataManagerBaoLaiTeA8;
 import com.nano.msc.devicedata.manager.DataManagerLiBangEliteV8;
 import com.nano.msc.devicedata.manager.DataManagerMaiRuiT8;
 import com.nano.msc.devicedata.manager.DataManagerMaiRuiWatoex65;
+import com.nano.msc.devicedata.manager.DataManagerMeiDunLi5100C;
 import com.nano.msc.devicedata.manager.DataManagerMeiDunLiVista;
 import com.nano.msc.devicedata.manager.DataManagerNuoHe9002S;
+import com.nano.msc.devicedata.manager.DataManagerPuBo5000D;
+import com.nano.msc.devicedata.manager.DataManagerPuBo700;
 import com.nano.msc.devicedata.manager.DataManagerPuKeYY106;
 import com.nano.msc.devicedata.manager.DataManagerYiAn800A;
 import com.nano.msc.devicedata.repository.AiQin600ARepository;
@@ -20,8 +22,11 @@ import com.nano.msc.devicedata.repository.BaoLaiTeA8Repository;
 import com.nano.msc.devicedata.repository.LiBangEliteV8Repository;
 import com.nano.msc.devicedata.repository.MaiRuiT8Repository;
 import com.nano.msc.devicedata.repository.MaiRuiWatoex65Repository;
+import com.nano.msc.devicedata.repository.MeiDunLi5100CRepository;
 import com.nano.msc.devicedata.repository.MeiDunLiVistaRepository;
+import com.nano.msc.devicedata.repository.PuBo5000DRepository;
 import com.nano.msc.devicedata.repository.NuoHe9002sRepository;
+import com.nano.msc.devicedata.repository.PuBo700Repository;
 import com.nano.msc.devicedata.repository.PuKeYy106Repository;
 import com.nano.msc.devicedata.repository.YiAn8700ARepository;
 
@@ -73,6 +78,9 @@ public class DeviceDataContext implements InitializingBean, ApplicationContextAw
         dataHandlerMap.put(MedicalDeviceEnum.AI_QIN_EGOS600B.getDeviceCode(), new DeviceDataHandler<>(context.getBean(AiQin600BRepository.class), context.getBean(DataManagerAiQin600B.class)));
         dataHandlerMap.put(MedicalDeviceEnum.AI_QIN_EGOS600C.getDeviceCode(), new DeviceDataHandler<>(context.getBean(AiQin600CRepository.class), context.getBean(DataManagerAiQin600C.class)));
         dataHandlerMap.put(MedicalDeviceEnum.MEIDUNLI_EEG_VISTA.getDeviceCode(), new DeviceDataHandler<>(context.getBean(MeiDunLiVistaRepository.class), context.getBean(DataManagerMeiDunLiVista.class)));
+        dataHandlerMap.put(MedicalDeviceEnum.MEIDUNLI_5100C.getDeviceCode(), new DeviceDataHandler<>(context.getBean(MeiDunLi5100CRepository.class), context.getBean(DataManagerMeiDunLi5100C.class)));
+        dataHandlerMap.put(MedicalDeviceEnum.PU_BO_5000D.getDeviceCode(), new DeviceDataHandler<>(context.getBean(PuBo5000DRepository.class), context.getBean(DataManagerPuBo5000D.class)));
+        dataHandlerMap.put(MedicalDeviceEnum.PU_BO_BOARAY700.getDeviceCode(), new DeviceDataHandler<>(context.getBean(PuBo700Repository.class), context.getBean(DataManagerPuBo700.class)));
     }
 
     /**

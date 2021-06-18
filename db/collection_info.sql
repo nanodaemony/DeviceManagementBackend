@@ -210,3 +210,17 @@ CREATE TABLE `system_log` (
     PRIMARY KEY (pk_id)
 ) COMMENT '系统日志表';
 
+
+-- ----------------------------
+-- 建议与Bug表
+-- ----------------------------
+CREATE TABLE `suggestion_and_bug` (
+    `pk_id`        SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+
+    `info`  VARCHAR(512)  NOT NULL COMMENT '具体信息',
+    `contact`  VARCHAR(512)  NOT NULL COMMENT '联系方式',
+
+    `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
+    `gmt_modified` DATETIME NOT NULL COMMENT '更新时间',
+    PRIMARY KEY (pk_id)
+) COMMENT '建议与Bug表';

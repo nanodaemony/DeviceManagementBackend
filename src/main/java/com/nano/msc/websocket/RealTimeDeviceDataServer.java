@@ -22,7 +22,7 @@ import cn.hutool.log.LogFactory;
 
 /**
  * WebSocket仪器实时数据服务端
- *
+ * 注: 连接时记得加上最外层的路径
  *
  * @author: nano
  * @time: 2020/6/2 18:00
@@ -30,7 +30,6 @@ import cn.hutool.log.LogFactory;
 @ServerEndpoint("/device-real-time-data/{collectionNumber}/{deviceCode}/{browserId}")
 @Component
 public class RealTimeDeviceDataServer {
-
 
 	@Autowired
 	private SystemLogService logService;

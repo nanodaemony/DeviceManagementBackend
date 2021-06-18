@@ -82,6 +82,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
         medicalDeviceRepository = context.getBean(InfoMedicalDeviceRepository.class);
         deviceDataCollectionRepository = context.getBean(InfoDeviceDataCollectionRepository.class);
         deviceDataContext = context.getBean(DeviceDataContext.class);
+        usageEvaluationService = context.getBean(InfoDeviceUsageEvaluationService.class);
         dataHandlerMap = deviceDataContext.getDataHandlerMap();
     }
 
@@ -183,9 +184,13 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             collection.setLastReceiveHeartMessageTime(TimestampUtils.getCurrentTimeForDataBase());
             // 存入数据库
             collection = deviceDataCollectionRepository.save(collection);
-
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             // 添加本次采集的默认使用评价信息
-            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), collection.getSerialNumber(), medicalDevice.getDeviceDepartment());
+            usageEvaluationService.addDefaultDeviceUsageEvaluationInfo(collection.getCollectionNumber(), collection.getDeviceCode(), medicalDevice.getSerialNumber(), medicalDevice.getDeviceDepartment());
         }
         // 构造发送到解析器的数据
         String deviceDataRaw = collection.getCollectionNumber() + DATA_SEPARATOR

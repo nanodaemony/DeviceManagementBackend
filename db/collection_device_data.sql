@@ -9,8 +9,8 @@
 create TABLE `data_nuohe_nw9002s`
 (
     `pk_id`              INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `bs`                   INT      NOT NULL DEFAULT -1 COMMENT '0-100 无效值 -1000',
@@ -29,8 +29,8 @@ create TABLE `data_nuohe_nw9002s`
 -- ----------------------------
 create TABLE `data_puke_yy106` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `sqi`                  INT      NOT NULL DEFAULT -1 COMMENT '0-100 无效值 -1000',
@@ -38,8 +38,8 @@ create TABLE `data_puke_yy106` (
     `emg`                  INT      NOT NULL DEFAULT -1 COMMENT '0-100 无效值 -1000',
     `bsr`                  INT      NOT NULL DEFAULT -1 COMMENT '0-100 无效值 -1000',
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (pk_id)
 ) COMMENT '普可yy106的数据表6';
 
@@ -49,8 +49,8 @@ create TABLE `data_puke_yy106` (
 -- ----------------------------
 CREATE TABLE `data_bao_lai_te_a8` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `hr` int(11) DEFAULT NULL,
@@ -69,8 +69,8 @@ CREATE TABLE `data_bao_lai_te_a8` (
     `ibp_map2` double DEFAULT NULL,
     `ibp_sys2` double DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
@@ -81,8 +81,8 @@ CREATE TABLE `data_bao_lai_te_a8` (
 CREATE TABLE `data_yi_an8700a` (
 
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `air` double DEFAULT NULL,
@@ -102,8 +102,8 @@ CREATE TABLE `data_yi_an8700a` (
     `pmean` double DEFAULT NULL,
     `vte` double DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
@@ -114,8 +114,8 @@ CREATE TABLE `data_yi_an8700a` (
 -- ----------------------------
 CREATE TABLE `data_mai_rui_t8` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `ecg_heart_rate` int(11) DEFAULT NULL,
@@ -151,8 +151,8 @@ CREATE TABLE `data_mai_rui_t8` (
     `art_ppv` double DEFAULT NULL,
     `pr_pr` int(11) DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
@@ -163,8 +163,8 @@ CREATE TABLE `data_mai_rui_t8` (
 -- ----------------------------
 CREATE TABLE `data_mai_rui_watoex65` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `p_peak` double DEFAULT NULL,
@@ -178,8 +178,8 @@ CREATE TABLE `data_mai_rui_watoex65` (
     `c` double DEFAULT NULL,
     `r` double DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -190,8 +190,8 @@ CREATE TABLE `data_mai_rui_watoex65` (
 CREATE TABLE `data_li_bang_elite_v8` (
 
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `height` double DEFAULT NULL COMMENT '身高',
@@ -217,8 +217,8 @@ CREATE TABLE `data_li_bang_elite_v8` (
     `nibp_map` double DEFAULT NULL,
     `nibp_pr` double DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -228,8 +228,8 @@ CREATE TABLE `data_li_bang_elite_v8` (
 -- ----------------------------
 CREATE TABLE `data_ai_qin_600a` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `toi1` double DEFAULT NULL,
@@ -257,8 +257,8 @@ CREATE TABLE `data_ai_qin_600a` (
     `probe_status3` varchar(10) DEFAULT NULL,
     `probe_status4` varchar(10) DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -267,8 +267,8 @@ CREATE TABLE `data_ai_qin_600a` (
 -- ----------------------------
 CREATE TABLE `data_ai_qin_600b` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `toi1` double DEFAULT NULL,
@@ -284,8 +284,8 @@ CREATE TABLE `data_ai_qin_600b` (
     `probe_status1` varchar(10) DEFAULT NULL,
     `probe_status2` varchar(10) DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -294,8 +294,8 @@ CREATE TABLE `data_ai_qin_600b` (
 -- ----------------------------
 CREATE TABLE `data_ai_qin_600c` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `toi1` double DEFAULT NULL,
@@ -305,8 +305,8 @@ CREATE TABLE `data_ai_qin_600c` (
     `cthb1` double DEFAULT NULL,
     `probe_status1` varchar(10) DEFAULT NULL,
 
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -315,8 +315,8 @@ CREATE TABLE `data_ai_qin_600c` (
 -- ----------------------------
 CREATE TABLE `data_mei_dun_li_eeg_vista` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
-    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号，外键连接手术信息表',
-    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号，不一定唯一',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
     `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
 
     `dsc` double DEFAULT NULL,
@@ -348,7 +348,57 @@ CREATE TABLE `data_mei_dun_li_eeg_vista` (
     `artf21` varchar(16) DEFAULT NULL,
     `artf22` varchar(16) DEFAULT NULL,
     `artf23` varchar(16) DEFAULT NULL,
-    `gmt_create`           TIMESTAMP    NOT NULL COMMENT '创建时间',
-    `gmt_modified`         TIMESTAMP    NOT NULL COMMENT '修改时间',
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
+    PRIMARY KEY (`pk_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- ----------------------------
+-- 美敦力 5100C
+-- ----------------------------
+CREATE TABLE `data_mei_dun_li_5100C` (
+    `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
+    `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
+
+    `origin_data` varchar(1024) DEFAULT NULL,
+
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
+    PRIMARY KEY (`pk_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- ----------------------------
+-- 普博 700
+-- ----------------------------
+CREATE TABLE `data_pu_bo_700` (
+    `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
+    `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
+
+    `origin_data` varchar(1024) DEFAULT NULL,
+
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
+    PRIMARY KEY (`pk_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- 普博 5000D
+-- ----------------------------
+CREATE TABLE `data_pu_bo_5000d` (
+    `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
+    `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
+    `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
+    `status` TINYINT  NOT NULL DEFAULT '1' COMMENT '数据状态,1表示有效数据,0表示数据无效',
+
+    `origin_data` varchar(1024) DEFAULT NULL,
+
+    `gmt_create`           DATETIME    NOT NULL COMMENT '创建时间',
+    `gmt_modified`         DATETIME    NOT NULL COMMENT '修改时间',
     PRIMARY KEY (`pk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

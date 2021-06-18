@@ -9,6 +9,7 @@ import com.nano.msc.collection.repository.InfoDeviceDataCollectionRepository;
 import com.nano.msc.collection.repository.InfoMedicalDeviceRepository;
 import com.nano.msc.collection.service.InfoDeviceUsageEvaluationService;
 import com.nano.msc.common.utils.TimestampUtils;
+import com.nano.msc.system.log.service.SystemLogService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -40,19 +41,17 @@ public class ManageScheduleTask {
     private static final int ETHERNET_COLLECTION_FINISH_TIME_LENGTH = 10 * 60;
     private static final int SERIAL_COLLECTION_FINISH_TIME_LENGTH = 10 * 60;
 
-
     @Autowired
     private InfoMedicalDeviceRepository medicalDeviceRepository;
 
-    /**
-     * 手术信息
-     */
     @Autowired
     private InfoDeviceDataCollectionRepository dataCollectionRepository;
 
     @Autowired
     private InfoDeviceUsageEvaluationService usageEvaluationService;
 
+    @Autowired
+    private SystemLogService logger;
 
     /**
      * 检查网口类仪器数据采集状态(单位是ms)
@@ -72,7 +71,7 @@ public class ManageScheduleTask {
             for (InfoDeviceDataCollection collection : collectionList) {
                 // 下面进行筛选,最后接收仪器数据时间大于20分钟则认定采集完成
                 if (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
-                    log.info("网口仪器超过10分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
+                    logger.info("网口仪器超过10分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
                     // 设置上传接收数据时间为结束采集时间
                     collection.setCollectionFinishTime((collection.getLastReceiveDeviceDataTime()));
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
@@ -91,7 +90,7 @@ public class ManageScheduleTask {
     @Scheduled(fixedRate = 20 * 1000)
     private void checkSerialCollectionStatusTask() {
 
-        log.info("检查网口类仪器采集情况...");
+        log.info("检查串类仪器采集情况...");
         // 查询全部串口类仪器
         List<InfoMedicalDevice> medicalDeviceList = medicalDeviceRepository.findByInterfaceType(InterfaceTypeEnum.SERIAL.getCode());
         // 获取全部串口类仪器的采集器的唯一ID号
@@ -111,7 +110,7 @@ public class ManageScheduleTask {
                 // 600000
                 if ((TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)
                         || (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)) {
-                    log.info("超过10分钟无心跳信息或仪器数据信息,当前采集完成." + uniqueId);
+                    logger.info("超过10分钟无心跳信息或仪器数据信息,当前采集完成." + uniqueId);
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     // 设置完成时间
                     collection.setCollectionFinishTime(collection.getLastReceiveDeviceDataTime());
@@ -122,7 +121,6 @@ public class ManageScheduleTask {
             }
         }
     }
-
 
     @Autowired
     private GlobalConfiguration configuration;

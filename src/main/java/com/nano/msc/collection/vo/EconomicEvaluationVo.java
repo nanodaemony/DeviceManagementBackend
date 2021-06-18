@@ -76,8 +76,4 @@ public class EconomicEvaluationVo {
      */
     private double historyCostOtherNum = 0D;
 
-
-
-
-
 }

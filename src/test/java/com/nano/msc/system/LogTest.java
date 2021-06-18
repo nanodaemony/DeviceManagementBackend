@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 /**
  * Description:
@@ -30,12 +31,16 @@ public class LogTest {
 
     @Test
     public void test() {
-
-        System.out.println(TimestampUtils.getHistoryDayZeroLocalDateTimeBeforeNow(2));
-
-        System.out.println(TimestampUtils.getCurrentDayZeroLocalDateTime());
-
-
+        Scanner scanner = new Scanner(System.in);
+        String data = scanner.next();
+        String[] values = data.split(" ");
+        int res = 0;
+        for(String id : values) {
+            if (id.contains("7") || Integer.parseInt(id) % 7 == 0) {
+                res++;
+            }
+        }
+        System.out.println(res);
     }
 
 

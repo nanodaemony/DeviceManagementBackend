@@ -191,9 +191,7 @@ public enum MedicalDeviceEnum {
     CHEN_WEI_CWH3020B (83, "南京晨伟医疗设备有限公司", "呼吸机(CWM3020B)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
             InterfaceTypeEnum.SERIAL.getCode(), true),
-
     ;
-
 
     /**
      * 仪器号
@@ -224,7 +222,6 @@ public enum MedicalDeviceEnum {
      * 能否采集数据
      */
     Boolean canCollectData;
-
 
     MedicalDeviceEnum(Integer deviceCode, String companyName, String deviceName, String deviceType, Integer interfaceType, Boolean canCollectData) {
         this.deviceCode = deviceCode;

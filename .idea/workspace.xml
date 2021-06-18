@@ -22,17 +22,63 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.11 Finish modify other info part.">
+    <list default="true" id="af947959-a5b6-4b4e-a86e-a332b41e5e38" name="Default Changelist" comment="2021.6.14 Modify usage evaluation part.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDataCollectorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/SuggestionAdndBugController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/entity/SuggestionAndBug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/repository/SuggestionAndBugRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/SuggestionAndBugService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/SuggestionAndBugImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/entity/serial/DataMeiDunLi5100C.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/entity/serial/DataPuBo5000D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/entity/serial/DataPuBo700.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerMeiDunLi5100C.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuBo5000D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/manager/DataManagerPuBo700.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/repository/MeiDunLi5100CRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/repository/PuBo5000DRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/repository/PuBo700Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/nano/msc/collection/InfoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/collection_device_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_device_data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/collection_info.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/collection_info.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/EthernetDeviceDataCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/EthernetDeviceDataCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/EthernetDeviceDataCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/EthernetDeviceDataCollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/EthernetDeviceDataCollectionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/FollowUpEvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/service/impl/FollowUpEvaluationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceMaintenanceRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/controller/InfoDeviceMaintenanceRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/enums/MedicalDeviceEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceUsageEvaluationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/utils/InfoDeviceUsageEvaluationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/EconomicEvaluationVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/collection/vo/EconomicEvaluationVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/common/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/DeviceAccessCons.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/FilterRegex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/Info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/ReceiveBufferLength.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/Tools.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info/30. 诺和NW9002S.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info/32. 宝莱特A8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info/46. 深圳科曼.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info/47. 深圳威浩康.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/tcp/TcpServerKeMan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/tcp/TcpServerWeiHaoKang.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/BaseDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/base/BaseDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/devicedata/context/DeviceDataContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/schedule/ManageScheduleTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/schedule/ManageScheduleTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceDataCollectionServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialDeviceEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/SerialStaticInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/serial/MessagePrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/RealTimeDeviceDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/RealTimeDeviceDataServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/websocket/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/UserGuide.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nano/msc/xnote/UserGuide.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nano/msc/info/InfoOperationMarkTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nano/msc/collection/InfoOperationMarkTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nano/msc/info/InfoOperationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nano/msc/collection/InfoOperationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nano/msc/system/LogTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nano/msc/system/LogTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/evaluation-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/evaluation-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +91,7 @@
         <option value="SQL Script" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -64,7 +111,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="H:\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="H:/apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -79,7 +126,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/nano/msc/deviceconnection/info" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -90,30 +137,15 @@
       <recent name="D:\code\1_Research\Medical\DeviceManagementBackend\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.nano.msc.collection.enums" />
-      <recent name="com.nano.msc.collection.vo" />
-      <recent name="com.nano.msc.collection.controller.collection" />
-      <recent name="com.nano.msc.collection.service" />
-      <recent name="com.nano.msc.collection.repository" />
+      <recent name="com.nano.msc.devicedata.manager" />
+      <recent name="com.nano.msc.devicedata.repository" />
+      <recent name="com.nano.msc.devicedata.entity.serial" />
+      <recent name="com.nano.msc.info" />
+      <recent name="com.nano.msc.collection.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DeviceManagementApplication">
-    <configuration name="DataParserMeiDunLiVista" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nano.msc.devicedata.parser.DataParserMeiDunLiVista" />
-      <module name="DeviceManagementBackend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nano.msc.devicedata.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DeviceManagementApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.9" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.nano.msc.DeviceManagementApplication" />
       <module name="DeviceManagementBackend" />
       <extension name="coverage">
@@ -122,76 +154,88 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InfoDeviceDataCollection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nano.msc.system.InfoDeviceDataCollection" />
+    <configuration name="InfoOperationMarkTest.testInfoOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DeviceManagementBackend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nano.msc.system.*" />
+          <option name="PATTERN" value="com.nano.msc.collection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.nano.msc.collection" />
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.collection.InfoOperationMarkTest" />
+      <option name="METHOD_NAME" value="testInfoOperation" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nano.msc.system.Test" />
+    <configuration name="InfoTest.testInfoDeviceUsageEvaluation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DeviceManagementBackend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nano.msc.system.*" />
+          <option name="PATTERN" value="com.nano.msc.collection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.nano.msc.collection" />
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.collection.InfoTest" />
+      <option name="METHOD_NAME" value="testInfoDeviceUsageEvaluation" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InfoTest.testInfoOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DeviceManagementBackend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nano.msc.system.*" />
+          <option name="PATTERN" value="com.nano.msc.collection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nano.msc.system" />
-      <option name="MAIN_CLASS_NAME" value="com.nano.msc.system.LogTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="PACKAGE_NAME" value="com.nano.msc.collection" />
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.collection.InfoTest" />
+      <option name="METHOD_NAME" value="testInfoOperation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoTest.testNuoHeDataClean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DeviceManagementBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nano.msc.collection.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nano.msc.collection" />
+      <option name="MAIN_CLASS_NAME" value="com.nano.msc.collection.InfoTest" />
+      <option name="METHOD_NAME" value="testNuoHeDataClean" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.InfoTest.testInfoOperation" />
+      <item itemvalue="JUnit.InfoOperationMarkTest.testInfoOperation" />
+      <item itemvalue="JUnit.InfoTest.testInfoDeviceUsageEvaluation" />
+      <item itemvalue="JUnit.InfoTest.testNuoHeDataClean" />
       <item itemvalue="Application.DeviceManagementApplication" />
-      <item itemvalue="Application.DataParserMeiDunLiVista" />
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Application.InfoDeviceDataCollection" />
-      <item itemvalue="JUnit.LogTest.test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DeviceManagementApplication" />
-        <item itemvalue="JUnit.LogTest.test" />
-        <item itemvalue="Application.InfoDeviceDataCollection" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.DataParserMeiDunLiVista" />
+        <item itemvalue="JUnit.InfoTest.testInfoDeviceUsageEvaluation" />
+        <item itemvalue="JUnit.InfoTest.testNuoHeDataClean" />
+        <item itemvalue="JUnit.InfoTest.testInfoOperation" />
+        <item itemvalue="JUnit.InfoOperationMarkTest.testInfoOperation" />
       </list>
     </recent_temporary>
   </component>
@@ -414,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623402178379</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="2021.6.14 Modify usage evaluation part.">
+      <created>1623657696392</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1623657696392</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -430,7 +481,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2021.1.23 ...." />
     <MESSAGE value="2021.1.24 Finish modify the project." />
     <MESSAGE value="2021.1.24 Finish modify the operationMark part.." />
     <MESSAGE value="2021.1.26 Finish modify the project this term." />
@@ -455,6 +505,7 @@
     <MESSAGE value="2021.6.10 Start to modify all." />
     <MESSAGE value="2021.6.11 Finish modify info medical device info part." />
     <MESSAGE value="2021.6.11 Finish modify other info part." />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.11 Finish modify other info part." />
+    <MESSAGE value="2021.6.14 Modify usage evaluation part." />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.14 Modify usage evaluation part." />
   </component>
 </project>

@@ -1,4 +1,4 @@
-package com.nano.msc.info;
+package com.nano.msc.collection;
 
 import com.nano.msc.collection.entity.InfoOperationMark;
 import com.nano.msc.collection.service.InfoOperationMarkService;
