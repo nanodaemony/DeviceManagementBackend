@@ -39,16 +39,60 @@ public class DataManagerMeiDunLi5100C implements DeviceDataManager<DataMeiDunLi5
             int collectionNumber = Integer.parseInt(values[0]);
             String serialNumber = values[1];
             String data = values[2];
+            // 去掉数据中的多于空格
+            data = data.replace("    ", " ").replace("   ", " ").replace("  ", " ");
             if (isValid(data)) {
-                // 05/14/2021 10:14:46|      10|      27|Off     |None    |Off     |Off     |No      |     0.0|     8.1|    21b1|    97.7|    67.7|    47.8|    60.3|      11|00000000|     0.0|     0.0|    8000|     0.0|     0.0|     0.0|   100.0|      13|00000000|     0.0|     8.1|    21b1|    97.7|    67.7|    47.8|    60.3|       0|00000000|
-                DataMeiDunLi5100C dataMeiDunLiVista = new DataMeiDunLi5100C();
-                dataMeiDunLiVista.setCollectionNumber(collectionNumber);
-                dataMeiDunLiVista.setSerialNumber(serialNumber);
-                // 存储原始数据
-                dataMeiDunLiVista.setOriginData(data);
+                // 7.2.6.0/1/1  17.06.21  07:43:22  L  83  0  4  0  0  0  40  -4.4616   -5.2667   0  R  0  0  3  0  0  0  40  0.0000    0.0000    0  S1  0  0  11  0  0  0  40  0.0000    0.0000    0  S2  0  0  11  0  0  0  40  0.0000    0.0000    0  AA1825015154-0  A21903125888-0  0  0
+                DataMeiDunLi5100C dataMeiDunLi5100C = new DataMeiDunLi5100C();
+                dataMeiDunLi5100C.setCollectionNumber(collectionNumber);
+                dataMeiDunLi5100C.setSerialNumber(serialNumber);
+                String[] nums = data.split(" ");
+                dataMeiDunLi5100C.setOxygenSaturationL(DataParseUtil.parseDoubleValue(nums[4]));
+                dataMeiDunLi5100C.setEventL(DataParseUtil.parseDoubleValue(nums[5]));
+                dataMeiDunLi5100C.setStatusL(DataParseUtil.parseDoubleValue(nums[6]));
+                dataMeiDunLi5100C.setBaseL(DataParseUtil.parseDoubleValue(nums[7]));
+                dataMeiDunLi5100C.setAucL(DataParseUtil.parseDoubleValue(nums[8]));
+                dataMeiDunLi5100C.setUalL(DataParseUtil.parseDoubleValue(nums[9]));
+                dataMeiDunLi5100C.setLalL(DataParseUtil.parseDoubleValue(nums[10]));
+                dataMeiDunLi5100C.setAL(DataParseUtil.parseDoubleValue(nums[11]));
+                dataMeiDunLi5100C.setBL(DataParseUtil.parseDoubleValue(nums[12]));
+                dataMeiDunLi5100C.setCL(DataParseUtil.parseDoubleValue(nums[13]));
+
+                dataMeiDunLi5100C.setOxygenSaturationR(DataParseUtil.parseDoubleValue(nums[15]));
+                dataMeiDunLi5100C.setEventR(DataParseUtil.parseDoubleValue(nums[16]));
+                dataMeiDunLi5100C.setStatusR(DataParseUtil.parseDoubleValue(nums[17]));
+                dataMeiDunLi5100C.setBaseR(DataParseUtil.parseDoubleValue(nums[18]));
+                dataMeiDunLi5100C.setAucR(DataParseUtil.parseDoubleValue(nums[19]));
+                dataMeiDunLi5100C.setUalR(DataParseUtil.parseDoubleValue(nums[20]));
+                dataMeiDunLi5100C.setLalR(DataParseUtil.parseDoubleValue(nums[21]));
+                dataMeiDunLi5100C.setAR(DataParseUtil.parseDoubleValue(nums[22]));
+                dataMeiDunLi5100C.setBR(DataParseUtil.parseDoubleValue(nums[23]));
+                dataMeiDunLi5100C.setCR(DataParseUtil.parseDoubleValue(nums[24]));
+
+                dataMeiDunLi5100C.setOxygenSaturationS1(DataParseUtil.parseDoubleValue(nums[26]));
+                dataMeiDunLi5100C.setEventS1(DataParseUtil.parseDoubleValue(nums[27]));
+                dataMeiDunLi5100C.setStatusS1(DataParseUtil.parseDoubleValue(nums[28]));
+                dataMeiDunLi5100C.setBaseS1(DataParseUtil.parseDoubleValue(nums[29]));
+                dataMeiDunLi5100C.setAucS1(DataParseUtil.parseDoubleValue(nums[30]));
+                dataMeiDunLi5100C.setUalS1(DataParseUtil.parseDoubleValue(nums[31]));
+                dataMeiDunLi5100C.setLalS1(DataParseUtil.parseDoubleValue(nums[32]));
+                dataMeiDunLi5100C.setAS1(DataParseUtil.parseDoubleValue(nums[33]));
+                dataMeiDunLi5100C.setBS1(DataParseUtil.parseDoubleValue(nums[34]));
+                dataMeiDunLi5100C.setCS1(DataParseUtil.parseDoubleValue(nums[35]));
+
+                dataMeiDunLi5100C.setOxygenSaturationS2(DataParseUtil.parseDoubleValue(nums[37]));
+                dataMeiDunLi5100C.setEventS2(DataParseUtil.parseDoubleValue(nums[38]));
+                dataMeiDunLi5100C.setStatusS2(DataParseUtil.parseDoubleValue(nums[39]));
+                dataMeiDunLi5100C.setBaseS2(DataParseUtil.parseDoubleValue(nums[40]));
+                dataMeiDunLi5100C.setAucS2(DataParseUtil.parseDoubleValue(nums[41]));
+                dataMeiDunLi5100C.setUalS2(DataParseUtil.parseDoubleValue(nums[42]));
+                dataMeiDunLi5100C.setLalS2(DataParseUtil.parseDoubleValue(nums[43]));
+                dataMeiDunLi5100C.setAS2(DataParseUtil.parseDoubleValue(nums[44]));
+                dataMeiDunLi5100C.setBS2(DataParseUtil.parseDoubleValue(nums[45]));
+                dataMeiDunLi5100C.setCS2(DataParseUtil.parseDoubleValue(nums[46]));
 
                 // 解析并存储数据
-                return dataRepository.save(dataMeiDunLiVista);
+                return dataRepository.save(dataMeiDunLi5100C);
 
             } else {
                 return null;
@@ -64,7 +108,10 @@ public class DataManagerMeiDunLi5100C implements DeviceDataManager<DataMeiDunLi5
     public Map<String, Object> getDeviceHistoryData(int collectionNumber, String serialNumber) {
         Map<String, Object> dataMap = new HashMap<>();
         List<DataMeiDunLi5100C> dataList = dataRepository.findByCollectionNumberAndSerialNumber(collectionNumber, serialNumber);
-        // dataMap.put("bis1", dataList.stream().map(DataMeiDunLiVista::getBis1).collect(Collectors.toList()));
+        dataMap.put("L", dataList.stream().map(DataMeiDunLi5100C::getOxygenSaturationL).collect(Collectors.toList()));
+        dataMap.put("R", dataList.stream().map(DataMeiDunLi5100C::getOxygenSaturationR).collect(Collectors.toList()));
+        dataMap.put("S1", dataList.stream().map(DataMeiDunLi5100C::getOxygenSaturationS1).collect(Collectors.toList()));
+        dataMap.put("S2", dataList.stream().map(DataMeiDunLi5100C::getOxygenSaturationS2).collect(Collectors.toList()));
         return dataMap;
     }
 
@@ -86,12 +133,10 @@ public class DataManagerMeiDunLi5100C implements DeviceDataManager<DataMeiDunLi5
      * @return 是否合法
      */
     private boolean isValid(String data) {
-        return data.trim().length() > 10;
+        return data.trim().length() > 10 && data.split(" ").length > 49;
     }
 
     public static void main(String[] args) {
-
-
     }
 
 }
