@@ -1,10 +1,12 @@
-package com.nano.msc.collection.entity;
+package com.nano.msc.devicedata.entity.serial;
+
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.nano.msc.common.converter.LocalDateTimeConverter;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
@@ -16,31 +18,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * Description: 数据采集器类
- * Usage:
- * 1.
- *
- * @version: 1.0
- * @author: nano
- * @date: 2021/6/10 23:00
+ * 晨伟3020B数据实体
+ * @author cz
  */
-@DynamicInsert
-@Entity
 @Data
-@NoArgsConstructor
-@Table(name = "info_data_collector")
-public class InfoDataCollector implements Serializable {
+@DynamicInsert
+@DynamicUpdate
+@Entity
+@Table(name = "data_chen_wei_3020")
+public class DataChenWei3020 implements Serializable {
 
-    private static final long serialVersionUID = -7410701585085979233L;
+    private static final long serialVersionUID = -8051231381912633303L;
 
     /**
-     * 标记id，自动增长
+     * 自动增长
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,34 +45,39 @@ public class InfoDataCollector implements Serializable {
     private Integer id;
 
     /**
-     * 仪器信息的ID号 外键仪器信息表的主键ID号
-     */
-    @Column(name = "collector_unique_id")
-    private String collectorUniqueId;
-
-    /**
-     * 仪器代号
-     */
-    @Column(name = "device_code")
-    private Integer deviceCode;
-
-    /**
-     * 仪器序列号
+     * 序列号
      */
     @Column(name = "serial_number")
     private String serialNumber;
 
     /**
-     * 采集器类别(1是Pad采集器, 2是串口采集器)
+     * 采集顺序号
      */
-    @Column(name = "collector_type")
-    private Integer collectorType;
+    @NotNull(message = "collectionNumber must cannot empty")
+    @Column(name = "collection_number")
+    private Integer collectionNumber;
 
     /**
-     * 采集器状态
+     * 数据状态,1表示有效数据,0表示数据无效
      */
-    @Column(name = "collector_status")
-    private Integer collectorStatus;
+    @Column(name = "status")
+    private Integer status;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // 中间是仪器数据
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * 原始数据字符串
+     */
+    @Column(name = "origin_data")
+    private String originData;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // 中间是仪器数据
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * 数据创建时间

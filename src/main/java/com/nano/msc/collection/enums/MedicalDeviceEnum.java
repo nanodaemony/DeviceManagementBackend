@@ -70,6 +70,13 @@ public enum MedicalDeviceEnum {
             InterfaceTypeEnum.ETHERNET.getCode(), true),
 
     /**
+     * 迈瑞 WATOEX 55Pro
+     */
+    MAI_RUI_WATOEX_55Pro(44, "深圳迈瑞生物医疗电子股份有限公司", "麻醉机(WATOEX55-Pro)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
+            InterfaceTypeEnum.ETHERNET.getCode(), true),
+
+    /**
      * 理邦 ELite V8
      */
     LI_BANG_ELITE_V8(45, "深圳市理邦精密仪器股份有限公司", "监护仪(ELiteV8)",
@@ -81,14 +88,14 @@ public enum MedicalDeviceEnum {
      */
     KE_MAN_C90(46, "深圳市科曼医疗设备有限公司", "无创血压/监护仪(C90)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BLOOD_PRESSURE_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode(), true),
+            InterfaceTypeEnum.ETHERNET.getCode(), false),
 
     /**
      * 威浩康 Angle600D麻醉深度监测仪
      */
     WEI_HAO_KANG_ANGEL6000D (47, "深圳市威浩康医疗器械有限公司","麻醉深度监测仪(ANGEL6000D)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
-            InterfaceTypeEnum.ETHERNET.getCode(), true),
+            InterfaceTypeEnum.ETHERNET.getCode(), false),
 
     /**
      * 科曼 AX700 麻醉机
@@ -113,14 +120,14 @@ public enum MedicalDeviceEnum {
      */
     AI_QIN_EGOS600B(72, "苏州爱琴生物医疗电子有限公司", "近红外组织血氧参数无损监测仪(EGOS600B)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.HEMOGLOBIN_MONITOR, DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 苏州爱琴
      */
     AI_QIN_EGOS600C(73, "苏州爱琴生物医疗电子有限公司", "近红外组织血氧参数无损监测仪(EGOS600C)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.BRAIN_OXYGEN_MONITOR),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 重庆名希
@@ -155,42 +162,70 @@ public enum MedicalDeviceEnum {
      */
     DRAGER_V300(78, "德国德尔格公司", "呼吸机(V300)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 德尔格 Fabius Plus麻醉机
      */
     DRAGER_FABIUS_PLUS (79, "德国德尔格公司", "麻醉机(Fabius Plus)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 舒普思达 S1200呼吸机
      */
     SHU_PU_SI_DA_S1200 (80, "南京舒普思达医疗设备有限公司", "呼吸机(S1200)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
      * 普博 5000D呼吸机
      */
     PU_BO_5000D (81, "深圳市普博科技有限公司", "呼吸机(5000D)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
-            InterfaceTypeEnum.SERIAL.getCode(), true),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
 
     /**
-     * 晨伟 麻醉机
+     * 晨伟 CWM-302 麻醉机
      */
     CHEN_WEI_CWH302 (82, "南京晨伟医疗设备有限公司", "麻醉机(CWM302)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
             InterfaceTypeEnum.SERIAL.getCode(), true),
 
     /**
-     * 晨伟 呼吸机
+     * 晨伟 CWM3020B 呼吸机
      */
-    CHEN_WEI_CWH3020B (83, "南京晨伟医疗设备有限公司", "呼吸机(CWM3020B)",
+    CHEN_WEI_CWH3020(83, "南京晨伟医疗设备有限公司", "呼吸机(CWM3020B)",
             DeviceTypeEnum.getTypeString(DeviceTypeEnum.RESPIRATOR_MACHINE),
             InterfaceTypeEnum.SERIAL.getCode(), true),
+
+    /**
+     * 德尔格 ZEUS_IE 麻醉机
+     */
+    DRAGER_ZIUS_IE(100, "德国德尔格公司", "麻醉机(ZEUS-IE)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_MACHINE),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
+
+    /**
+     * 太极 3200A 麻醉深度
+     */
+    TAI_JI_TD3200A(101, "深圳市太极医疗科技有限公司", "麻醉深度监护仪(TD-3200A)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.ANESTHESIA_DEPTH_MONITOR),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
+
+    /**
+     * MASIMO Radical7 血红蛋白
+     */
+    MASIMO_RADICAL7(102, "美国MASIMO公司", "无创血红蛋白监测仪(Radical7)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.HEMOGLOBIN_MONITOR),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
+
+    /**
+     * 飞利浦 MX系列 无创血压/监护仪
+     */
+    PHILIPS_MX(103, "荷兰皇家飞利浦公司", "无创血压/监护仪(MX)",
+            DeviceTypeEnum.getTypeString(DeviceTypeEnum.HEMOGLOBIN_MONITOR),
+            InterfaceTypeEnum.SERIAL.getCode(), false),
     ;
 
     /**

@@ -89,11 +89,11 @@ public class InfoDeviceUsageEvaluationServiceImpl extends BaseServiceImpl<InfoDe
      */
     @Override
     public CommonResult<String> updateDeviceUsageEvaluationInfoFromMobile(InfoDeviceUsageEvaluation evaluationInfo) {
-
         // 说明采集场次号不合法
         if (evaluationInfo.getCollectionNumber() == null || evaluationInfo.getCollectionNumber() == 0) {
-            logger.error("更新仪器评价信息失败,采集场次号不合法." + evaluationInfo);
-            return CommonResult.failed("更新仪器评价信息失败,采集场次号不合法.");
+            deviceUsageEvaluationRepository.save(evaluationInfo);
+            logger.info("新增仪器评价信息:" + evaluationInfo);
+            return CommonResult.success(JSON.toJSONString(evaluationInfo));
         }
         // 查询历史评价信息
         InfoDeviceUsageEvaluation historyEvaluationInfo = deviceUsageEvaluationRepository.findByCollectionNumber(evaluationInfo.getCollectionNumber());

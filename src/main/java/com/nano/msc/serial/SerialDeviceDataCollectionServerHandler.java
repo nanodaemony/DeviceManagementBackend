@@ -70,7 +70,6 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
      */
     private Map<Integer, DeviceDataHandler> dataHandlerMap;
 
-
     /**
      * 客户端连接成功时会触发
      */
@@ -95,12 +94,11 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
         String data = msg.toString();
         // 说明是心跳报文
         if (data.startsWith(MessagePrefix.HEART_MESSAGE_PREFIX)) {
-            log.info("串口心跳:" + ctx.channel().remoteAddress().toString() + ": {}", data);
+            log.info("采集器心跳:" + ctx.channel().remoteAddress().toString() + ": {}", data);
             handleCollectorHeartMessage(ctx, data);
-
             // 说明是仪器数据报文
         } else if (data.startsWith(MessagePrefix.DEVICE_DATA_MESSAGE_PREFIX)) {
-            log.info("串口数据:" + ctx.channel().remoteAddress().toString() + ": {}", data);
+            log.info("采集器数据:" + ctx.channel().remoteAddress().toString() + ": {}", data);
             handleDeviceDataMessage(ctx, data);
         } else {
             log.info("串口接收未知数据:" + ctx.channel().remoteAddress().toString() + ": {}", data);
@@ -154,7 +152,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
         // 仪器数据格式: #3#DC-75-0001#1231231231237829304902424348293048902
         String[] values = data.split(DATA_SEPARATOR);
         if (values.length < 4) {
-            log.info("接收串口仪器数据格式不准确: " + data);
+            log.error("接收串口仪器数据格式不准确: " + data);
             return;
         }
         // 获取包含的信息
@@ -178,6 +176,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             collection.setCollectorUniqueId(uniqueId);
             collection.setCollectionStatus(CollectionStatusEnum.COLLECTING.getCode());
             collection.setSerialNumber(medicalDevice.getSerialNumber());
+
             collection.setCollectionStartTime(TimestampUtils.getCurrentTimeForDataBase());
             collection.setCollectionFinishTime(TimestampUtils.getCurrentTimeForDataBase());
             collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
@@ -202,7 +201,7 @@ public class SerialDeviceDataCollectionServerHandler extends ChannelInboundHandl
             log.error("串口仪器数据解析与存储失败:" + data);
             return;
         } else {
-            log.info("获取并解析到串口仪器数据: " + result);
+            log.info("获取并解析到串口仪器数据: " + JSON.toJSONString(result));
         }
         // 仪器数据实时推送到前端
         RealTimeDeviceDataServer.sendDeviceRealTimeDataToClient(collection.getCollectionNumber(), collection.getDeviceCode(), JSON.toJSONString(result));

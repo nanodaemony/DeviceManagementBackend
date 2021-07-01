@@ -5,6 +5,7 @@ import com.nano.msc.devicedata.manager.DataManagerAiQin600A;
 import com.nano.msc.devicedata.manager.DataManagerAiQin600B;
 import com.nano.msc.devicedata.manager.DataManagerAiQin600C;
 import com.nano.msc.devicedata.manager.DataManagerBaoLaiTeA8;
+import com.nano.msc.devicedata.manager.DataManagerChenWei3020;
 import com.nano.msc.devicedata.manager.DataManagerLiBangEliteV8;
 import com.nano.msc.devicedata.manager.DataManagerMaiRuiT8;
 import com.nano.msc.devicedata.manager.DataManagerMaiRuiWatoex65;
@@ -19,6 +20,7 @@ import com.nano.msc.devicedata.repository.AiQin600ARepository;
 import com.nano.msc.devicedata.repository.AiQin600BRepository;
 import com.nano.msc.devicedata.repository.AiQin600CRepository;
 import com.nano.msc.devicedata.repository.BaoLaiTeA8Repository;
+import com.nano.msc.devicedata.repository.ChenWei3020Repository;
 import com.nano.msc.devicedata.repository.LiBangEliteV8Repository;
 import com.nano.msc.devicedata.repository.MaiRuiT8Repository;
 import com.nano.msc.devicedata.repository.MaiRuiWatoex65Repository;
@@ -81,6 +83,7 @@ public class DeviceDataContext implements InitializingBean, ApplicationContextAw
         dataHandlerMap.put(MedicalDeviceEnum.MEIDUNLI_5100C.getDeviceCode(), new DeviceDataHandler<>(context.getBean(MeiDunLi5100CRepository.class), context.getBean(DataManagerMeiDunLi5100C.class)));
         dataHandlerMap.put(MedicalDeviceEnum.PU_BO_5000D.getDeviceCode(), new DeviceDataHandler<>(context.getBean(PuBo5000DRepository.class), context.getBean(DataManagerPuBo5000D.class)));
         dataHandlerMap.put(MedicalDeviceEnum.PU_BO_BOARAY700.getDeviceCode(), new DeviceDataHandler<>(context.getBean(PuBo700Repository.class), context.getBean(DataManagerPuBo700.class)));
+        dataHandlerMap.put(MedicalDeviceEnum.CHEN_WEI_CWH3020.getDeviceCode(), new DeviceDataHandler<>(context.getBean(ChenWei3020Repository.class), context.getBean(DataManagerChenWei3020.class)));
     }
 
     /**

@@ -29,7 +29,6 @@ public class DeviceManagementApplication {
 		// 启动Netty服务端
 		SerialDeviceDataCollectionServer serialDeviceDataCollectionServer = new SerialDeviceDataCollectionServer();
 		serialDeviceDataCollectionServer.start(new InetSocketAddress("0.0.0.0", 10087));
-
 	}
 
 

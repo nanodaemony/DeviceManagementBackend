@@ -6,6 +6,7 @@ import com.nano.msc.common.vo.CommonResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,10 +38,16 @@ public class InfoDataCollectorController {
     @GetMapping("/get-all-data-collector-info")
     public CommonResult getAllDataCollectorInfo() {
         return CommonResult.success(GlobalContext.dataCollectorSet);
-
     }
 
-
+    /**
+     * 注册数据采集器
+     */
+    @ApiOperation("注册数据采集器")
+    @PostMapping("/register-data-collector")
+    public CommonResult registerDataCollector() {
+        return CommonResult.success(GlobalContext.dataCollectorSet);
+    }
 
 
 }

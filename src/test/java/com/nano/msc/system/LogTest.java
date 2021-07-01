@@ -31,16 +31,9 @@ public class LogTest {
 
     @Test
     public void test() {
-        Scanner scanner = new Scanner(System.in);
-        String data = scanner.next();
-        String[] values = data.split(" ");
-        int res = 0;
-        for(String id : values) {
-            if (id.contains("7") || Integer.parseInt(id) % 7 == 0) {
-                res++;
-            }
-        }
-        System.out.println(res);
+
+        System.out.println(((double) 400) / 365);
+
     }
 
 

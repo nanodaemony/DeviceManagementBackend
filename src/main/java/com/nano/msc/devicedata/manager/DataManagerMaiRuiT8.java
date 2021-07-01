@@ -30,7 +30,7 @@ public class DataManagerMaiRuiT8 implements DeviceDataManager<DataMaiRuiT8> {
     @Override
     public DataMaiRuiT8 parseDeviceData(String deviceData) {
         try {
-            // 解析并存储数据
+            // 解析并存储数据 JSON
             return dataRepository.save(JSON.parseObject(deviceData, DataMaiRuiT8.class));
         } catch (Exception e) {
             e.printStackTrace();

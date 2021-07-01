@@ -17,7 +17,6 @@ import lombok.Getter;
 @Getter
 public class DeviceDataHandler<T, ID> {
 
-
     /**
      * 数据Repository
      */
@@ -27,7 +26,6 @@ public class DeviceDataHandler<T, ID> {
      * 数据管理器
      */
     private DeviceDataManager<T> dataManager;
-
 
     public DeviceDataHandler(DeviceDataRepository<T, ID> dataRepository,
                              DeviceDataManager<T> dataManager) {

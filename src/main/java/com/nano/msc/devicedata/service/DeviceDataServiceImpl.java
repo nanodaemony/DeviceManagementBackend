@@ -81,16 +81,13 @@ public class DeviceDataServiceImpl implements DeviceDataService {
             return CommonResult.failed(ExceptionEnum.DATA_FORMAT_ERROR.getMessage());
         }
         if (!dataHandlerMap.containsKey(data.getDeviceCode())) {
-            return CommonResult.failed("数据解析与存储时仪器号不存在:" + data.toString());
+            log.error("数据解析与存储时仪器号不存在:" + data);
+            return CommonResult.failed("数据解析与存储时仪器号不存在:" + data);
         }
-
-        if (!CollectionNumberCacheUtil.contains(data.getCollectionNumber())) {
-            return CommonResult.failed("当前采集号不存在.");
-        }
-
         Object result = dataHandlerMap.get(data.getDeviceCode()).getDataManager().parseDeviceData(data.getDeviceData());
         if (result == null) {
-            return CommonResult.failed("数据解析与存储失败:" + data.toString());
+            log.error("数据解析与存储失败:" + data);
+            return CommonResult.failed("数据解析与存储失败:" + data);
         }
         int collectionNumber = data.getCollectionNumber();
 
@@ -101,6 +98,7 @@ public class DeviceDataServiceImpl implements DeviceDataService {
             collection.setLastReceiveDeviceDataTime(TimestampUtils.getCurrentTimeForDataBase());
             dataCollectionRepository.save(collection);
         }
+        log.info("接收网口仪器数据：" + JSON.toJSONString(result));
         // 仪器数据实时推送到前端
         RealTimeDeviceDataServer
                 .sendDeviceRealTimeDataToClient(data.getCollectionNumber(), data.getDeviceCode(), JSON.toJSONString(result));

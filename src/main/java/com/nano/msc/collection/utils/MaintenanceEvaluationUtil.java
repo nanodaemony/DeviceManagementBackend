@@ -33,7 +33,7 @@ public class MaintenanceEvaluationUtil {
         }
         double total = 0D;
         for (InfoDeviceMaintenanceRecord record : maintenanceRecordList) {
-            LocalDate start = record.getTimeStartRepair().toLocalDate();
+            LocalDate start = record.getTimeErrorOccur().toLocalDate();
             LocalDate finish = record.getTimeResumeUse().toLocalDate();
             double days = Math.abs((int) start.toEpochDay() - finish.toEpochDay()) + 1;
             total = total + days;
@@ -218,6 +218,17 @@ public class MaintenanceEvaluationUtil {
     }
 
 
+
+    public static double getAverageMaintenanceRecordCounter(List<InfoDeviceMaintenanceRecord> maintenanceRecordList, int deviceNumber) {
+
+        if (maintenanceRecordList.size() == 0) {
+            return 0D;
+        }
+        if (deviceNumber == 0) {
+            return 0D;
+        }
+        return (double) maintenanceRecordList.size() / (double) deviceNumber;
+    }
 
 
 }

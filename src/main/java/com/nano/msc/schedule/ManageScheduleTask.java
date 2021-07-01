@@ -53,6 +53,8 @@ public class ManageScheduleTask {
     @Autowired
     private SystemLogService logger;
 
+
+
     /**
      * 检查网口类仪器数据采集状态(单位是ms)
      */
@@ -65,12 +67,15 @@ public class ManageScheduleTask {
         // 得到全部以太网仪器的DeviceCode
         Set<Integer> deviceCodeSet = medicalDeviceList.stream().map(InfoMedicalDevice::getDeviceCode).collect(Collectors.toSet());
         for (Integer deviceCode : deviceCodeSet) {
-            // 查询这个仪器号全部正在采集的信息
+            // 查询这个仪器号全部等待采集与正在采集的信息
             List<InfoDeviceDataCollection> collectionList = dataCollectionRepository
                     .findByDeviceCodeAndCollectionStatus(deviceCode, CollectionStatusEnum.COLLECTING.getCode());
+            collectionList.addAll(dataCollectionRepository
+                    .findByDeviceCodeAndCollectionStatus(deviceCode, CollectionStatusEnum.WAITING.getCode()));
+            
             for (InfoDeviceDataCollection collection : collectionList) {
                 // 下面进行筛选,最后接收仪器数据时间大于20分钟则认定采集完成
-                if (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
+                if (TimestampUtils.getDurationTimeSecond(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > ETHERNET_COLLECTION_FINISH_TIME_LENGTH) {
                     logger.info("网口仪器超过10分钟没有数据信息,当前采集完成." + collection.getCollectionNumber());
                     // 设置上传接收数据时间为结束采集时间
                     collection.setCollectionFinishTime((collection.getLastReceiveDeviceDataTime()));
@@ -79,7 +84,6 @@ public class ManageScheduleTask {
                }
             }
         }
-
     }
 
 
@@ -106,17 +110,16 @@ public class ManageScheduleTask {
             // 遍历这些信息
             for (InfoDeviceDataCollection collection : collectionList) {
                 log.info("当前采集:" + collection.toString());
-                log.info("持续时间:" + TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()));
+                log.info("距离上次接收数据时间:" + TimestampUtils.getDurationTimeSecond(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()));
                 // 600000
-                if ((TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)
-                        || (TimestampUtils.getDurationTime(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)) {
+                if ((TimestampUtils.getDurationTimeSecond(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)
+                        || (TimestampUtils.getDurationTimeSecond(TimestampUtils.getCurrentTimeForDataBase(), collection.getLastReceiveDeviceDataTime()) > SERIAL_COLLECTION_FINISH_TIME_LENGTH)) {
                     logger.info("超过10分钟无心跳信息或仪器数据信息,当前采集完成." + uniqueId);
                     collection.setCollectionStatus(CollectionStatusEnum.FINISHED.getCode());
                     // 设置完成时间
                     collection.setCollectionFinishTime(collection.getLastReceiveDeviceDataTime());
                     // 持久化到服务器
                     dataCollectionRepository.save(collection);
-
                 }
             }
         }
@@ -132,7 +135,6 @@ public class ManageScheduleTask {
     private void refreshCacheContent() {
         configuration.refreshCacheContent();
     }
-
 
 
 }

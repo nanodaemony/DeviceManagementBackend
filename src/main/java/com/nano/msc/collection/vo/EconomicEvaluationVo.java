@@ -54,7 +54,7 @@ public class EconomicEvaluationVo {
     private Double serviceLife = 0D;
 
 
-    // ****************************** 经济性指标 ***************************************
+    // ****************************** 维修相关经济性指标 ***************************************
 
     /**
      * 历史维保费用总和(全部维保费用加起来,下面三项)
@@ -75,5 +75,54 @@ public class EconomicEvaluationVo {
      * 历史其他费用总和(仅其他费用)
      */
     private double historyCostOtherNum = 0D;
+
+    // ****************************** 其他经济性评价指标 ***************************************
+    /**
+     * 仪器购买价格(元)
+     */
+    private Double devicePurchasePrice;
+
+    /**
+     * 技师每月工资(元/月)
+     */
+    private Double technicianMonthlySalary;
+
+    /**
+     * 手术耗材费用(元/年)
+     */
+    private Double consumableCostMoney;
+
+    /**
+     * 固定维护维修费用(元/年)
+     */
+    private Double fixRepairCostMoney;
+
+    /**
+     * 每小时收益
+     */
+    private Double profitMoney;
+
+
+    /**
+     * 技师总工资
+     */
+    private Double totalTechnicianMonthlySalary;
+
+
+    /**
+     * 手术耗材费用
+     */
+    private Double totalConsumableCostMoney;
+
+    /**
+     * 固定维护维修费用
+     */
+    private Double totalFixRepairCostMoney;
+
+    /**
+     * 总收益
+     */
+    private Double totalProfitMoney;
+
 
 }

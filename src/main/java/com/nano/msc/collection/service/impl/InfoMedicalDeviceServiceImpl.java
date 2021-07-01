@@ -108,7 +108,7 @@ public class InfoMedicalDeviceServiceImpl extends BaseServiceImpl<InfoMedicalDev
         historyDevice.setDeviceDepartment(updatedDeviceInfo.getDeviceDepartment());
         historyDevice.setConsumableCostMoney(updatedDeviceInfo.getConsumableCostMoney());
         historyDevice.setProfitMoney(updatedDeviceInfo.getProfitMoney());
-        historyDevice.setDevicePower(updatedDeviceInfo.getDevicePower());
+        historyDevice.setDailyPowerCost(updatedDeviceInfo.getDailyPowerCost());
         // 更新信息至数据库中
         updatedDeviceInfo = medicalDeviceRepository.save(historyDevice);
         logger.info("成功更新医疗仪器信息:" + updatedDeviceInfo);

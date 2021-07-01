@@ -181,16 +181,27 @@ public class TimestampUtils {
     }
 
     /**
-     * 获取持续时间
+     * 获取持续时间(秒)
      *
      * @param startTime 开始时间
      * @param endTime 结束时间
      * @return 持续的时间：单位为秒S
      */
-    public static long getDurationTime(LocalDateTime startTime, LocalDateTime endTime) {
+    public static long getDurationTimeSecond(LocalDateTime startTime, LocalDateTime endTime) {
         return Math.abs(Duration.between(startTime, endTime).getSeconds());
     }
 
+
+    /**
+     * 获取持续时间(天)
+     *
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @return 持续的时间：单位为秒S
+     */
+    public static long getDurationTimeDay(LocalDateTime startTime, LocalDateTime endTime) {
+        return endTime.toLocalDate().toEpochDay() - startTime.toLocalDate().toEpochDay();
+    }
 
     /**
      * 得到历史的零时时间的LocalDateTime
@@ -200,7 +211,6 @@ public class TimestampUtils {
     public static LocalDateTime getHistoryDayZeroLocalDateTimeBeforeNow(int days) {
         return getCurrentDayZeroLocalDateTime().minusDays(days);
     }
-
 
     /**
      * 得到历史的零时时间的LocalDateTime列表

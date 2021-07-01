@@ -4,13 +4,9 @@ package com.nano.msc.collection.utils;
 import com.nano.msc.collection.entity.InfoDeviceDataCollection;
 import com.nano.msc.common.utils.TimestampUtils;
 
-import java.text.DecimalFormat;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Description: 手术使用仪器的工具类
@@ -52,8 +48,7 @@ public class InfoDeviceDataCollectionUtil {
     public static int getTotalCollectionTime(List<InfoDeviceDataCollection> collectionList) {
         int res = 0;
         for (InfoDeviceDataCollection collection : collectionList) {
-
-            int duration = (int)TimestampUtils.getDurationTime(collection.getCollectionStartTime(), collection.getCollectionFinishTime());
+            int duration = (int)TimestampUtils.getDurationTimeSecond(collection.getCollectionStartTime(), collection.getCollectionFinishTime());
             if (duration > 0) {
                 res = res + duration;
             }

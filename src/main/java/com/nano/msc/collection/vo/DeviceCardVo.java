@@ -90,6 +90,11 @@ public class DeviceCardVo {
     int maintenanceRecordCounter = 0;
 
     /**
+     * 历史维保费用总和(全部维保费用加起来,下面三项)
+     */
+    double historyMaintenanceCostSum = 0D;
+
+    /**
      * 历史配件费用总和
      */
     double historyCostAccessoryNum = 0D;
@@ -123,5 +128,57 @@ public class DeviceCardVo {
      * 平均整体过程满意度
      */
     double averageMaintenanceOverallProcessSatisfactionLevel = 0D;
+
+    // ********************************* 经济性指标统计信息 ***************************************/
+
+    /**
+     * 仪器购买价格(元)
+     */
+    private Double devicePurchasePrice;
+
+    /**
+     * 技师每月工资(元/月)
+     */
+    private Double technicianMonthlySalary;
+
+    /**
+     * 手术耗材费用(元/年)
+     */
+    private Double consumableCostMoney;
+
+    /**
+     * 固定维护维修费用(元/年)
+     */
+    private Double fixRepairCostMoney;
+
+    /**
+     * 每小时收益
+     */
+    private Double profitMoney;
+
+
+    /**
+     * 技师总工资
+     */
+    private Double totalTechnicianMonthlySalary;
+
+
+    /**
+     * 手术耗材费用
+     */
+    private Double totalConsumableCostMoney;
+
+    /**
+     * 固定维护维修费用
+     */
+    private Double totalFixRepairCostMoney;
+
+    /**
+     * 总收益
+     */
+    private Double totalProfitMoney;
+
+
+
 
 }

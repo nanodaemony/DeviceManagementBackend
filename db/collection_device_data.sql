@@ -357,7 +357,7 @@ CREATE TABLE `data_mei_dun_li_eeg_vista` (
 -- ----------------------------
 -- 美敦力 5100C
 -- ----------------------------
-CREATE TABLE `data_mei_dun_li_5100C` (
+CREATE TABLE `data_mei_dun_li_5100c` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
     `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
     `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',
@@ -411,9 +411,9 @@ CREATE TABLE `data_mei_dun_li_5100C` (
 
 
 -- ----------------------------
--- 普博 700
+-- 晨伟3020B
 -- ----------------------------
-CREATE TABLE `data_pu_bo_700` (
+CREATE TABLE `data_chen_wei_3020` (
     `pk_id`                INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自动增长',
     `collection_number`     INT UNSIGNED NOT NULL COMMENT '采集顺序号,外键连接手术信息表',
     `serial_number` VARCHAR(32)  NOT NULL DEFAULT '-1' COMMENT '设备序列号,不一定唯一',

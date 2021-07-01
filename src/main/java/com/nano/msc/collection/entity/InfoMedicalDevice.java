@@ -129,12 +129,36 @@ public class InfoMedicalDevice implements Serializable {
     @Column(name = "device_department")
     private String deviceDepartment;
 
+
+    // *************************** 经济性指标 **********************************************//
+
     /**
-     * 耗材费用
+     * 仪器购买价格(元)
      */
-    @ApiModelProperty(value = "耗材费用", example = "200")
+    @ApiModelProperty(value = "仪器购买价格(元)", example = "200000")
+    @Column(name = "device_purchase_price")
+    private Double devicePurchasePrice;
+
+    /**
+     * 技师每月工资(元/月)
+     */
+    @ApiModelProperty(value = "技师每月工资(元/月)", example = "8000")
+    @Column(name = "technician_monthly_salary")
+    private Double technicianMonthlySalary;
+
+    /**
+     * 手术耗材费用(元/年)
+     */
+    @ApiModelProperty(value = "手术耗材费用(元/年)", example = "2000")
     @Column(name = "consumable_cost_money")
     private Double consumableCostMoney;
+
+    /**
+     * 固定维护维修费用(元/年)
+     */
+    @ApiModelProperty(value = "固定维护维修费用(元/年)", example = "2000")
+    @Column(name = "fix_repair_cost_money")
+    private Double fixRepairCostMoney;
 
     /**
      * 单次收益费用
@@ -144,11 +168,11 @@ public class InfoMedicalDevice implements Serializable {
     private Double profitMoney;
 
     /**
-     * 仪器功率
+     * 每天电费消费
      */
-    @ApiModelProperty(value = "仪器功率(KW)", example = "3")
-    @Column(name = "device_power")
-    private Double devicePower;
+    @ApiModelProperty(value = "每天电费消费(元)", example = "8")
+    @Column(name = "daily_power_cost")
+    private Double dailyPowerCost;
 
     /**
      * 数据创建时间

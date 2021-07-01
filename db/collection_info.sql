@@ -12,20 +12,23 @@ create TABLE `info_medical_device` (
     `interface_type` INT COMMENT '接口类型, 1: 网口 2: 串口',
     `can_collect_data` BOOL COMMENT '能否实现数据采集',
 
-    `collector_unique_id` VARCHAR(64) COMMENT '当前对应的采集器的唯一ID',
     `serial_number` VARCHAR(32) COMMENT '设备序列号,不一定唯一',
+    `collector_unique_id` VARCHAR(64) COMMENT '当前对应的采集器的唯一ID',
     `produce_date` DATE COMMENT '设备生产时间 eg: 2017-08-01',
     `service_life` FLOAT COMMENT '设备使用年限',
     `device_department` VARCHAR(256) COMMENT '使用科室',
-    `consumable_cost_money` DOUBLE COMMENT '单次手术耗材费用(元)',
-    `profit_money` DOUBLE COMMENT '单次手术收益(元)',
-    `device_power` DOUBLE COMMENT '仪器功率(KW)',
+
+    `device_purchase_price` DOUBLE COMMENT '仪器购买价格(元)',
+    `technician_monthly_salary` DOUBLE COMMENT '技师每月工资(元/月)',
+    `consumable_cost_money` DOUBLE COMMENT '手术耗材费用(元/年)',
+    `fix_repair_cost_money` DOUBLE COMMENT '固定维护维修费用(元/年)',
+    `profit_money` DOUBLE COMMENT '手术收益(元/小时)',
+    `daily_power_cost` DOUBLE COMMENT '仪器电费(元/天)',
 
     `gmt_create` DATETIME COMMENT '创建时间',
     `gmt_modified` DATETIME COMMENT '更新时间',
     PRIMARY KEY(pk_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT '医疗仪器信息表';
-
 
 -- ----------------------------
 -- 仪器数据采集信息表
@@ -68,7 +71,6 @@ create TABLE `info_data_collector` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT '数据采集器表';
 
 
-
 -- ----------------------------
 -- 仪器使用情况评价表
 -- ----------------------------
@@ -84,8 +86,8 @@ CREATE TABLE `info_device_usage_evaluation` (
     `device_department` VARCHAR(256) NOT NULL COMMENT '使用科室',
     `experience_level` TINYINT NOT NULL COMMENT '使用评价等级',
     `reliability_level` TINYINT NOT NULL COMMENT '可靠性等级',
-    `has_error` BOOL NOT NULL COMMENT '是否有错误信息',
-    `known_error` VARCHAR(256) COMMENT '错误原因',
+    `has_error` BOOL NOT NULL COMMENT '是否有故障信息',
+    `known_error` VARCHAR(256) COMMENT '故障原因',
     `other_error` VARCHAR(256) COMMENT '其他错误',
     `remark_info` VARCHAR(256) COMMENT '备注信息',
     `record_name` VARCHAR(32) COMMENT '记录人签名',
